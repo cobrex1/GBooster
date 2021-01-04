@@ -185,7 +185,7 @@ Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/Tamrie
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/TamrielNetwork/repo.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/booX?style=for-the-badge
 [contributors-url]: https://github.com/TamrielNetwork/booX/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/booX?label=Forks&style=for-the-badge
 [forks-url]: https://github.com/TamrielNetwork/booX/network/members
