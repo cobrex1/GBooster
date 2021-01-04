@@ -189,7 +189,7 @@ Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/Tamrie
 [contributors-url]: https://github.com/TamrielNetwork/booX/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/booX?label=Forks&style=for-the-badge
 [forks-url]: https://github.com/TamrielNetwork/booX/network/members
-[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/booX?style=for-the-badge
 [stars-url]: https://github.com/TamrielNetwork/booX/stargazers
 [issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/booX?style=for-the-badge
 [issues-url]: https://github.com/TamrielNetwork/booX/issues
