@@ -172,7 +172,7 @@ Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/Tamrie
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
+* [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * []()
 * []()
 
