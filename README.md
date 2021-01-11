@@ -193,4 +193,4 @@ Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/Tamrie
 [license-shield]: https://img.shields.io/github/license/TamrielNetwork/booX?style=for-the-badge
 [license-url]: https://github.com/TamrielNetwork/booX/blob/main/LICENSE
 [quality-shield]: https://img.shields.io/scrutinizer/quality/g/TamrielNetwork/booX?style=for-the-badge
-[quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/booX/
+[quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/booX/reports/
