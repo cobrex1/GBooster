@@ -86,7 +86,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Spigot-Plugin
+A plugin to provide an easy way to implement Global Boosters for JobsReborn, McMMO and Minecraft!
 
 ### Built With
 
