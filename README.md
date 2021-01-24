@@ -31,23 +31,23 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/TamrielNetwork/booX">
+  <a href="https://github.com/TamrielNetwork/GBooster">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">booX</h3>
+  <h3 align="center">GBooster</h3>
 
   <p align="center">
     Global Boosters for Spigot and Paper
     <br />
-    <a href="https://github.com/TamrielNetwork/booX"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/TamrielNetwork/GBooster"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TamrielNetwork/booX">View Demo</a>
+    <a href="https://github.com/TamrielNetwork/GBooster">View Demo</a>
     ·
-    <a href="https://github.com/TamrielNetwork/booX/issues">Report Bug</a>
+    <a href="https://github.com/TamrielNetwork/GBooster/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TamrielNetwork/booX/issues">Request Feature</a>
+    <a href="https://github.com/TamrielNetwork/GBooster/issues">Request Feature</a>
   </p>
 </p>
 
@@ -113,7 +113,7 @@ This is an example of how to list things you need to use the software and how to
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/TamrielNetwork/booX.git
+   git clone https://github.com/TamrielNetwork/GBooster.git
    ```
 2. Install NPM packages
    ```sh
@@ -134,7 +134,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/TamrielNetwork/booX/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/TamrielNetwork/GBooster/issues) for a list of proposed features (and known issues).
 
 
 
@@ -165,7 +165,7 @@ Leopold Meinel - [@TamrielN](https://twitter.com/TamrielN) - Twitter
 
 Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - email
 
-Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/TamrielNetwork/booX)
+Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/TamrielNetwork/GBooster)
 
 
 
@@ -182,15 +182,15 @@ Project Link: [https://github.com/TamrielNetwork/booX](https://github.com/Tamrie
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/booX?style=for-the-badge
-[contributors-url]: https://github.com/TamrielNetwork/booX/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/booX?label=Forks&style=for-the-badge
-[forks-url]: https://github.com/TamrielNetwork/booX/network/members
-[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/booX?style=for-the-badge
-[stars-url]: https://github.com/TamrielNetwork/booX/stargazers
-[issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/booX?style=for-the-badge
-[issues-url]: https://github.com/TamrielNetwork/booX/issues
-[license-shield]: https://img.shields.io/github/license/TamrielNetwork/booX?style=for-the-badge
-[license-url]: https://github.com/TamrielNetwork/booX/blob/main/LICENSE
-[quality-shield]: https://img.shields.io/scrutinizer/quality/g/TamrielNetwork/booX?label=quality&style=for-the-badge
-[quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/booX/reports/
+[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/GBooster?style=for-the-badge
+[contributors-url]: https://github.com/TamrielNetwork/GBooster/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/GBooster?label=Forks&style=for-the-badge
+[forks-url]: https://github.com/TamrielNetwork/GBooster/network/members
+[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/GBooster?style=for-the-badge
+[stars-url]: https://github.com/TamrielNetwork/GBooster/stargazers
+[issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/GBooster?style=for-the-badge
+[issues-url]: https://github.com/TamrielNetwork/GBooster/issues
+[license-shield]: https://img.shields.io/github/license/TamrielNetwork/GBooster?style=for-the-badge
+[license-url]: https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE
+[quality-shield]: https://img.shields.io/scrutinizer/quality/g/TamrielNetwork/GBooster?label=quality&style=for-the-badge
+[quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/GBooster/reports/
