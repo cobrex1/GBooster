@@ -86,7 +86,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-A plugin to provide an easy way to implement Global Boosters for JobsReborn, McMMO and Minecraft!
+A plugin to provide an easy way to implement Global Boosters for JobsReborn, McMMO and Minecraft with MySQL support
 
 ### Built With
 
