@@ -99,6 +99,14 @@ To get a local copy up and running follow these simple steps.
   ```sh
   sudo apt-get install default-jre
   ```
+* JRE from OpenJDK 11 (Ubuntu)
+  ```sh
+  sudo apt-get install openjdk-11-jdk-headless
+  ```
+* JRE from OpenJDK 11 (Arch)
+  ```sh
+  sudo pacman -S openjdk-11-jdk-headless
+  ```
 
 ### Installation
 
