@@ -101,11 +101,11 @@ To get a local copy up and running follow these simple steps.
   ```
 * JRE from OpenJDK 11 (Ubuntu)
   ```sh
-  sudo apt-get install openjdk-11-jdk-headless
+  sudo apt-get install openjdk-11-jre-headless
   ```
 * JRE from OpenJDK 11 (Arch)
   ```sh
-  sudo pacman -S openjdk-11-jdk-headless
+  sudo pacman -S jre11-openjdk-headless
   ```
 
 ### Installation
