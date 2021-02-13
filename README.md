@@ -10,8 +10,6 @@
 *** github_username, repo_name, twitter_handle, email, project_title, project_description
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -51,8 +49,6 @@
   </p>
 </p>
 
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
@@ -79,8 +75,6 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
@@ -101,7 +95,6 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * OpenJDK 11 (Linux - Debian)
   ```sh
   sudo apt-get install default-jre
@@ -119,14 +112,10 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/TamrielNetwork/GBooster/issues) for a list of proposed features (and known issues).
-
-
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -139,14 +128,10 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
 <!-- LICENSE -->
 ## License
 
 Distributed under the GNU General Public License v3.0. See `LICENSE` for more information.
-
-
 
 <!-- CONTACT -->
 ## Contact
@@ -157,18 +142,12 @@ Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - email
 
 Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/TamrielNetwork/GBooster)
 
-
-
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://example.com)
 * []()
-
-
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
