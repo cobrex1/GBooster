@@ -90,10 +90,8 @@ Spigot-Plugin to provide Global Boosters for JobsReborn, McMMO and Minecraft wit
 
 ### Built With
 
-* []()
-* []()
-* []()
-
+* [Gradle](https://gradle.org/install/)
+* [OpenJDK 11](https://sourceforge.net/projects/openjdk11/)
 
 
 <!-- GETTING STARTED -->
@@ -104,23 +102,15 @@ To get a local copy up and running follow these simple steps.
 ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
-* npm
+* OpenJDK 11 (Linux - Debian)
   ```sh
-  npm install npm@latest -g
+  sudo apt-get install default-jre
   ```
 
 ### Installation
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/TamrielNetwork/GBooster.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-
+1. Download latest release from SpigotMC
+2. Put jar in your plugins/ folder
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -173,7 +163,7 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 ## Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
-* [Initial Development - placeholder](https://example.com)
+* [Initial Development - Manu](https://example.com)
 * []()
 
 
