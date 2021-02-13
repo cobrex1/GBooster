@@ -95,7 +95,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-* OpenJDK 11 (Linux - Debian)
+* JRE from OpenJDK 11 (Debian)
   ```sh
   sudo apt-get install default-jre
   ```
@@ -147,7 +147,6 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://example.com)
-* []()
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
