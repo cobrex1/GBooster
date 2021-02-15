@@ -154,7 +154,7 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 ## Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
-* [Initial Development - Manu](https://example.com)
+* [Initial Development - Manu](https://github.com/zManu27/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
