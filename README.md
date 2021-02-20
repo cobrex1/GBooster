@@ -97,20 +97,57 @@ To get the plugin running on your server follow these simple steps.
 ### Configuration
 
 ```
-bar-pattern: ""          This bar will be displayed if there are active boosters
-default-bar-message: ""  This message will be displayed above the bar if the empty bar option is set to true
-empty-bar: true          true to display the default message in the bar
+#---------------------------------------------------------------#
+#   __________________                       __                 #
+#  /  _____/\______   \ ____   ____  _______/  |_  ___________  #
+# /   \  ___ |    |  _//  _ \ /  _ \/  ___/\   __\/ __ \_  __ \ #
+# \    \_\  \|    |   (  <_> |  <_> )___ \  |  | \  ___/|  | \/ #
+#  \______  /|______  /\____/ \____/____  > |__|  \___  >__|    #
+#         \/        \/                  \/            \/        #
+#---------------------------------------------------------------#
 
-storage-system: yaml     Choose between mysql or yaml
+# This bar will be displayed when boosters are active
+bar-pattern: "&b%minecraft%x &aEXP &7| &b%mcmmo%x &aMcMMO &7| &b%jobs_xp%x &aJob &7| &b%jobs_money%x &e$ &7[&f%duration% m&7]"
 
-saving-time: 600         How often to save players (in seconds)
+# Message that will be displayed if empty-bar is set to true
+default-bar-message: "&c&lNo active boosters"
 
+# Set this option to false to not display the default message when no boosters are active
+empty-bar: false
+
+# Choose a storage system (mysql or yaml)
+storage-system: yaml
+
+# How often the plugin should save players (time in seconds)
+saving-time: 600
+
+mysql:
+  host: "localhost"
+  port: 3306
+  database: gbooster
+  username: "gbooster"
+  password: ""
 
 boosters:
-  booster-id:
-    type: jobs_money     Choose the type among jobs_xp, jobs_money, mcmmo and minecraft
+  jobs_xp_2:
+    # Choose from jobs_xp, jobs_money, mcmmo and minecraft
+    type: jobs_xp
+    # Choose a multiplier (2-8)
     multiplier: 2
-    duration: 60         (in seconds)
+    # Choose a duration (seconds)
+    duration: 3600
+  jobs_money_2:
+    type: jobs_money
+    multiplier: 2
+    duration: 3600
+  mcmmo_xp_2:
+    type: mcmmo
+    multiplier: 2
+    duration: 3600
+  minecraft_xp_2:
+    type: minecraft
+    multiplier: 2
+    duration: 3600
 ```
 
 <!-- ROADMAP -->
