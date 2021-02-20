@@ -1,30 +1,10 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** github_username, repo_name, twitter_handle, email, project_title, project_description
--->
-
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![Quality][quality-shield]][quality-url]
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -78,9 +58,21 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+### Description
 
-Spigot-Plugin to provide Global Boosters for JobsReborn, McMMO and Minecraft with MySQL-Support
+GBooster is a Booster Plugin created to provide Global Boosters for JobsReborn, McMMO and Minecraft!
+
+This plugin is perfect for any server wishing to provide a way of donating to their players without becoming pay to win!
+
+### Features
+
+* Global Minecraft Experience Boosters
+* Global McMMO Experience Boosters
+* Global Jobs Experience and Money Boosters
+* MySQL/MariaDB support
+* A Bar that shows active boosters and hides automatically when there are none active
+* Support for scheduled boosters from JobsReborn
+* Placeholders and the ability to create a menu to activate boosters through [DeluxeMenus](https://www.spigotmc.org/resources/deluxemenus.11734/) for example
 
 ### Built With
 
@@ -91,34 +83,35 @@ Spigot-Plugin to provide Global Boosters for JobsReborn, McMMO and Minecraft wit
 <!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+To get the plugin running on your server follow these simple steps.
 
-### Prerequisites
+### Commands and Permissions
 
-* JRE from OpenJDK 11 (Debian)
-  ```sh
-  sudo apt-get install default-jre
-  ```
-* JRE from OpenJDK 11 (Ubuntu)
-  ```sh
-  sudo apt-get install openjdk-11-jre-headless
-  ```
-* JRE from OpenJDK 11 (Arch)
-  ```sh
-  sudo pacman -S jre11-openjdk-headless
-  ```
+1. Permission: `gbooster.give`
+ * Command: `/gbooster give <player> <boosterid> <amount>`
+ * Description: Give a player a certain amount of boosters
+2. Permission: `DEFAULT`
+ * Command: `/gbooster use <boosterid>`
+ * Description: Use a specified booster
 
-### Installation
+### Configuration
 
-1. Download latest release from SpigotMC
-2. Put jar in your plugins/ folder
+```
+bar-pattern: ""          This bar will be displayed if there are active boosters
+default-bar-message: ""  This message will be displayed above the bar if the empty bar option is set to true
+empty-bar: true          true to display the default message in the bar
 
-<!-- USAGE EXAMPLES -->
-## Usage
+storage-system: yaml     Choose between mysql or yaml
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+saving-time: 600         How often to save players (in seconds)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+
+boosters:
+  booster-id:
+    type: jobs_money     Choose the type among jobs_xp, jobs_money, mcmmo and minecraft
+    multiplier: 2
+    duration: 60         (in seconds)
+```
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -157,7 +150,6 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 * [Initial Development - Manu](https://github.com/zManu27/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/GBooster?style=for-the-badge
 [contributors-url]: https://github.com/TamrielNetwork/GBooster/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/GBooster?label=Forks&style=for-the-badge

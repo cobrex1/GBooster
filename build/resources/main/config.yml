@@ -1,33 +1,51 @@
-#This bar will be displayed if there are active boosters
+#---------------------------------------------------------------#
+#   __________________                       __                 #
+#  /  _____/\______   \ ____   ____  _______/  |_  ___________  #
+# /   \  ___ |    |  _//  _ \ /  _ \/  ___/\   __\/ __ \_  __ \ #
+# \    \_\  \|    |   (  <_> |  <_> )___ \  |  | \  ___/|  | \/ #
+#  \______  /|______  /\____/ \____/____  > |__|  \___  >__|    #
+#         \/        \/                  \/            \/        #
+#---------------------------------------------------------------#
+
+# This bar will be displayed when boosters are active
 bar-pattern: "&b%minecraft%x &aEXP &7| &b%mcmmo%x &aMcMMO &7| &b%jobs_xp%x &aJob &7| &b%jobs_money%x &e$ &7[&f%duration% m&7]"
 
-#This message will be displayed above the bar if the empty bar option is set to true
+# Message that will be displayed if empty-bar is set to true
 default-bar-message: "&c&lNo active boosters"
 
-#Set this option to true to display the default message in the bar when there is no active booster
-#Otherwise the bar will disappear
-empty-bar: true
+# Set this option to false to not display the default message when no boosters are active
+empty-bar: false
 
-#Choose a storage system here
-#mysql or yaml
+# Choose a storage system (mysql or yaml)
 storage-system: yaml
 
-#How often the plugin should save players (time in seconds)
+# How often the plugin should save players (time in seconds)
 saving-time: 600
 
 mysql:
   host: "localhost"
   port: 3306
-  database: Boosters
-  username: "root"
+  database: gbooster
+  username: "gbooster"
   password: ""
 
 boosters:
-  #This is an example booster
-  example_booster:
-    #Choose the type among jobs_xp, jobs_money, mcmmo and minecraft
-    type: jobs_money
-    #Choose a multiplier
+  jobs_xp_2:
+    # Choose from jobs_xp, jobs_money, mcmmo and minecraft
+    type: jobs_xp
+    # Choose a multiplier (2-8)
     multiplier: 2
-    #Choose a duration (seconds)
-    duration: 60
+    # Choose a duration (seconds)
+    duration: 3600
+  jobs_money_2:
+    type: jobs_money
+    multiplier: 2
+    duration: 3600
+  mcmmo_xp_2:
+    type: mcmmo
+    multiplier: 2
+    duration: 3600
+  minecraft_xp_2:
+    type: minecraft
+    multiplier: 2
+    duration: 3600

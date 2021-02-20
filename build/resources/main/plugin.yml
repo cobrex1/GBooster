@@ -1,8 +1,8 @@
 name: GBooster
-version: 1.0
+version: 1.0.1
 main: com.tamrielnetwork.gbooster.gbooster.GBooster
 api-version: 1.16
-authors: [ Manu ]
+authors: [Manu,TamrielNetwork]
 depend: [PlaceholderAPI, Jobs]
 commands:
   gbooster:
