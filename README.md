@@ -62,7 +62,7 @@
 
 GBooster is a Booster Plugin created to provide Global Boosters for JobsReborn, McMMO and Minecraft!
 
-This plugin is perfect for any server wishing to provide a way of donating to their players without becoming pay to win!
+This plugin is perfect for any server wishing to receive donations from their players without becoming pay to win!
 
 ### Features
 
