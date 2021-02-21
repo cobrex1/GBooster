@@ -25,8 +25,8 @@ public abstract class BoostersStorage {
         activeBoosters.put(booster, System.currentTimeMillis());
     }
 
-    public int getBoosterMultiplier(BoosterType boosterType, boolean addJobsBooster){
-        int totalMultiplier = 0;
+    public double getBoosterMultiplier(BoosterType boosterType, boolean addJobsBooster){
+        double totalMultiplier = 0;
 
         if (addJobsBooster)
             totalMultiplier += jobsBooster;
@@ -43,7 +43,7 @@ public abstract class BoostersStorage {
 
     public boolean canUseBooster(Booster booster){
 
-        int totalAmount = getBoosterMultiplier(booster.getBoosterType(),
+        double totalAmount = getBoosterMultiplier(booster.getBoosterType(),
                 booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);
 
         return totalAmount + booster.getMultiplier() <= 8;
@@ -54,7 +54,7 @@ public abstract class BoostersStorage {
 
         for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()){
 
-            long boosterCountdown = entry.getKey().getDuration()*1000+entry.getValue();
+            long boosterCountdown = entry.getKey().getDuration()* 1000L +entry.getValue();
 
             if (boosterCountdown <= System.currentTimeMillis()){
                 activeBoosters.remove(entry.getKey(), entry.getValue());

@@ -23,6 +23,11 @@ public final class GBooster extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        System.out.println("[GBooster] GBooster Copyright (C) 2021 Leopold Meinel\n" +
+                "[GBooster] This program comes with ABSOLUTELY NO WARRANTY!\n" +
+                "[GBooster] This is free software, and you are welcome to redistribute it under certain conditions.\n" +
+                "[GBooster] Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.");
+
         generateConfig();
 
         registerListeners();
@@ -85,7 +90,7 @@ public final class GBooster extends JavaPlugin {
             public void run() {
                 playerStorage.savePlayers();
             }
-        }.runTaskTimer(this, getConfig().getInt("saving-time")*20, getConfig().getInt("saving-time")*20);
+        }.runTaskTimer(this, getConfig().getInt("saving-time")* 20L, getConfig().getInt("saving-time")* 20L);
     }
 
     public BoostersManager getBoostersManager() {

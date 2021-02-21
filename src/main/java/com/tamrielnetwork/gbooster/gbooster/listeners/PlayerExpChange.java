@@ -13,6 +13,6 @@ public class PlayerExpChange implements Listener {
 
     @EventHandler
     public void onPlayerExpChange(PlayerExpChangeEvent event){
-        event.setAmount(event.getAmount()*main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false));
+        event.setAmount((event.getAmount()*(int)main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)));
     }
 }

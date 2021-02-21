@@ -33,7 +33,7 @@ boosters:
   jobs_xp_2:
     # Choose from jobs_xp, jobs_money, mcmmo and minecraft
     type: jobs_xp
-    # Choose a multiplier (2-8)
+    # Choose a multiplier (only numbers from 1-8 -> +20% would be 1.2)
     multiplier: 2
     # Choose a duration (seconds)
     duration: 3600
@@ -47,5 +47,6 @@ boosters:
     duration: 3600
   minecraft_xp_2:
     type: minecraft
+    # Don't use floating-point numbers for type minecraft! All decimals after the . will get rounded
     multiplier: 2
     duration: 3600
