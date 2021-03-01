@@ -1,0 +1,14 @@
+name: GBooster
+version: 1.0
+main: com.tamrielnetwork.gbooster.gbooster.GBooster
+api-version: 1.16
+authors: [ Manu ]
+depend: [PlaceholderAPI, Jobs]
+commands:
+  gbooster:
+    description: "Main command"
+    usage: "/gbooster give <player> <boosterid> <amount> | /gbooster use <boosterid>"
+permissions:
+  gbooster.give:
+    description: "Permission to give boosters"
+    default: op
