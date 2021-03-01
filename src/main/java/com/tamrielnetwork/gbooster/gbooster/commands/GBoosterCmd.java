@@ -129,12 +129,6 @@ public class GBoosterCmd implements CommandExecutor {
             return;
         }
 
-        //Try to remove a booster from a player
-        if (!boosterPlayer.takeBooster(booster)){
-            Utils.sendMessage(sender, "no-booster");
-            return;
-        }
-
         //Check if there is an active countdown
         if (!boosterPlayer.canUseBooster(booster)){
             Utils.sendMessage(sender, "countdown-active");
@@ -144,6 +138,12 @@ public class GBoosterCmd implements CommandExecutor {
         //Check if the max limit is reached
         if (!main.getActiveBoostersManager().canUseBooster(booster)){
             Utils.sendMessage(sender, "max-limit");
+            return;
+        }
+
+        //Try to remove a booster from a player
+        if (!boosterPlayer.takeBooster(booster)){
+            Utils.sendMessage(sender, "no-booster");
             return;
         }
 

@@ -13,6 +13,6 @@ public class JobsExpGain implements Listener {
 
     @EventHandler
     public void onExpGain(JobsExpGainEvent event){
-        event.setExp(event.getExp()*main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, false));
+        event.setExp((event.getExp()/main.getActiveBoostersManager().getJobsBooster())*main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true));
     }
 }
