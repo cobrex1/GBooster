@@ -11,7 +11,7 @@ import java.util.UUID;
 public abstract class PlayerStorage {
 
     protected final GBooster main = JavaPlugin.getPlugin(GBooster.class);
-    protected List<BoosterPlayer> boosterPlayers = new ArrayList<>();
+    protected final List<BoosterPlayer> boosterPlayers = new ArrayList<>();
 
     public abstract void loadPlayers();
 

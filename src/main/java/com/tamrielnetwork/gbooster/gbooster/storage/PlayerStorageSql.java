@@ -21,7 +21,7 @@ public class PlayerStorageSql extends PlayerStorage {
             try (ResultSet rs = selectStatement.executeQuery()){
                 while (rs.next()){
 
-                    if (!main.getBoostersManager().isBooster(rs.getString(3)))
+                    if (main.getBoostersManager().isBooster(rs.getString(3)))
                         continue;
 
                     BoosterPlayer boosterPlayer = getBoosterPlayerByUUID(UUID.fromString(rs.getString(1)));

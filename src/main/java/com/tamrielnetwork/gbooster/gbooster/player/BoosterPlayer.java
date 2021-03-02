@@ -41,7 +41,7 @@ public class BoosterPlayer {
             return;
 
         for (String boosterId : Objects.requireNonNull(section.getConfigurationSection("boosters")).getKeys(false)){
-            if (!JavaPlugin.getPlugin(GBooster.class).getBoostersManager().isBooster(boosterId))
+            if (JavaPlugin.getPlugin(GBooster.class).getBoostersManager().isBooster(boosterId))
                 continue;
 
             this.boostersStorage.put(boosterId, section.getInt("boosters."+boosterId));

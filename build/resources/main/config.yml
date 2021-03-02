@@ -1,0 +1,52 @@
+#---------------------------------------------------------------#
+#   __________________                       __                 #
+#  /  _____/\______   \ ____   ____  _______/  |_  ___________  #
+# /   \  ___ |    |  _//  _ \ /  _ \/  ___/\   __\/ __ \_  __ \ #
+# \    \_\  \|    |   (  <_> |  <_> )___ \  |  | \  ___/|  | \/ #
+#  \______  /|______  /\____/ \____/____  > |__|  \___  >__|    #
+#         \/        \/                  \/            \/        #
+#---------------------------------------------------------------#
+
+# This bar will be displayed when boosters are active
+bar-pattern: "&b%minecraft%x &aEXP &7| &b%mcmmo%x &aMcMMO &7| &b%jobs_xp%x &aJob &7| &b%jobs_money%x &e$ &7[&f%duration% m&7]"
+
+# Message that will be displayed if empty-bar is set to true
+default-bar-message: "&c&lNo active boosters"
+
+# Set this option to false to not display the default message when no boosters are active
+empty-bar: false
+
+# Choose a storage system (mysql or yaml)
+storage-system: yaml
+
+# How often the plugin should save players (time in seconds)
+saving-time: 600
+
+mysql:
+  host: "localhost"
+  port: 3306
+  database: gbooster
+  username: "gbooster"
+  password: ""
+
+boosters:
+  jobs_xp_2:
+    # Choose from jobs_xp, jobs_money, mcmmo and minecraft
+    type: jobs_xp
+    # Choose a multiplier (only numbers from 1-8 -> +20% would be 1.2)
+    multiplier: 2
+    # Choose a duration (seconds)
+    duration: 3600
+  jobs_money_2:
+    type: jobs_money
+    multiplier: 2
+    duration: 3600
+  mcmmo_xp_2:
+    type: mcmmo
+    multiplier: 2
+    duration: 3600
+  minecraft_xp_2:
+    type: minecraft
+    # Don't use floating-point numbers for type minecraft! All decimals after the . will get rounded
+    multiplier: 2
+    duration: 3600

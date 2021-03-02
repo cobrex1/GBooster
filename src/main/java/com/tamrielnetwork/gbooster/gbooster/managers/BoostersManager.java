@@ -28,7 +28,7 @@ public class BoostersManager {
     public boolean isBooster(String id){
         return boosters.stream()
                 .map(Booster::getId)
-                .anyMatch(boosterId -> boosterId.equals(id));
+                .noneMatch(boosterId -> boosterId.equals(id));
     }
 
     public List<Booster> getBoosters() {

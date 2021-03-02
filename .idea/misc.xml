@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.boosters.Booster" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.boosters.Booster" method="Booster" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.bar.BoosterBar" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.bar.BoosterBar" method="BoosterBar" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.papi.BoosterExpansion" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.player.BoosterPlayer" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.player.BoosterPlayer" method="BoosterPlayer" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.managers.BoostersManager" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.BoostersStorage" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.BoosterStorageSql" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.BoosterStorageYaml" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.BoosterStorageYaml" method="BoosterStorageYaml" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.BoostersStorage" method="clear" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorage" method="clear" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.GBooster" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.commands.GBoosterCmd" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsExpGain" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsPayment" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsScheduleStart" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsScheduleStop" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.McMMOPlayerXpGain" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.PlayerExpChange" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.PlayerJoin" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorage" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.utils.Utils" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.files.Messages" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.files.Messages" method="Messages" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsScheduleStart" method="onBoosterStart" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsScheduleStop" method="onBoosterStop" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsExpGain" method="onExpGain" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.PlayerJoin" method="onJoin" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.McMMOPlayerXpGain" method="onMcMMOPlayerXpGain" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.JobsPayment" method="onPayment" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.listeners.PlayerExpChange" method="onPlayerExpChange" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorageSql" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorageSql" method="PlayerStorageSql" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorageYaml" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.storage.PlayerStorageYaml" method="PlayerStorageYaml" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.mysql.SqlManager" />
+    <pattern value="com.tamrielnetwork.gbooster.gbooster.mysql.SqlManager" method="SqlManager" />
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
