@@ -32,7 +32,7 @@ build/
 .gradletasknamecache
 gradle-app.setting
 !gradle-wrapper.jar
-!Jobs4.17.0.jar
+!Jobs4.17.1.jar
 
 ##############################
 ## IntelliJ
@@ -43,8 +43,6 @@ out/
 *.iml
 *.ipr
 *.iws
-!misc.xml
-!.gitignore
 
 ##############################
 ## Eclipse
