@@ -5,16 +5,13 @@ plugins {
 }
 
 group = 'com.tamrielnetwork.gbooster'
-version = '1.0.8'
+version = '1.0.9'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
     mavenCentral()
-    flatDir {
-        dirs 'libs'
-    }
     maven {
         name = 'papermc-repo'
         url = 'https://papermc.io/repo/repository/maven-public/'
@@ -39,7 +36,7 @@ repositories {
 
 dependencies {
     compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
-    compile (name:'Jobs4.17.1', ext:'jar')
+    implementation 'com.github.Zrips:Jobs:4.17.2'
     implementation 'com.gmail.nossr50.mcMMO:mcMMO:2.1.175-SNAPSHOT'
     compileOnly 'me.clip:placeholderapi:2.10.9'
     compileOnly 'com.sk89q.worldguard:worldguard-legacy:7.0.0-SNAPSHOT'

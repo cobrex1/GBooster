@@ -32,7 +32,6 @@ build/
 .gradletasknamecache
 gradle-app.setting
 !gradle-wrapper.jar
-!Jobs4.17.1.jar
 
 ##############################
 ## IntelliJ
