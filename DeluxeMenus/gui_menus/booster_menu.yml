@@ -1,0 +1,157 @@
+menu_title: '&8> &2&lBoosters'
+open_command:
+  - booster
+  - boosters
+  - boost
+  - boosts
+open_commands:
+  - '[sound] BLOCK_BEACON_ACTIVATE'
+  - '[message] &7Opening &2&lBoosters &r&7Menu!'
+size: 45
+# as always, only cool people can open this menu :)
+open_requirement:
+  requirements:
+    permission:
+      type: has permission
+      permission: deluxemenus.open
+      deny_commands:
+        - "[message] &8[&bDeluxe&eMenus&8] &cYou don't have perms for this!"
+items:
+  'minecraft_xp_2':
+    material: EXPERIENCE_BOTTLE
+    slot: 10
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&a&lMinecraft EXP Boost &c&l(2x)'
+    lore:
+      - '&fAvailable: &a%gbooster_minecraft_xp_2%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use minecraft_xp_2'
+  'mcmmo_xp_2':
+    material: EXPERIENCE_BOTTLE
+    slot: 12
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&a&lMcMMO EXP Boost &c&l(2x)'
+    lore:
+      - '&fAvailable: &a%gbooster_mcmmo_xp_2%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use mcmmo_xp_2'
+  'jobs_xp_2':
+    material: EXPERIENCE_BOTTLE
+    slot: 14
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&6&lJobs EXP Boost &c&l(2x)'
+    lore:
+      - '&fAvailable: &a%gbooster_jobs_xp_2%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use jobs_xp_2'
+  'jobs_money_2':
+    material: EXPERIENCE_BOTTLE
+    slot: 16
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&6&lJobs Money Boost &c&l(2x)'
+    lore:
+      - '&fAvailable: &a%gbooster_jobs_money_2%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use jobs_money_2'
+  'minecraft_xp_4':
+    material: EXPERIENCE_BOTTLE
+    slot: 28
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&a&lMinecraft EXP Boost &c&l(4x)'
+    lore:
+      - '&fAvailable: &a%gbooster_minecraft_xp_4%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use minecraft_xp_4'
+  'mcmmo_xp_4':
+    material: EXPERIENCE_BOTTLE
+    slot: 30
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&a&lMcMMO EXP Boost &c&l(4x)'
+    lore:
+      - '&fAvailable: &a%gbooster_mcmmo_xp_4%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use mcmmo_xp_4'
+  'jobs_xp_4':
+    material: EXPERIENCE_BOTTLE
+    slot: 32
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&6&lJobs EXP Boost &c&l(4x)'
+    lore:
+      - '&fAvailable: &a%gbooster_jobs_xp_4%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use jobs_xp_4'
+  'jobs_money_4':
+    material: EXPERIENCE_BOTTLE
+    slot: 34
+    update: true
+    data: 1
+    hide_attributes:  true
+    display_name: '&6&lJobs Money Boost &c&l(4x)'
+    lore:
+      - '&fAvailable: &a%gbooster_jobs_money_4%'
+      - '&7Left Click to Redeem'
+    left_click_commands:
+      - '[player] gbooster use jobs_money_4'
+  'filler_item':
+    material: GRAY_STAINED_GLASS_PANE
+    slots:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 11
+      - 13
+      - 15
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+      - 27
+      - 29
+      - 31
+      - 33
+      - 35
+      - 36
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+    hide_attributes:  true
+    display_name: ' '
