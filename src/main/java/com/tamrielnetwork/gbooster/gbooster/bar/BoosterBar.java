@@ -52,7 +52,6 @@ public class BoosterBar {
                 .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
     }
 
-
     public BossBar getBar() {
         return bar;
     }
