@@ -49,7 +49,7 @@ public class BoosterBar {
                 .replace("%mcmmo%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)))
                 .replace("%jobs_xp%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)))
                 .replace("%jobs_money%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)))
-                .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes()));
+                .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
     }
 
 
