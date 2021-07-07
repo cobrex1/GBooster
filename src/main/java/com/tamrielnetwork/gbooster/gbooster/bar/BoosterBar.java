@@ -45,11 +45,11 @@ public class BoosterBar {
 
     private String getTitle(){
         return Utils.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
-                .replace("%minecraft%", String.valueOf((int)(main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false))))
-                .replace("%mcmmo%", String.valueOf((int)(main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false))))
-                .replace("%jobs_xp%", String.valueOf((int)(main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true))))
-                .replace("%jobs_money%", String.valueOf((int)(main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true))))
-                .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
+                .replace("%minecraft%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)))
+                .replace("%mcmmo%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)))
+                .replace("%jobs_xp%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)))
+                .replace("%jobs_money%", String.format("%.02f", main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)))
+                .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes()));
     }
 
 
