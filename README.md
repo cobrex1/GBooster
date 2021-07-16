@@ -75,8 +75,8 @@ This plugin is perfect for any server wishing to receive donations from their pl
 
 ### Built With
 
-* [Gradle 6](https://docs.gradle.org/6.8.3/release-notes.html)
-* [OpenJDK 11](https://sourceforge.net/projects/openjdk11/)
+* [Gradle 7](https://docs.gradle.org/7.1.1/release-notes.html)
+* [OpenJDK 16](https://openjdk.java.net/projects/jdk/16/)
 
 
 <!-- GETTING STARTED -->
@@ -106,7 +106,7 @@ To get the plugin running on your server follow these simple steps.
 #---------------------------------------------------------------#
 
 # This bar will be displayed when boosters are active
-bar-pattern: "&b%minecraft%x &aEXP &7| &b%mcmmo%x &aMcMMO &7| &b%jobs_xp%x &aJob &7| &b%jobs_money%x &e$ &7[&f%duration% m&7]"
+bar-pattern: "&b+%minecraft%'%' &aEXP &7| &b+%mcmmo%'%' &aMcMMO &7| &b+%jobs_xp%'%' &aJob &7| &b+%jobs_money%'%' &e$ &7[&f%duration% min&7]"
 
 # Message that will be displayed if empty-bar is set to true
 default-bar-message: "&c&lNo active boosters"
