@@ -106,7 +106,7 @@ To get the plugin running on your server follow these simple steps.
 #---------------------------------------------------------------#
 
 # This bar will be displayed when boosters are active
-bar-pattern: "&b+%minecraft%'%' &aEXP &7| &b+%mcmmo%'%' &aMcMMO &7| &b+%jobs_xp%'%' &aJob &7| &b+%jobs_money%'%' &e$ &7[&f%duration% min&7]"
+bar-pattern: "&b+%minecraft%'%' &aXP &7| &b+%mcmmo%'%' &aMcMMO &7| &b+%jobs_xp%'%' &aJob &7| &b+%jobs_money%'%' &e$ &7[&f%duration% min&7]"
 
 # Message that will be displayed if empty-bar is set to true
 default-bar-message: "&c&lNo active boosters"
