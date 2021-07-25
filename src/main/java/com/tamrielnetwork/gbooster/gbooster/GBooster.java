@@ -23,10 +23,11 @@ public final class GBooster extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println("[GBooster] GBooster Copyright (C) 2021 Leopold Meinel\n" +
-                "[GBooster] This program comes with ABSOLUTELY NO WARRANTY!\n" +
-                "[GBooster] This is free software, and you are welcome to redistribute it under certain conditions.\n" +
-                "[GBooster] Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.");
+        System.out.println("""
+                [GBooster] GBooster Copyright (C) 2021 Leopold Meinel
+                [GBooster] This program comes with ABSOLUTELY NO WARRANTY!
+                [GBooster] This is free software, and you are welcome to redistribute it under certain conditions.
+                [GBooster] Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.""");
 
         generateConfig();
 

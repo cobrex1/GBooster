@@ -26,15 +26,10 @@ public class GBoosterCmd implements CommandExecutor {
             return true;
         }
 
-        switch (args[0]){
-            case "give":
-                executeGive(sender, args);
-                break;
-            case "use":
-                executeUse(sender, args);
-                break;
-            default:
-                Utils.sendMessage(sender, "invalid-option");
+        switch (args[0]) {
+            case "give" -> executeGive(sender, args);
+            case "use" -> executeUse(sender, args);
+            default -> Utils.sendMessage(sender, "invalid-option");
         }
 
         return true;
