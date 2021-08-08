@@ -55,17 +55,6 @@ public final class GBooster extends JavaPlugin {
 		playerStorage.savePlayers();
 		boostersStorage.saveBoosters();
 	}
-/*
-    private void registerListeners(){
-        getServer().getPluginManager().registerEvents(new JobsExpGain(), this);
-        getServer().getPluginManager().registerEvents(new JobsPayment(), this);
-        getServer().getPluginManager().registerEvents(new JobsScheduleStart(), this);
-        getServer().getPluginManager().registerEvents(new JobsScheduleStop(), this);
-        getServer().getPluginManager().registerEvents(new McMMOPlayerXpGain(), this);
-        getServer().getPluginManager().registerEvents(new PlayerExpChange(), this);
-        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
-    }
-*/
 
 	private void registerListeners() {
 		if (getServer().getPluginManager().getPlugin("Jobs") != null) {

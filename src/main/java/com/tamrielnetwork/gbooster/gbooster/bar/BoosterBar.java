@@ -14,49 +14,57 @@ import java.util.Objects;
 
 public class BoosterBar {
 
-    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
-    private final BossBar bar;
+	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	private final BossBar bar;
 
-    public BoosterBar(){
-        this.bar = Bukkit.createBossBar(getTitle(), BarColor.PURPLE, BarStyle.SOLID);
+	public BoosterBar() {
+		this.bar = Bukkit.createBossBar(getTitle(), BarColor.PURPLE, BarStyle.SOLID);
 
-        startTask();
-    }
+		startTask();
+	}
 
-    private void startTask(){
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
+	private void startTask() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
 
-            //Check if there are no active boosters
-            if (main.getActiveBoostersManager().getActiveBoosters().size() == 0){
+			//Check if there are no active boosters
+			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
-                if (main.getConfig().getBoolean("empty-bar")){
-                    bar.setTitle(Utils.replaceColors(main.getConfig().getString("default-bar-message")));
-                } else {
-                    bar.setVisible(false);
-                }
+				if (main.getConfig().getBoolean("empty-bar")) {
+					bar.setTitle(Utils.replaceColors(main.getConfig().getString("default-bar-message")));
+				} else {
+					bar.setVisible(false);
+				}
 
-                return;
-            }
-            bar.setVisible(true);
-            bar.setTitle(getTitle());
+				return;
+			}
 
-        }, 0, 20*5);
-    }
+			double time = main.getActiveBoostersManager().getMostOldBoosterInMinutes() / 60.0;
 
-    private String getTitle(){
-        return Utils.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
-                .replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)-1)*100)))
-                .replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)-1)*100)))
-                .replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)-1)*100)))
-                .replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)-1)*100)))
-                .replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
-    }
+			if (time > 1.0)
+				time = 1;
 
-    public BossBar getBar() {
-        return bar;
-    }
+			bar.setProgress(time);
 
-    public void addPlayer(Player player){
-        bar.addPlayer(player);
-    }
+			bar.setVisible(true);
+			bar.setTitle(getTitle());
+
+		}, 0, 20 * 5);
+	}
+
+	private String getTitle() {
+		return Utils.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
+				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false) - 1) * 100)))
+				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false) - 1) * 100)))
+				.replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true) - 1) * 100)))
+				.replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true) - 1) * 100)))
+				.replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
+	}
+
+	public BossBar getBar() {
+		return bar;
+	}
+
+	public void addPlayer(Player player) {
+		bar.addPlayer(player);
+	}
 }
