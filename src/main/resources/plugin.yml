@@ -1,6 +1,6 @@
 name: GBooster
 version: @version@
-main: com.tamrielnetwork.gbooster.gbooster.GBooster
+main: com.tamrielnetwork.gbooster.GBooster
 api-version: 1.16
 authors: [ Manu,TamrielNetwork ]
 website: https://tamriel.site
