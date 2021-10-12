@@ -142,8 +142,8 @@ public class GBoosterCmd implements CommandExecutor {
             Utils.sendMessage(sender, "no-booster");
             return;
         }
-
         main.getActiveBoostersManager().activateBooster(booster);
         Utils.sendMessage(sender, "active-booster");
+        Utils.sendBroadcast(ImmutableMap.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
     }
 }
