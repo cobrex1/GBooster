@@ -6,7 +6,7 @@ invalid-id: "&cID doesn't exist!"
 invalid-player: "&cInvalid player!"
 invalid-amount: "&cInvalid amount!"
 give-boosters: "&7You gave %amount% %booster% to %player%"
-## Comment line (#) below and uncomment the one below that to get a message!
+# Comment line (#) below and uncomment the one below that to get a message!
 receive-boosters: [ ]
 #receive-boosters: "&aYou got &c%amount%x &b%booster%"
 no-booster: "&cYou don't have a booster of this type!"
