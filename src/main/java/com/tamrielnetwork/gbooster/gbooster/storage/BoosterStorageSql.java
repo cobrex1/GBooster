@@ -12,9 +12,9 @@ public class BoosterStorageSql extends BoostersStorage {
 
     @Override
     public void loadBoosters() {
-        try (PreparedStatement selectStatement = SqlManager.getConnection().prepareStatement("SELECT * FROM Boosters")){
-            try (ResultSet rs = selectStatement.executeQuery()){
-                while (rs.next()){
+        try (PreparedStatement selectStatement = SqlManager.getConnection().prepareStatement("SELECT * FROM Boosters")) {
+            try (ResultSet rs = selectStatement.executeQuery()) {
+                while (rs.next()) {
 
                     Booster booster = main.getBoostersManager().getBoosterById(rs.getString(1));
 
@@ -33,8 +33,8 @@ public class BoosterStorageSql extends BoostersStorage {
     public void saveBoosters() {
         clear();
 
-        for (Map.Entry<Booster, Long> entry : activeBoosters.entries()){
-            try (PreparedStatement insertStatement = SqlManager.getConnection().prepareStatement("INSERT INTO Boosters (ID, Time) VALUES (?, ?)")){
+        for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
+            try (PreparedStatement insertStatement = SqlManager.getConnection().prepareStatement("INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
                 insertStatement.setString(1, entry.getKey().getId());
                 insertStatement.setLong(2, entry.getValue());
                 insertStatement.executeUpdate();
@@ -46,7 +46,7 @@ public class BoosterStorageSql extends BoostersStorage {
 
     @Override
     public void clear() {
-        try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE Boosters")){
+        try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE Boosters")) {
             truncateStatement.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();

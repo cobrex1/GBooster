@@ -13,14 +13,14 @@ public class JobsPayment implements Listener {
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
     @EventHandler
-    public void onPayment(JobsPaymentEvent event){
+    public void onPayment(JobsPaymentEvent event) {
 
         if (event.getPayment().get(CurrencyType.MONEY) == null) return;
 
         // Check if getJobsBooster returns >= 1 to prevent dividing by < 1
-        if(main.getActiveBoostersManager().getJobsBooster() >= 1){
+        if (main.getActiveBoostersManager().getJobsBooster() >= 1) {
             event.set(CurrencyType.MONEY, (event.getPayment().get(CurrencyType.MONEY) / main.getActiveBoostersManager().getJobsBooster()) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
-        }else{
+        } else {
             event.set(CurrencyType.MONEY, event.getPayment().get(CurrencyType.MONEY) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
         }
     }

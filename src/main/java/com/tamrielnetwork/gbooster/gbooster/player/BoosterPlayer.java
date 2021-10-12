@@ -20,7 +20,7 @@ public class BoosterPlayer {
     private final Map<String, Integer> boostersStorage = new HashMap<>();
     private final Map<BoosterType, Long> boostersCountdown = new HashMap<>();
 
-    public BoosterPlayer(UUID uuid, String name){
+    public BoosterPlayer(UUID uuid, String name) {
         this.name = name;
         this.uuid = uuid;
     }
@@ -33,40 +33,40 @@ public class BoosterPlayer {
         boostersStorage.put(resultSet.getString(3), resultSet.getInt(4));
     }
 
-    public BoosterPlayer(String key, ConfigurationSection section){
+    public BoosterPlayer(String key, ConfigurationSection section) {
         this.uuid = UUID.fromString(key);
         this.name = section.getString("name");
 
         if (!section.isConfigurationSection("boosters"))
             return;
 
-        for (String boosterId : Objects.requireNonNull(section.getConfigurationSection("boosters")).getKeys(false)){
+        for (String boosterId : Objects.requireNonNull(section.getConfigurationSection("boosters")).getKeys(false)) {
             if (JavaPlugin.getPlugin(GBooster.class).getBoostersManager().isBooster(boosterId))
                 continue;
 
-            this.boostersStorage.put(boosterId, section.getInt("boosters."+boosterId));
+            this.boostersStorage.put(boosterId, section.getInt("boosters." + boosterId));
         }
     }
 
-    public void addBooster(String boosterId, int amount){
+    public void addBooster(String boosterId, int amount) {
         int previousAmount = boostersStorage.getOrDefault(boosterId, 0);
 
-        boostersStorage.put(boosterId, amount+previousAmount);
+        boostersStorage.put(boosterId, amount + previousAmount);
     }
 
-    public boolean takeBooster(Booster booster){
+    public boolean takeBooster(Booster booster) {
         Integer amount = boostersStorage.get(booster.getId());
 
         if (amount == null || amount == 0)
             return false;
 
-        boostersStorage.put(booster.getId(), amount-1);
+        boostersStorage.put(booster.getId(), amount - 1);
 
         return true;
     }
 
-    public boolean canUseBooster(Booster booster){
-        if (boostersCountdown.containsKey(booster.getBoosterType()) && boostersCountdown.get(booster.getBoosterType()) + 60*60*1000 > System.currentTimeMillis()){
+    public boolean canUseBooster(Booster booster) {
+        if (boostersCountdown.containsKey(booster.getBoosterType()) && boostersCountdown.get(booster.getBoosterType()) + 60 * 60 * 1000 > System.currentTimeMillis()) {
             return false;
         }
 

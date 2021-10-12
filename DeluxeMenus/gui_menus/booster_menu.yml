@@ -22,7 +22,7 @@ items:
     slot: 10
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&a&lMinecraft EXP Boost &c&l(2x)'
     lore:
       - '&fAvailable: &a%gbooster_minecraft_xp_2%'
@@ -34,7 +34,7 @@ items:
     slot: 12
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&a&lMcMMO EXP Boost &c&l(2x)'
     lore:
       - '&fAvailable: &a%gbooster_mcmmo_xp_2%'
@@ -46,7 +46,7 @@ items:
     slot: 14
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&6&lJobs EXP Boost &c&l(2x)'
     lore:
       - '&fAvailable: &a%gbooster_jobs_xp_2%'
@@ -58,7 +58,7 @@ items:
     slot: 16
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&6&lJobs Money Boost &c&l(2x)'
     lore:
       - '&fAvailable: &a%gbooster_jobs_money_2%'
@@ -70,7 +70,7 @@ items:
     slot: 28
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&a&lMinecraft EXP Boost &c&l(4x)'
     lore:
       - '&fAvailable: &a%gbooster_minecraft_xp_4%'
@@ -82,7 +82,7 @@ items:
     slot: 30
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&a&lMcMMO EXP Boost &c&l(4x)'
     lore:
       - '&fAvailable: &a%gbooster_mcmmo_xp_4%'
@@ -94,7 +94,7 @@ items:
     slot: 32
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&6&lJobs EXP Boost &c&l(4x)'
     lore:
       - '&fAvailable: &a%gbooster_jobs_xp_4%'
@@ -106,7 +106,7 @@ items:
     slot: 34
     update: true
     data: 1
-    hide_attributes:  true
+    hide_attributes: true
     display_name: '&6&lJobs Money Boost &c&l(4x)'
     lore:
       - '&fAvailable: &a%gbooster_jobs_money_4%'
@@ -153,5 +153,5 @@ items:
       - 42
       - 43
       - 44
-    hide_attributes:  true
+    hide_attributes: true
     display_name: ' '

@@ -12,7 +12,7 @@ public class PlayerExpChange implements Listener {
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
     @EventHandler
-    public void onPlayerExpChange(PlayerExpChangeEvent event){
-        event.setAmount((event.getAmount()*(int)main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)));
+    public void onPlayerExpChange(PlayerExpChangeEvent event) {
+        event.setAmount((event.getAmount() * (int) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)));
     }
 }

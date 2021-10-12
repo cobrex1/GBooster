@@ -21,19 +21,19 @@ public abstract class BoostersStorage {
 
     public abstract void clear();
 
-    public void activateBooster(Booster booster){
+    public void activateBooster(Booster booster) {
         activeBoosters.put(booster, System.currentTimeMillis());
     }
 
-    public double getBoosterMultiplier(BoosterType boosterType, boolean addJobsBooster){
+    public double getBoosterMultiplier(BoosterType boosterType, boolean addJobsBooster) {
         double totalMultiplier = 0;
 
         if (addJobsBooster)
             totalMultiplier += jobsBooster;
 
-        for (Booster booster : activeBoosters.keys()){
+        for (Booster booster : activeBoosters.keys()) {
 
-            if (booster.getBoosterType() == boosterType){
+            if (booster.getBoosterType() == boosterType) {
                 totalMultiplier += booster.getMultiplier();
             }
         }
@@ -41,7 +41,7 @@ public abstract class BoostersStorage {
         return totalMultiplier == 0 ? 1 : totalMultiplier;
     }
 
-    public boolean canUseBooster(Booster booster){
+    public boolean canUseBooster(Booster booster) {
 
         double totalAmount = getBoosterMultiplier(booster.getBoosterType(),
                 booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);
@@ -49,26 +49,26 @@ public abstract class BoostersStorage {
         return totalAmount + booster.getMultiplier() <= 8;
     }
 
-    public int getMostOldBoosterInMinutes(){
+    public int getMostOldBoosterInMinutes() {
         long mostOldBoosterCountdown = Long.MAX_VALUE;
 
-        for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()){
+        for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()) {
 
-            long boosterCountdown = entry.getKey().getDuration()* 1000L +entry.getValue();
+            long boosterCountdown = entry.getKey().getDuration() * 1000L + entry.getValue();
 
-            if (boosterCountdown <= System.currentTimeMillis()){
+            if (boosterCountdown <= System.currentTimeMillis()) {
                 activeBoosters.remove(entry.getKey(), entry.getValue());
                 continue;
             }
 
-            if (mostOldBoosterCountdown > boosterCountdown){
+            if (mostOldBoosterCountdown > boosterCountdown) {
                 mostOldBoosterCountdown = boosterCountdown;
             }
         }
 
         if (mostOldBoosterCountdown == Long.MAX_VALUE) return 0;
 
-        return ((int) ((mostOldBoosterCountdown-System.currentTimeMillis())/1000/60))+1;
+        return ((int) ((mostOldBoosterCountdown - System.currentTimeMillis()) / 1000 / 60)) + 1;
     }
 
     public Multimap<Booster, Long> getActiveBoosters() {
@@ -76,7 +76,7 @@ public abstract class BoostersStorage {
     }
 
     public void addJobsBooster(double jobsBooster) {
-        this.jobsBooster+=jobsBooster;
+        this.jobsBooster += jobsBooster;
     }
 
     public double getJobsBooster() {

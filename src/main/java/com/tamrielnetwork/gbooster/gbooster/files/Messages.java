@@ -13,13 +13,13 @@ public class Messages {
     private final File messagesFile;
     private final FileConfiguration messagesConf;
 
-    public Messages(){
+    public Messages() {
         messagesFile = new File(main.getDataFolder(), "messages.yml");
         saveMessagesFile();
         messagesConf = YamlConfiguration.loadConfiguration(messagesFile);
     }
 
-    private void saveMessagesFile(){
+    private void saveMessagesFile() {
         if (!messagesFile.exists()) {
             main.saveResource("messages.yml", false);
         }

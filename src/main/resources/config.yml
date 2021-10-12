@@ -13,7 +13,7 @@ bar-pattern: "&b+%minecraft%% &aXP &7| &b+%mcmmo%% &aMcMMO &7| &b+%jobs_xp%% &aJ
 # Message that will be displayed if empty-bar is set to true
 default-bar-message: "&c&lNo active boosters"
 
-# Set this option to false to not display the default message when no boosters are active
+# Set false to not display the default message when no boosters are active
 empty-bar: false
 
 # Choose a storage system (mysql or yaml)
@@ -47,6 +47,6 @@ boosters:
     duration: 3600
   minecraft_xp_2:
     type: minecraft
-    # Don't use floating-point numbers for type minecraft! All decimals after the . will get rounded
+    # Don't use floating-point numbers for type minecraft!
     multiplier: 2
     duration: 3600

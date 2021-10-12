@@ -12,30 +12,30 @@ public class BoosterExpansion extends PlaceholderExpansion {
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
     @Override
-    public boolean canRegister(){
+    public boolean canRegister() {
         return true;
     }
 
     @Override
-    public @NotNull String getAuthor(){
+    public @NotNull String getAuthor() {
         return "Manu, TamrielNetwork";
     }
 
     @Override
-    public @NotNull String getIdentifier(){
+    public @NotNull String getIdentifier() {
         return "gbooster";
     }
 
     @Override
-    public @NotNull String getVersion(){
+    public @NotNull String getVersion() {
         return "1.1.1";
     }
 
     @Override
-    public String onRequest(OfflinePlayer player, @NotNull String identifier){
+    public String onRequest(OfflinePlayer player, @NotNull String identifier) {
 
-        for (Booster booster : main.getBoostersManager().getBoosters()){
-            if (identifier.equals(booster.getId())){
+        for (Booster booster : main.getBoostersManager().getBoosters()) {
+            if (identifier.equals(booster.getId())) {
 
                 return String.valueOf(
                         main.getPlayerStorage()

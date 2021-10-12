@@ -11,7 +11,7 @@ public class Booster {
     private final double multiplier;
     private final int duration;
 
-    public Booster(String id, ConfigurationSection section){
+    public Booster(String id, ConfigurationSection section) {
         this.id = id;
         this.boosterType = BoosterType.valueOf(Objects.requireNonNull(section.getString("type")).toUpperCase());
         this.multiplier = section.getDouble("multiplier");

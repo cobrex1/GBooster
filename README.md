@@ -13,7 +13,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">GBooster</h3>
+<h3 align="center">GBooster</h3>
 
   <p align="center">
     Global Boosters for Spigot and Paper
@@ -55,6 +55,7 @@
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 ### Description
@@ -71,15 +72,16 @@ This plugin is perfect for any server wishing to receive donations from their pl
 * MySQL/MariaDB support
 * A Bar that shows active boosters and hides automatically when there are none active
 * Support for scheduled boosters from JobsReborn
-* Placeholders and the ability to create a menu to activate boosters through [DeluxeMenus](https://www.spigotmc.org/resources/deluxemenus.11734/) for example
+* Placeholders and the ability to create a menu to activate boosters
+  through [DeluxeMenus](https://www.spigotmc.org/resources/deluxemenus.11734/) for example
 
 ### Built With
 
 * [Gradle 7](https://docs.gradle.org/7.1.1/release-notes.html)
 * [OpenJDK 16](https://openjdk.java.net/projects/jdk/16/)
 
-
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get the plugin running on your server follow these simple steps.
@@ -87,11 +89,14 @@ To get the plugin running on your server follow these simple steps.
 ### Commands and Permissions
 
 1. Permission: `gbooster.give`
- * Command: `/gbooster give <player> <boosterid> <amount>`
- * Description: Give a player a certain amount of boosters
+
+* Command: `/gbooster give <player> <boosterid> <amount>`
+* Description: Give a player a certain amount of boosters
+
 2. Permission: `DEFAULT`
- * Command: `/gbooster use <boosterid>`
- * Description: Use a specified booster
+
+* Command: `/gbooster use <boosterid>`
+* Description: Use a specified booster
 
 ### Configuration
 
@@ -151,14 +156,18 @@ boosters:
 ```
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
-See the [open issues](https://github.com/TamrielNetwork/GBooster/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/TamrielNetwork/GBooster/issues) for a list of proposed features (and known
+issues).
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be, learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to be, learn, inspire, and create. Any
+contributions you make are **greatly appreciated**.
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -167,11 +176,13 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the GNU General Public License v3.0. See `LICENSE` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
 
 Leopold Meinel - [@TamrielN](https://twitter.com/TamrielN) - Twitter
@@ -181,21 +192,34 @@ Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - email
 Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/TamrielNetwork/GBooster)
 
 <!-- ACKNOWLEDGEMENTS -->
+
 ## Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://github.com/zManu27/)
 
 <!-- MARKDOWN LINKS & IMAGES -->
+
 [contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/GBooster?style=for-the-badge
+
 [contributors-url]: https://github.com/TamrielNetwork/GBooster/graphs/contributors
+
 [forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/GBooster?label=Forks&style=for-the-badge
+
 [forks-url]: https://github.com/TamrielNetwork/GBooster/network/members
+
 [stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/GBooster?style=for-the-badge
+
 [stars-url]: https://github.com/TamrielNetwork/GBooster/stargazers
+
 [issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/GBooster?style=for-the-badge
+
 [issues-url]: https://github.com/TamrielNetwork/GBooster/issues
+
 [license-shield]: https://img.shields.io/github/license/TamrielNetwork/GBooster?style=for-the-badge
+
 [license-url]: https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE
+
 [quality-shield]: https://img.shields.io/scrutinizer/quality/g/TamrielNetwork/GBooster?label=quality&style=for-the-badge
+
 [quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/GBooster/reports/

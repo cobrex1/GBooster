@@ -14,7 +14,7 @@ public class Utils {
 
     private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-    public static void sendMessage(CommandSender player, Map<String, String> placeholders, String message){
+    public static void sendMessage(CommandSender player, Map<String, String> placeholders, String message) {
         List<String> messages;
         if (main.getMessages().getMessagesConf().isList(message)) {
             messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
@@ -22,7 +22,7 @@ public class Utils {
             messages = new ArrayList<>();
             messages.add(main.getMessages().getMessagesConf().getString(message));
         }
-        for (String string:messages) {
+        for (String string : messages) {
             for (Map.Entry<String, String> entry : placeholders.entrySet()) {
                 if (string.contains(entry.getKey())) {
                     string = string.replace(entry.getKey(), entry.getValue());
@@ -33,11 +33,11 @@ public class Utils {
         }
     }
 
-    public static void sendMessage(CommandSender player, String message){
+    public static void sendMessage(CommandSender player, String message) {
         player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages().getMessagesConf().getString(message))));
     }
 
-    public static String replaceColors(String string){
+    public static String replaceColors(String string) {
         return ChatColor.translateAlternateColorCodes('&', string);
     }
 }

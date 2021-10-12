@@ -13,7 +13,7 @@ public class BoosterStorageYaml extends BoostersStorage {
     private final File boostersFile;
     private final FileConfiguration boostersConf;
 
-    public BoosterStorageYaml(){
+    public BoosterStorageYaml() {
         boostersFile = new File(main.getDataFolder(), "boosters.yml");
         boostersConf = YamlConfiguration.loadConfiguration(boostersFile);
         save();
@@ -21,12 +21,12 @@ public class BoosterStorageYaml extends BoostersStorage {
 
     @Override
     public void loadBoosters() {
-        for (String key : boostersConf.getKeys(false)){
-            Booster booster = main.getBoostersManager().getBoosterById(boostersConf.getString(key+".id"));
+        for (String key : boostersConf.getKeys(false)) {
+            Booster booster = main.getBoostersManager().getBoosterById(boostersConf.getString(key + ".id"));
 
             if (booster == null) continue;
 
-            this.activeBoosters.put(booster, boostersConf.getLong(key+".time"));
+            this.activeBoosters.put(booster, boostersConf.getLong(key + ".time"));
         }
 
         clear();
@@ -39,10 +39,10 @@ public class BoosterStorageYaml extends BoostersStorage {
 
         int counter = 1;
 
-        for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()){
+        for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()) {
 
-            boostersConf.set(counter+".id", entry.getKey().getId());
-            boostersConf.set(counter+".time", entry.getValue());
+            boostersConf.set(counter + ".id", entry.getKey().getId());
+            boostersConf.set(counter + ".time", entry.getValue());
 
             counter++;
         }
@@ -52,12 +52,12 @@ public class BoosterStorageYaml extends BoostersStorage {
 
     @Override
     public void clear() {
-        for (String key : boostersConf.getKeys(false)){
+        for (String key : boostersConf.getKeys(false)) {
             boostersConf.set(key, null);
         }
     }
 
-    public void save(){
+    public void save() {
         try {
             boostersConf.save(boostersFile);
         } catch (IOException e) {

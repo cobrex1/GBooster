@@ -1,9 +1,6 @@
 ---
-name: Bug Report
-about: Create a report to help us improve
-title: ''
-labels: 'bug'
-assignees: ''
+name: Bug Report about: Create a report to help us improve title: ''
+labels: 'bug' assignees: ''
 
 ---
 
@@ -12,6 +9,7 @@ A clear and concise description of what the bug is.
 
 **To Reproduce**
 Steps to reproduce the behavior:
+
 1. Do '...'
 2. Use '...'
 3. See '...'
