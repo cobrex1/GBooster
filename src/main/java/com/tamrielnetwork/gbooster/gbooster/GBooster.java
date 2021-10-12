@@ -24,14 +24,10 @@ public final class GBooster extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        Bukkit.getLogger().info(
-                """
-                        Copyright (C) 2021 Leopold Meinel
-                        This program comes with ABSOLUTELY NO WARRANTY!
-                        This is free software, and you are welcome to redistribute it under certain conditions.
-                        Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.
-                        """
-        );
+        Bukkit.getLogger().info("Copyright (C) 2021 Leopold Meinel");
+        Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
+        Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
+        Bukkit.getLogger().info("Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.");
 
         generateConfig();
 
