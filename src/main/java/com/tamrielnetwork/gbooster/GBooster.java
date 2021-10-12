@@ -53,7 +53,7 @@ public final class GBooster extends JavaPlugin {
     public void onDisable() {
         playerStorage.savePlayers();
         boostersStorage.saveBoosters();
-        Bukkit.getLogger().info("§7GBooster §av" + this.getDescription().getVersion() + "disabled");
+        Bukkit.getLogger().info("§7GBooster §av" + this.getDescription().getVersion() + " disabled");
     }
 
     private void registerListeners() {
