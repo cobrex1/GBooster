@@ -1,8 +1,8 @@
 package com.tamrielnetwork.gbooster;
 
-import com.tamrielnetwork.gbooster.files.Messages;
 import com.tamrielnetwork.gbooster.bar.BoosterBar;
 import com.tamrielnetwork.gbooster.commands.GBoosterCmd;
+import com.tamrielnetwork.gbooster.files.Messages;
 import com.tamrielnetwork.gbooster.listeners.*;
 import com.tamrielnetwork.gbooster.managers.BoostersManager;
 import com.tamrielnetwork.gbooster.papi.BoosterExpansion;
@@ -29,6 +29,7 @@ public final class GBooster extends JavaPlugin {
         registerListeners();
 
         Objects.requireNonNull(getCommand("gbooster")).setExecutor(new GBoosterCmd());
+        Objects.requireNonNull(getCommand("gbooster")).setTabCompleter(new GBoosterCmd());
 
         setupStorage();
         boostersManager = new BoostersManager();

@@ -26,7 +26,7 @@ public class BoosterBar {
     private void startTask() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
 
-            //Check if there are no active boosters
+            // Check if there are no active boosters
             if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
                 if (main.getConfig().getBoolean("empty-bar")) {

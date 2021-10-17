@@ -1,7 +1,7 @@
 package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.boosters.Booster;
-import com.tamrielnetwork.gbooster.mysql.SqlManager;
+import com.tamrielnetwork.gbooster.storage.mysql.SqlManager;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

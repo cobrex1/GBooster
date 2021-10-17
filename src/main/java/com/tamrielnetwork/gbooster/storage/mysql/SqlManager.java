@@ -1,4 +1,4 @@
-package com.tamrielnetwork.gbooster.mysql;
+package com.tamrielnetwork.gbooster.storage.mysql;
 
 import com.tamrielnetwork.gbooster.GBooster;
 import org.bukkit.plugin.java.JavaPlugin;

@@ -10,8 +10,14 @@ softdepend: [ Jobs, McMMO ]
 commands:
   gbooster:
     description: "Main command"
-    usage: "/gbooster give <player> <boosterid> <amount> | /gbooster use <boosterid>"
+    usage: "/gbooster give <player> <boosterid> <amount> | /gbooster use <boosterid> | /gbooster time"
 permissions:
   gbooster.give:
     description: "Permission to give boosters"
+    default: op
+  gbooster.use:
+    description: "Use boosters"
+    default: op
+  gbooster.time:
+    description: "Shows time of booster that ends next"
     default: op
