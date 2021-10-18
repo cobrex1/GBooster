@@ -93,10 +93,14 @@ To get the plugin running on your server follow these simple steps.
 * Command: `/gbooster give <player> <boosterid> <amount>`
 * Description: Give a player a certain amount of boosters
 
-2. Permission: `DEFAULT`
+2. Permission: `gbooster.use`
 
 * Command: `/gbooster use <boosterid>`
 * Description: Use a specified booster
+
+3. Permission: `gbooster.time`
+* Command: `/gbooster time`
+* Description: Shows time of booster that ends next
 
 ### Configuration
 
@@ -111,12 +115,13 @@ To get the plugin running on your server follow these simple steps.
 #---------------------------------------------------------------#
 
 # This bar will be displayed when boosters are active
-bar-pattern: "&b+%minecraft%% &aXP &7| &b+%mcmmo%% &aMcMMO &7| &b+%jobs_xp%% &aJob &7| &b+%jobs_money%% &e$ &7[&f%duration% min&7]"
+bar-pattern: "&8&mo&r &a%minecraft%% &fExp &8&mo&r &a%mcmmo%% &fMcMMO &8&mo&r &a%jobs_xp%% &fJob &8&mo&r &a%jobs_money%% &e$"
+#bar-pattern: "&8&mo&r &a%minecraft%% &fExp &8&mo&r &a%mcmmo%% &fMcMMO &8&mo&r &a%jobs_xp%% &fJob &8&mo&r &a%jobs_money%% &e$ &7[&f%duration% min&7]"
 
 # Message that will be displayed if empty-bar is set to true
 default-bar-message: "&c&lNo active boosters"
 
-# Set this option to false to not display the default message when no boosters are active
+# Set false to not display the default message when no boosters are active
 empty-bar: false
 
 # Choose a storage system (mysql or yaml)
@@ -150,7 +155,7 @@ boosters:
     duration: 3600
   minecraft_xp_2:
     type: minecraft
-    # Don't use floating-point numbers for type minecraft! All decimals after the . will get rounded
+    # Don't use floating-point numbers for type minecraft!
     multiplier: 2
     duration: 3600
 ```
