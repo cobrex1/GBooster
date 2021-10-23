@@ -198,10 +198,12 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## Acknowledgements
+### Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://github.com/zManu27/)
+* [Fixes - Cobrex1](https://github.com/cobrex1/)
+* [Fixes - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 

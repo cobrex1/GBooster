@@ -1,7 +1,10 @@
-<h1>Contributors</h1>
-<h2>Initial development</h2><a href="https://github.com/zManu27/">DevRoom - Manu
-</a>
-<h2>Fixes</h2><a href="https://github.com/cobrex1/">Cobrex1
-</a>
-<h2>README.md</h2><a href="https://github.com/othneildrew/Best-README-Template">othneildrew
-</a>
+# Contributors
+### Initial development
+* [Manu](https://github.com/zManu27/)
+
+### Fixes
+* [Cobrex1](https://github.com/cobrex1/)
+* [Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+
+### README.md
+* [othneildrew](https://github.com/othneildrew/Best-README-Template)
