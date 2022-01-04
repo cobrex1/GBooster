@@ -9,10 +9,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class JobsScheduleStart implements Listener {
 
-    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-    @EventHandler
-    public void onBoosterStart(JobsScheduleStartEvent event) {
-        main.getActiveBoostersManager().addJobsBooster(event.getSchedule().getBoost().get(CurrencyType.EXP) + 1);
-    }
+	@EventHandler
+	public void onBoosterStart(JobsScheduleStartEvent event) {
+		main.getActiveBoostersManager().addJobsBooster(event.getSchedule().getBoost().get(CurrencyType.EXP) + 1);
+	}
 }

@@ -8,16 +8,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlayerJoin implements Listener {
 
-    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-    @EventHandler
-    public void onJoin(PlayerJoinEvent event) {
-        if (!main.getBoosterBar().getBar().getPlayers().contains(event.getPlayer())) {
-            main.getBoosterBar().addPlayer(event.getPlayer());
-        }
+	@EventHandler
+	public void onJoin(PlayerJoinEvent event) {
+		if (!main.getBoosterBar().getBar().getPlayers().contains(event.getPlayer())) {
+			main.getBoosterBar().addPlayer(event.getPlayer());
+		}
 
-        if (!main.getPlayerStorage().isPlayerRegistered(event.getPlayer().getUniqueId())) {
-            main.getPlayerStorage().registerPlayer(event.getPlayer().getUniqueId(), event.getPlayer().getName());
-        }
-    }
+		if (!main.getPlayerStorage().isPlayerRegistered(event.getPlayer().getUniqueId())) {
+			main.getPlayerStorage().registerPlayer(event.getPlayer().getUniqueId(), event.getPlayer().getName());
+		}
+	}
 }

@@ -15,54 +15,54 @@ import java.util.Objects;
 
 public class Utils {
 
-    private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-    public static void sendMessage(CommandSender player, Map<String, String> placeholders, String message) {
-        List<String> messages;
-        if (main.getMessages().getMessagesConf().isList(message)) {
-            messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
-        } else {
-            messages = new ArrayList<>();
-            messages.add(main.getMessages().getMessagesConf().getString(message));
-        }
-        for (String string : messages) {
-            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-                if (string.contains(entry.getKey())) {
-                    string = string.replace(entry.getKey(), entry.getValue());
-                }
-            }
+	public static void sendMessage(CommandSender player, Map<String, String> placeholders, String message) {
+		List<String> messages;
+		if (main.getMessages().getMessagesConf().isList(message)) {
+			messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
+		} else {
+			messages = new ArrayList<>();
+			messages.add(main.getMessages().getMessagesConf().getString(message));
+		}
+		for (String string : messages) {
+			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+				if (string.contains(entry.getKey())) {
+					string = string.replace(entry.getKey(), entry.getValue());
+				}
+			}
 
-            player.sendMessage(replaceColors(string));
-        }
-    }
+			player.sendMessage(replaceColors(string));
+		}
+	}
 
-    public static void sendMessage(CommandSender player, String message) {
-        player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages().getMessagesConf().getString(message))));
-    }
+	public static void sendMessage(CommandSender player, String message) {
+		player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages().getMessagesConf().getString(message))));
+	}
 
-    public static void sendBroadcast(Map<String, String> placeholders, String message) {
-        List<String> messages;
-        if (main.getMessages().getMessagesConf().isList(message)) {
-            messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
-        } else {
-            messages = new ArrayList<>();
-            messages.add(main.getMessages().getMessagesConf().getString(message));
-        }
-        for (String string : messages) {
-            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-                if (string.contains(entry.getKey())) {
-                    string = string.replace(entry.getKey(), entry.getValue());
-                }
-            }
+	public static void sendBroadcast(Map<String, String> placeholders, String message) {
+		List<String> messages;
+		if (main.getMessages().getMessagesConf().isList(message)) {
+			messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
+		} else {
+			messages = new ArrayList<>();
+			messages.add(main.getMessages().getMessagesConf().getString(message));
+		}
+		for (String string : messages) {
+			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+				if (string.contains(entry.getKey())) {
+					string = string.replace(entry.getKey(), entry.getValue());
+				}
+			}
 
-            for (Player player : Bukkit.getServer().getOnlinePlayers()) {
-                player.sendMessage(replaceColors(string));
-                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
-            }
-        }
-    }
+			for (Player player : Bukkit.getServer().getOnlinePlayers()) {
+				player.sendMessage(replaceColors(string));
+				player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+			}
+		}
+	}
 
-    public static String replaceColors(String string) {
-        return ChatColor.translateAlternateColorCodes('&', string);
-    }
+	public static String replaceColors(String string) {
+		return ChatColor.translateAlternateColorCodes('&', string);
+	}
 }

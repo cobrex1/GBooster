@@ -10,33 +10,33 @@ import java.util.UUID;
 
 public abstract class PlayerStorage {
 
-    protected final GBooster main = JavaPlugin.getPlugin(GBooster.class);
-    protected final List<BoosterPlayer> boosterPlayers = new ArrayList<>();
+	protected final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	protected final List<BoosterPlayer> boosterPlayers = new ArrayList<>();
 
-    public abstract void loadPlayers();
+	public abstract void loadPlayers();
 
-    public abstract void savePlayers();
+	public abstract void savePlayers();
 
-    protected abstract void clear();
+	protected abstract void clear();
 
-    public BoosterPlayer getBoosterPlayerByUUID(UUID uuid) {
-        return boosterPlayers.stream()
-                .filter(boosterPlayer -> boosterPlayer.getUuid().equals(uuid))
-                .findFirst().orElse(null);
-    }
+	public BoosterPlayer getBoosterPlayerByUUID(UUID uuid) {
+		return boosterPlayers.stream()
+				.filter(boosterPlayer -> boosterPlayer.getUuid().equals(uuid))
+				.findFirst().orElse(null);
+	}
 
-    public BoosterPlayer getBoosterPlayerByName(String name) {
-        return boosterPlayers.stream()
-                .filter(boosterPlayer -> boosterPlayer.getName().equalsIgnoreCase(name))
-                .findFirst().orElse(null);
-    }
+	public BoosterPlayer getBoosterPlayerByName(String name) {
+		return boosterPlayers.stream()
+				.filter(boosterPlayer -> boosterPlayer.getName().equalsIgnoreCase(name))
+				.findFirst().orElse(null);
+	}
 
-    public void registerPlayer(UUID uuid, String name) {
-        boosterPlayers.add(new BoosterPlayer(uuid, name));
-    }
+	public void registerPlayer(UUID uuid, String name) {
+		boosterPlayers.add(new BoosterPlayer(uuid, name));
+	}
 
-    public boolean isPlayerRegistered(UUID uuid) {
-        return boosterPlayers.stream()
-                .anyMatch(player -> player.getUuid().equals(uuid));
-    }
+	public boolean isPlayerRegistered(UUID uuid) {
+		return boosterPlayers.stream()
+				.anyMatch(player -> player.getUuid().equals(uuid));
+	}
 }

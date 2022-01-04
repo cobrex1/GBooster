@@ -9,11 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class McMMOPlayerXpGain implements Listener {
 
-    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-    @EventHandler
-    public void onMcMMOPlayerXpGain(McMMOPlayerXpGainEvent event) {
-        event.setRawXpGained((event.getRawXpGained() * (float) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)));
-    }
+	@EventHandler
+	public void onMcMMOPlayerXpGain(McMMOPlayerXpGainEvent event) {
+		event.setRawXpGained((event.getRawXpGained() * (float) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)));
+	}
 
 }

@@ -10,58 +10,58 @@ import java.util.Map;
 
 public class BoosterStorageYaml extends BoostersStorage {
 
-    private final File boostersFile;
-    private final FileConfiguration boostersConf;
+	private final File boostersFile;
+	private final FileConfiguration boostersConf;
 
-    public BoosterStorageYaml() {
-        boostersFile = new File(main.getDataFolder(), "boosters.yml");
-        boostersConf = YamlConfiguration.loadConfiguration(boostersFile);
-        save();
-    }
+	public BoosterStorageYaml() {
+		boostersFile = new File(main.getDataFolder(), "boosters.yml");
+		boostersConf = YamlConfiguration.loadConfiguration(boostersFile);
+		save();
+	}
 
-    @Override
-    public void loadBoosters() {
-        for (String key : boostersConf.getKeys(false)) {
-            Booster booster = main.getBoostersManager().getBoosterById(boostersConf.getString(key + ".id"));
+	@Override
+	public void loadBoosters() {
+		for (String key : boostersConf.getKeys(false)) {
+			Booster booster = main.getBoostersManager().getBoosterById(boostersConf.getString(key + ".id"));
 
-            if (booster == null) continue;
+			if (booster == null) continue;
 
-            this.activeBoosters.put(booster, boostersConf.getLong(key + ".time"));
-        }
+			this.activeBoosters.put(booster, boostersConf.getLong(key + ".time"));
+		}
 
-        clear();
-    }
+		clear();
+	}
 
-    @Override
-    public void saveBoosters() {
+	@Override
+	public void saveBoosters() {
 
-        clear();
+		clear();
 
-        int counter = 1;
+		int counter = 1;
 
-        for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()) {
+		for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()) {
 
-            boostersConf.set(counter + ".id", entry.getKey().getId());
-            boostersConf.set(counter + ".time", entry.getValue());
+			boostersConf.set(counter + ".id", entry.getKey().getId());
+			boostersConf.set(counter + ".time", entry.getValue());
 
-            counter++;
-        }
+			counter++;
+		}
 
-        save();
-    }
+		save();
+	}
 
-    @Override
-    public void clear() {
-        for (String key : boostersConf.getKeys(false)) {
-            boostersConf.set(key, null);
-        }
-    }
+	@Override
+	public void clear() {
+		for (String key : boostersConf.getKeys(false)) {
+			boostersConf.set(key, null);
+		}
+	}
 
-    public void save() {
-        try {
-            boostersConf.save(boostersFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	public void save() {
+		try {
+			boostersConf.save(boostersFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

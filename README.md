@@ -99,6 +99,7 @@ To get the plugin running on your server follow these simple steps.
 * Description: Use a specified booster
 
 3. Permission: `gbooster.time`
+
 * Command: `/gbooster time`
 * Description: Shows time of booster that ends next
 
