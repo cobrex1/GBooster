@@ -77,8 +77,8 @@ This plugin is perfect for any server wishing to receive donations from their pl
 
 ### Built With
 
-* [Gradle 7](https://docs.gradle.org/7.2/release-notes.html)
-* [OpenJDK 16](https://openjdk.java.net/projects/jdk/16/)
+* [Gradle 7](https://docs.gradle.org/7.3.3/release-notes.html)
+* [OpenJDK 16](https://openjdk.java.net/projects/jdk/17/)
 
 <!-- GETTING STARTED -->
 
