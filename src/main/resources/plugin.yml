@@ -1,7 +1,7 @@
 name: GBooster
 version: @version@
 main: com.tamrielnetwork.gbooster.GBooster
-api-version: 1.16
+api-version: 1.17
 authors: [ Manu,TamrielNetwork ]
 website: https://tamriel.site
 description: Provides Global Boosters for JobsReborn, McMMO and Minecraft.
