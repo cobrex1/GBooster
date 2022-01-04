@@ -4,7 +4,9 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+<!--
 [![Quality][quality-shield]][quality-url]
+-->
 
 <!-- PROJECT LOGO -->
 <br />
@@ -227,7 +229,8 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 [license-shield]: https://img.shields.io/github/license/TamrielNetwork/GBooster?style=for-the-badge
 
 [license-url]: https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE
-
+<!--
 [quality-shield]: https://img.shields.io/scrutinizer/quality/g/TamrielNetwork/GBooster?label=quality&style=for-the-badge
 
 [quality-url]: https://scrutinizer-ci.com/g/TamrielNetwork/GBooster/reports/
+-->
