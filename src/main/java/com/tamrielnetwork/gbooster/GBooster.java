@@ -44,7 +44,7 @@ public final class GBooster extends JavaPlugin {
 
 		startSaveTask();
 		Bukkit.getLogger().info("§7GBooster " + this.getDescription().getVersion() + " enabled");
-		Bukkit.getLogger().info("Copyright (C) 2021 Leopold Meinel");
+		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
 		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
 		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
 		Bukkit.getLogger().info("Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.");

@@ -230,5 +230,5 @@ Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/Ta
 
 [quality-shield]: https://img.shields.io/codefactor/grade/github/TamrielNetwork/GBooster?style=for-the-badge
 
-[quality-url]: https://www.codefactor.io/repository/github/tamrielnetwork/gbooster
+[quality-url]: https://www.codefactor.io/repository/github/TamrielNetwork/GBooster
 
