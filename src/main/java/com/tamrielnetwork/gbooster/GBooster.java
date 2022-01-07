@@ -43,7 +43,7 @@ public final class GBooster extends JavaPlugin {
 		new BoosterExpansion().register();
 
 		startSaveTask();
-		Bukkit.getLogger().info("§7GBooster " + this.getDescription().getVersion() + " enabled");
+		Bukkit.getLogger().info("GBooster v" + this.getDescription().getVersion() + " enabled");
 		Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
 		Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
 		Bukkit.getLogger().info("This is free software, and you are welcome to redistribute it under certain conditions.");
@@ -54,7 +54,7 @@ public final class GBooster extends JavaPlugin {
 	public void onDisable() {
 		playerStorage.savePlayers();
 		boostersStorage.saveBoosters();
-		Bukkit.getLogger().info("§7GBooster " + this.getDescription().getVersion() + " disabled");
+		Bukkit.getLogger().info("GBooster v" + this.getDescription().getVersion() + " disabled");
 	}
 
 	private void registerListeners() {
