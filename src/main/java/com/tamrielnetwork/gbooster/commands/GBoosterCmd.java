@@ -201,15 +201,11 @@ public class GBoosterCmd implements TabExecutor {
 							case 4 -> tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
 							default -> tabComplete = null;
 						}
-					} else {
-						break;
 					}
 					break;
 				case "use":
 					if (sender.hasPermission("gbooster.use") && args.length == 2) {
 						tabComplete.addAll(keys);
-					} else {
-						break;
 					}
 					break;
 				default:
