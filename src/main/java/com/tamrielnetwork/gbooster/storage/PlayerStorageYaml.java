@@ -1,3 +1,7 @@
+/*
+ Copyright (C) 2022  Leopold Meinel
+ Visit https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE for more details.
+ */
 package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.player.BoosterPlayer;
