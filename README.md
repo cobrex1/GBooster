@@ -47,6 +47,7 @@
         <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
         <li><a href="#configuration">Configuration</a></li>
         <li><a href="#placeholders">Placeholders</a></li>
+        <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
       </ul>
     </li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -172,6 +173,9 @@ Display amount of boosters from player
 * ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
 * Example: `%gbooster_minecraft_xp_2%`
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+
+### Servers using GBooster
+* [TamrielNetwork - tamriel.me](https://tamriel.site)
 
 <!-- ROADMAP -->
 
