@@ -36,17 +36,19 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#description">Description</a></li>
+        <li><a href="#features">Features</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites">Commands and Permissions</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#placeholders">Placeholders</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -162,9 +164,9 @@ boosters:
     duration: 3600
 ```
 
-### Placeholders (When using Placeholder API)
+### Placeholders
 
-**Display amount of boosters from player**
+Display amount of boosters from player
 
 * Structure: `%gbooster_` + `booster_id`¹ + `%`
 * ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
