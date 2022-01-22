@@ -209,9 +209,9 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 Leopold Meinel - [@TamrielN](https://twitter.com/TamrielN) - Twitter
 
-Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - email
+Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - eMail
 
-Project Link: [https://github.com/TamrielNetwork/GBooster](https://github.com/TamrielNetwork/GBooster)
+Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
