@@ -7,6 +7,7 @@
 [![Quality][quality-shield]][quality-url]
 
 <!-- PROJECT LOGO -->
+<!--suppress ALL -->
 <br />
 <p align="center">
   <a href="https://github.com/TamrielNetwork/GBooster">
@@ -160,6 +161,15 @@ boosters:
     multiplier: 2
     duration: 3600
 ```
+
+### Placeholders (When using Placeholder API)
+
+**Display amount of boosters from player**
+
+* Structure: `%gbooster_` + `booster_id`¹ + `%`
+* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+* Example: `%gbooster_minecraft_xp_2%`
+* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 <!-- ROADMAP -->
 
