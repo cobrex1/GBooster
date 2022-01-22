@@ -44,7 +44,7 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Commands and Permissions</a></li>
+        <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
         <li><a href="#configuration">Configuration</a></li>
         <li><a href="#placeholders">Placeholders</a></li>
       </ul>
