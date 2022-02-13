@@ -35,7 +35,7 @@ public class BoosterExpansion extends PlaceholderExpansion {
 
 	@Override
 	public @NotNull String getAuthor() {
-		return "Manu, TamrielNetwork";
+		return "Manu, Tamriel Network";
 	}
 
 	@Override

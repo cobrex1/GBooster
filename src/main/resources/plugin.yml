@@ -2,7 +2,7 @@ name: GBooster
 version: @version@
 main: com.tamrielnetwork.gbooster.GBooster
 api-version: 1.17
-authors: [ Manu,TamrielNetwork ]
+authors: [ Manu,Tamriel Network ]
 website: https://tamriel.site
 description: Provides Global Boosters for JobsReborn, McMMO and Minecraft.
 depend: [ PlaceholderAPI ]

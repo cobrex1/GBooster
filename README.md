@@ -175,6 +175,7 @@ Display amount of boosters from player
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 ### Servers using GBooster
+
 * [TamrielNetwork - tamriel.me](https://tamriel.site)
 
 <!-- ROADMAP -->
