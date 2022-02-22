@@ -25,7 +25,6 @@ import com.tamrielnetwork.gbooster.player.BoosterPlayer;
 import com.tamrielnetwork.gbooster.utils.Chat;
 import com.tamrielnetwork.gbooster.utils.commands.Cmd;
 import com.tamrielnetwork.gbooster.utils.commands.CmdSpec;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
