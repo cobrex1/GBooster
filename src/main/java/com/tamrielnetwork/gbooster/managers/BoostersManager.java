@@ -21,6 +21,7 @@ package com.tamrielnetwork.gbooster.managers;
 import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.boosters.Booster;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,13 +38,13 @@ public class BoostersManager {
 		}
 	}
 
-	public Booster getBoosterById(String id) {
+	public Booster getBoosterById(@NotNull String id) {
 		return boosters.stream()
 				.filter(booster -> booster.getId().equals(id))
 				.findFirst().orElse(null);
 	}
 
-	public boolean isBooster(String id) {
+	public boolean isBooster(@NotNull String id) {
 		return boosters.stream()
 				.map(Booster::getId)
 				.noneMatch(boosterId -> boosterId.equals(id));

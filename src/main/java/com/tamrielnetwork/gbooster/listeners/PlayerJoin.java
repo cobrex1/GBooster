@@ -23,13 +23,14 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class PlayerJoin implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
-	public void onJoin(PlayerJoinEvent event) {
+	public void onJoin(@NotNull PlayerJoinEvent event) {
 		if (!main.getBoosterBar().getBar().getPlayers().contains(event.getPlayer())) {
 			main.getBoosterBar().addPlayer(event.getPlayer());
 		}

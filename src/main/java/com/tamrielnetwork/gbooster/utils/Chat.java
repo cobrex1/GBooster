@@ -25,17 +25,18 @@ import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class Utils {
+public class Chat {
 
 	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-	public static void sendMessage(CommandSender player, Map<String, String> placeholders, String message) {
+	public static void sendMessage(@NotNull CommandSender player, @NotNull Map<String, String> placeholders, @NotNull String message) {
 		List<String> messages = getMessages(message);
 		for (String string : messages) {
 			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
@@ -48,11 +49,11 @@ public class Utils {
 		}
 	}
 
-	public static void sendMessage(CommandSender player, String message) {
+	public static void sendMessage(@NotNull CommandSender player, @NotNull String message) {
 		player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages().getMessagesConf().getString(message))));
 	}
 
-	public static void sendBroadcast(Map<String, String> placeholders, String message) {
+	public static void sendBroadcast(@NotNull Map<String, String> placeholders, @NotNull String message) {
 		List<String> messages = getMessages(message);
 		for (String string : messages) {
 			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
@@ -68,7 +69,7 @@ public class Utils {
 		}
 	}
 
-	private static List<String> getMessages(String message) {
+	private static List<String> getMessages(@NotNull String message) {
 		List<String> messages;
 		if (main.getMessages().getMessagesConf().isList(message)) {
 			messages = Objects.requireNonNull(main.getMessages().getMessagesConf().getStringList(message));
@@ -79,7 +80,7 @@ public class Utils {
 		return messages;
 	}
 
-	public static String replaceColors(String string) {
+	public static String replaceColors(@NotNull String string) {
 		return ChatColor.translateAlternateColorCodes('&', string);
 	}
 }

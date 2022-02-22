@@ -23,6 +23,7 @@ import com.tamrielnetwork.gbooster.boosters.Booster;
 import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,12 +39,12 @@ public class BoosterPlayer {
 	private final Map<String, Integer> boostersStorage = new HashMap<>();
 	private final Map<BoosterType, Long> boostersCountdown = new HashMap<>();
 
-	public BoosterPlayer(UUID uuid, String name) {
+	public BoosterPlayer(@NotNull UUID uuid, @NotNull String name) {
 		this.name = name;
 		this.uuid = uuid;
 	}
 
-	public BoosterPlayer(ResultSet resultSet) throws SQLException {
+	public BoosterPlayer(@NotNull ResultSet resultSet) throws SQLException {
 
 		this.name = resultSet.getString(2);
 		this.uuid = UUID.fromString(resultSet.getString(1));
@@ -51,7 +52,7 @@ public class BoosterPlayer {
 		boostersStorage.put(resultSet.getString(3), resultSet.getInt(4));
 	}
 
-	public BoosterPlayer(String key, ConfigurationSection section) {
+	public BoosterPlayer(@NotNull String key, @NotNull ConfigurationSection section) {
 		this.uuid = UUID.fromString(key);
 		this.name = section.getString("name");
 
@@ -66,13 +67,13 @@ public class BoosterPlayer {
 		}
 	}
 
-	public void addBooster(String boosterId, int amount) {
+	public void addBooster(@NotNull String boosterId, int amount) {
 		int previousAmount = boostersStorage.getOrDefault(boosterId, 0);
 
 		boostersStorage.put(boosterId, amount + previousAmount);
 	}
 
-	public boolean takeBooster(Booster booster) {
+	public boolean takeBooster(@NotNull Booster booster) {
 		Integer amount = boostersStorage.get(booster.getId());
 
 		if (amount == null || amount == 0)
@@ -83,7 +84,7 @@ public class BoosterPlayer {
 		return true;
 	}
 
-	public boolean canUseBooster(Booster booster) {
+	public boolean canUseBooster(@NotNull Booster booster) {
 		if (boostersCountdown.containsKey(booster.getBoosterType()) && boostersCountdown.get(booster.getBoosterType()) + 60 * 60 * 1000 > System.currentTimeMillis()) {
 			return false;
 		}

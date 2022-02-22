@@ -50,7 +50,7 @@ public class BoosterExpansion extends PlaceholderExpansion {
 	}
 
 	@Override
-	public String onRequest(OfflinePlayer player, @NotNull String identifier) {
+	public String onRequest(@NotNull OfflinePlayer player, @NotNull String identifier) {
 
 		for (Booster booster : main.getBoostersManager().getBoosters()) {
 			if (identifier.equals(booster.getId())) {

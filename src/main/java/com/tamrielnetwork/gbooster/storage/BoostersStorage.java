@@ -24,6 +24,7 @@ import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.boosters.Booster;
 import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -39,11 +40,11 @@ public abstract class BoostersStorage {
 
 	public abstract void clear();
 
-	public void activateBooster(Booster booster) {
+	public void activateBooster(@NotNull Booster booster) {
 		activeBoosters.put(booster, System.currentTimeMillis());
 	}
 
-	public double getBoosterMultiplier(BoosterType boosterType, boolean addJobsBooster) {
+	public double getBoosterMultiplier(@NotNull BoosterType boosterType, boolean addJobsBooster) {
 		double totalMultiplier = 0;
 
 		if (addJobsBooster)
@@ -59,7 +60,7 @@ public abstract class BoostersStorage {
 		return totalMultiplier == 0 ? 1 : totalMultiplier;
 	}
 
-	public boolean canUseBooster(Booster booster) {
+	public boolean canUseBooster(@NotNull Booster booster) {
 
 		double totalAmount = getBoosterMultiplier(booster.getBoosterType(),
 				booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);

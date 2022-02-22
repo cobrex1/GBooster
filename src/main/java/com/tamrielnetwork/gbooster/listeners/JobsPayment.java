@@ -25,13 +25,14 @@ import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class JobsPayment implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
-	public void onPayment(JobsPaymentEvent event) {
+	public void onPayment(@NotNull JobsPaymentEvent event) {
 
 		if (event.getPayment().get(CurrencyType.MONEY) == null) return;
 

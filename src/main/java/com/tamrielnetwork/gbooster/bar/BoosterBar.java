@@ -20,13 +20,14 @@ package com.tamrielnetwork.gbooster.bar;
 
 import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.boosters.BoosterType;
-import com.tamrielnetwork.gbooster.utils.Utils;
+import com.tamrielnetwork.gbooster.utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -48,7 +49,7 @@ public class BoosterBar {
 			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
 				if (main.getConfig().getBoolean("empty-bar")) {
-					bar.setTitle(Utils.replaceColors(main.getConfig().getString("default-bar-message")));
+					bar.setTitle(Chat.replaceColors(main.getConfig().getString("default-bar-message")));
 				} else {
 					bar.setVisible(false);
 				}
@@ -70,7 +71,7 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
-		return Utils.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
+		return Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
 				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
 				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
 				.replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
@@ -82,7 +83,7 @@ public class BoosterBar {
 		return bar;
 	}
 
-	public void addPlayer(Player player) {
+	public void addPlayer(@NotNull Player player) {
 		bar.addPlayer(player);
 	}
 }

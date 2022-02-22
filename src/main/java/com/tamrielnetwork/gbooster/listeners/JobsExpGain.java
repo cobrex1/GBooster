@@ -24,13 +24,14 @@ import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class JobsExpGain implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
-	public void onExpGain(JobsExpGainEvent event) {
+	public void onExpGain(@NotNull JobsExpGainEvent event) {
 		// Check if getJobsBooster returns >= 1 to prevent dividing by < 1
 		if (main.getActiveBoostersManager().getJobsBooster() >= 1) {
 			event.setExp((event.getExp() / main.getActiveBoostersManager().getJobsBooster()) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true));

@@ -16,40 +16,19 @@
  * along with this program. If not, see https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE
  */
 
-package com.tamrielnetwork.gbooster.boosters;
+package com.tamrielnetwork.gbooster.utils.commands;
 
-import org.bukkit.configuration.ConfigurationSection;
+import com.tamrielnetwork.gbooster.player.BoosterPlayer;
+import org.bukkit.command.CommandSender;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
+public class CmdSpec {
 
-public class Booster {
-
-	private final String id;
-	private final BoosterType boosterType;
-	private final double multiplier;
-	private final int duration;
-
-	public Booster(@NotNull String id, @NotNull ConfigurationSection section) {
-		this.id = id;
-		this.boosterType = BoosterType.valueOf(Objects.requireNonNull(section.getString("type")).toUpperCase());
-		this.multiplier = section.getDouble("multiplier");
-		this.duration = section.getInt("duration");
+	public static boolean isInvalidCmd(@NotNull CommandSender sender, BoosterPlayer boosterPlayer, @NotNull String perm) {
+		if (Cmd.isNotPermitted(sender, perm)) {
+			return true;
+		}
+		return Cmd.isInvalidPlayer(sender, boosterPlayer);
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public BoosterType getBoosterType() {
-		return boosterType;
-	}
-
-	public double getMultiplier() {
-		return multiplier;
-	}
-
-	public int getDuration() {
-		return duration;
-	}
 }

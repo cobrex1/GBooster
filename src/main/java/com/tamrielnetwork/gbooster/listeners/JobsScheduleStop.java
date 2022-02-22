@@ -24,13 +24,14 @@ import com.tamrielnetwork.gbooster.GBooster;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 public class JobsScheduleStop implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
-	public void onBoosterStop(JobsScheduleStopEvent event) {
+	public void onBoosterStop(@NotNull JobsScheduleStopEvent event) {
 		main.getActiveBoostersManager().addJobsBooster(-(event.getSchedule().getBoost(CurrencyType.EXP) + 1));
 	}
 }

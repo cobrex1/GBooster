@@ -1,6 +1,5 @@
-no-args: "&7Enter this command to use a booster: &b/gbooster use &3<booster>"
+cmd: "&7Enter this command to use a booster: &b/gbooster use &3<booster>"
 player-only: "&cThis command can only be executed by players!"
-invalid-option: "&cInvalid option!"
 no-perms: "&7You don't have enough permissions!"
 invalid-id: "&cID doesn't exist!"
 invalid-player: "&cInvalid player!"

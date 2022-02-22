@@ -20,6 +20,7 @@ package com.tamrielnetwork.gbooster.storage.mysql;
 
 import com.tamrielnetwork.gbooster.GBooster;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -58,7 +59,7 @@ public class SqlManager {
 		return connection;
 	}
 
-	private static void setConnection(Connection connection) {
+	private static void setConnection(@NotNull Connection connection) {
 		SqlManager.connection = connection;
 	}
 

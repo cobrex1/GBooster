@@ -21,6 +21,7 @@ package com.tamrielnetwork.gbooster.storage;
 import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.player.BoosterPlayer;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,23 +38,23 @@ public abstract class PlayerStorage {
 
 	protected abstract void clear();
 
-	public BoosterPlayer getBoosterPlayerByUUID(UUID uuid) {
+	public BoosterPlayer getBoosterPlayerByUUID(@NotNull UUID uuid) {
 		return boosterPlayers.stream()
 				.filter(boosterPlayer -> boosterPlayer.getUuid().equals(uuid))
 				.findFirst().orElse(null);
 	}
 
-	public BoosterPlayer getBoosterPlayerByName(String name) {
+	public BoosterPlayer getBoosterPlayerByName(@NotNull String name) {
 		return boosterPlayers.stream()
 				.filter(boosterPlayer -> boosterPlayer.getName().equalsIgnoreCase(name))
 				.findFirst().orElse(null);
 	}
 
-	public void registerPlayer(UUID uuid, String name) {
+	public void registerPlayer(@NotNull UUID uuid, @NotNull String name) {
 		boosterPlayers.add(new BoosterPlayer(uuid, name));
 	}
 
-	public boolean isPlayerRegistered(UUID uuid) {
+	public boolean isPlayerRegistered(@NotNull UUID uuid) {
 		return boosterPlayers.stream()
 				.anyMatch(player -> player.getUuid().equals(uuid));
 	}
