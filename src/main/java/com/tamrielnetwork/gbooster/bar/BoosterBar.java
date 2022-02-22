@@ -21,6 +21,7 @@ package com.tamrielnetwork.gbooster.bar;
 import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import com.tamrielnetwork.gbooster.utils.Chat;
+import com.tamrielnetwork.gbooster.utils.bar.BarSpec;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -45,26 +46,12 @@ public class BoosterBar {
 	private void startTask() {
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
 
-			// Check if there are no active boosters
-			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
-
-				if (main.getConfig().getBoolean("empty-bar")) {
-					bar.setTitle(Chat.replaceColors(main.getConfig().getString("default-bar-message")));
-				} else {
-					bar.setVisible(false);
-				}
-
+			if (BarSpec.noActiveBoosters(bar)) {
 				return;
 			}
 
-			double time = main.getActiveBoostersManager().getMostOldBoosterInMinutes() / 60.0;
+			BarSpec.doBar(bar);
 
-			if (time > 1.0)
-				time = 1;
-
-			bar.setProgress(time);
-
-			bar.setVisible(true);
 			bar.setTitle(getTitle());
 
 		}, 0, 20 * 5);

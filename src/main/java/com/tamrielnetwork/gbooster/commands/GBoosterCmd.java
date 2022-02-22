@@ -59,146 +59,50 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
-
 		Booster booster = main.getBoostersManager().getBoosterById(args[2]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
 
-		if (CmdSpec.isInvalidCmd(sender, boosterPlayer, "gbooster.give")) {
-			return;
-		}
-		// Check permissions
-		if (!sender.hasPermission("gbooster.give")) {
-			Chat.sendMessage(sender, "no-perms");
-			return;
-		}
 
-		// Check args length
-		if (args.length != 4) {
-			Chat.sendMessage(sender, "invalid-id");
-			return;
-		}
-
-		// Get booster by id
-		Booster booster = main.getBoostersManager().getBoosterById(args[2]);
-
-		// Check if the given booster id is valid
-		if (booster == null) {
-			Chat.sendMessage(sender, "invalid-id");
-			return;
-		}
-
-		// Get booster player by name
-		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
-
-		// Check if the given player is registered
-		if (boosterPlayer == null) {
-			Chat.sendMessage(sender, "invalid-player");
-			return;
-		}
-
-		// Check if the 4th arg is a number
-		if (!StringUtils.isNumeric(args[3])) {
-			Chat.sendMessage(sender, "invalid-amount");
+		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.give", 4, booster, boosterPlayer)) {
 			return;
 		}
 
 		int amount = Integer.parseInt(args[3]);
-
-		// Check if the amount is greater than 0
-		if (amount <= 0) {
-			Chat.sendMessage(sender, "invalid-amount");
-			return;
-		}
+		Player onlineBoosterPlayer = Bukkit.getPlayer(boosterPlayer.getUuid());
 
 		boosterPlayer.addBooster(booster.getId(), amount);
 
-		// Send messages
-		Player onlineBoosterPlayer = Bukkit.getPlayer(boosterPlayer.getUuid());
-
 		if (onlineBoosterPlayer != null) {
-			Chat.sendMessage(onlineBoosterPlayer, ImmutableMap.of(
-							"%amount%", String.valueOf(amount),
-							"%booster%", booster.getId()),
-					"receive-boosters");
+			Chat.sendMessage(onlineBoosterPlayer, ImmutableMap.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()), "receive-boosters");
 		}
 
-		Chat.sendMessage(sender, ImmutableMap.of(
-						"%amount%", String.valueOf(amount),
-						"%booster%", booster.getId(),
-						"%player%", boosterPlayer.getName()),
-				"give-boosters");
+		Chat.sendMessage(sender, ImmutableMap.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
-
-		// Check if command sender is a player
-		if (!(sender instanceof Player)) {
-			Chat.sendMessage(sender, "player-only");
-			return;
-		}
-
-		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByUUID(((Player) sender).getUniqueId());
-
-		// Check args length
-		if (args.length != 2) {
-			Chat.sendMessage(sender, "no-args");
-			return;
-		}
-
-		// Check permissions
-		if (!sender.hasPermission("gbooster.use")) {
-			Chat.sendMessage(sender, "no-perms");
-			return;
-		}
-
-		// Get booster by id
+		Player senderPlayer = (Player) sender;
 		Booster booster = main.getBoostersManager().getBoosterById(args[1]);
+		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByUUID(senderPlayer.getUniqueId());
 
-		// Check if the given booster id is valid
-		if (booster == null) {
-			Chat.sendMessage(sender, "invalid-id");
+		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.use", 2, booster, boosterPlayer)) {
 			return;
 		}
 
-		// Check if there is an active countdown
-		if (!boosterPlayer.canUseBooster(booster)) {
-			Chat.sendMessage(sender, "countdown-active");
-			return;
-		}
-
-
-		// Check if the max limit is reached
-		if (!main.getActiveBoostersManager().canUseBooster(booster)) {
-			Chat.sendMessage(sender, "max-limit");
-			return;
-		}
-
-		// Try to remove a booster from a player
-		if (!boosterPlayer.takeBooster(booster)) {
-			Chat.sendMessage(sender, "no-booster");
-			return;
-		}
 		main.getActiveBoostersManager().activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
 		Chat.sendBroadcast(ImmutableMap.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
 	}
 
 	private void doTime(@NotNull CommandSender sender, @NotNull String[] args) {
-		if (!sender.hasPermission("gbooster.time")) {
-			Chat.sendMessage(sender, "no-perms");
+		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.time", 1)) {
 			return;
 		}
-		// Check args length
-		if (args.length != 1) {
-			Chat.sendMessage(sender, "invalid-id");
-			return;
-		}
-		// Check if there are no active boosters
+
 		if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 			Chat.sendMessage(sender, "no-active-booster");
-		} else {
-			Chat.sendMessage(sender, ImmutableMap.of("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())), "booster-timer");
+			return;
 		}
+		Chat.sendMessage(sender, ImmutableMap.of("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())), "booster-timer");
 	}
 
 	@Override

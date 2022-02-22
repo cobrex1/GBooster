@@ -18,14 +18,20 @@
 
 package com.tamrielnetwork.gbooster.utils.commands;
 
-import com.tamrielnetwork.gbooster.player.BoosterPlayer;
 import com.tamrielnetwork.gbooster.utils.Chat;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 public class Cmd {
+
+	public static boolean isArgsLengthNotEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
+		if (args.length != length) {
+			Chat.sendMessage(sender, "cmd");
+			return true;
+		}
+		return false;
+	}
 
 	public static boolean isArgsLengthEqualTo(@NotNull CommandSender sender, @NotNull String[] args, int length) {
 		if (args.length == length) {
@@ -51,12 +57,11 @@ public class Cmd {
 		return false;
 	}
 
-	public static boolean isInvalidPlayer(@NotNull CommandSender sender, BoosterPlayer player) {
-		if (player == null) {
-			Chat.sendMessage(sender, "invalid-player");
+	public static boolean isInvalidSender(@NotNull CommandSender sender) {
+		if (!(sender instanceof Player)) {
+			Chat.sendMessage(sender, "player-only");
 			return true;
 		}
-
 		return false;
 	}
 

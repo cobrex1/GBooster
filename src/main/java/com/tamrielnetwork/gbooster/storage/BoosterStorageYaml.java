@@ -25,6 +25,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.Objects;
 
 public class BoosterStorageYaml extends BoostersStorage {
 
@@ -40,7 +41,7 @@ public class BoosterStorageYaml extends BoostersStorage {
 	@Override
 	public void loadBoosters() {
 		for (String key : boostersConf.getKeys(false)) {
-			Booster booster = main.getBoostersManager().getBoosterById(boostersConf.getString(key + ".id"));
+			Booster booster = main.getBoostersManager().getBoosterById(Objects.requireNonNull(boostersConf.getString(key + ".id")));
 
 			if (booster == null) continue;
 
