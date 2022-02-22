@@ -1,0 +1,31 @@
+<component name="CopyrightManager">
+  <settings default="GBooster">
+    <module2copyright>
+      <element module="All" copyright="GBooster" />
+    </module2copyright>
+    <LanguageOptions name="Properties">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankAfter" value="false" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="lenBefore" value="78" />
+      <option name="lenAfter" value="78" />
+    </LanguageOptions>
+    <LanguageOptions name="SPI">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankBefore" value="true" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="lenBefore" value="78" />
+      <option name="lenAfter" value="78" />
+    </LanguageOptions>
+    <LanguageOptions name="Shell Script">
+      <option name="fileTypeOverride" value="3" />
+      <option name="addBlankBefore" value="true" />
+      <option name="separateBefore" value="true" />
+      <option name="separateAfter" value="true" />
+      <option name="lenBefore" value="78" />
+      <option name="lenAfter" value="78" />
+    </LanguageOptions>
+  </settings>
+</component>
