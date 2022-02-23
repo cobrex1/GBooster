@@ -39,4 +39,5 @@ public class JobsExpGain implements Listener {
 			event.setExp(event.getExp() * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true));
 		}
 	}
+
 }

@@ -32,6 +32,8 @@ public class JobsScheduleStop implements Listener {
 
 	@EventHandler
 	public void onBoosterStop(@NotNull JobsScheduleStopEvent event) {
+
 		main.getActiveBoostersManager().addJobsBooster(-(event.getSchedule().getBoost(CurrencyType.EXP) + 1));
 	}
+
 }

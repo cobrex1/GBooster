@@ -31,21 +31,25 @@ public class BoosterExpansion extends PlaceholderExpansion {
 
 	@Override
 	public boolean canRegister() {
+
 		return true;
 	}
 
 	@Override
 	public @NotNull String getAuthor() {
+
 		return "Manu, Tamriel Network";
 	}
 
 	@Override
 	public @NotNull String getIdentifier() {
+
 		return "GBooster";
 	}
 
 	@Override
 	public @NotNull String getVersion() {
+
 		return "1.3.2";
 	}
 
@@ -65,4 +69,5 @@ public class BoosterExpansion extends PlaceholderExpansion {
 
 		return "0";
 	}
+
 }

@@ -30,6 +30,7 @@ public class BoosterStorageSql extends BoostersStorage {
 
 	@Override
 	public void loadBoosters() {
+
 		try (PreparedStatement selectStatement = SqlManager.getConnection().prepareStatement("SELECT * FROM Boosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
@@ -49,6 +50,7 @@ public class BoosterStorageSql extends BoostersStorage {
 
 	@Override
 	public void saveBoosters() {
+
 		clear();
 
 		for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
@@ -64,10 +66,12 @@ public class BoosterStorageSql extends BoostersStorage {
 
 	@Override
 	public void clear() {
+
 		try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE Boosters")) {
 			truncateStatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
 	}
+
 }

@@ -35,6 +35,7 @@ public class SqlManager {
 	private final String host, database, username, password;
 
 	public SqlManager() {
+
 		this.host = main.getConfig().getString("mysql.host");
 		this.port = main.getConfig().getInt("mysql.port");
 		this.database = main.getConfig().getString("mysql.database");
@@ -56,14 +57,17 @@ public class SqlManager {
 	}
 
 	public static Connection getConnection() {
+
 		return connection;
 	}
 
 	private static void setConnection(@NotNull Connection connection) {
+
 		SqlManager.connection = connection;
 	}
 
 	private void enableConnection() {
+
 		try {
 			if (getConnection() != null && !getConnection().isClosed()) {
 				return;
@@ -77,4 +81,5 @@ public class SqlManager {
 			e.printStackTrace();
 		}
 	}
+
 }

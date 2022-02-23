@@ -38,12 +38,14 @@ public class BoosterBar {
 	private final BossBar bar;
 
 	public BoosterBar() {
+
 		this.bar = Bukkit.createBossBar(getTitle(), BarColor.BLUE, BarStyle.SOLID);
 
 		startTask();
 	}
 
 	private void startTask() {
+
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
 
 			if (BarSpec.noActiveBoosters(bar)) {
@@ -58,6 +60,7 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
+
 		return Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
 				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
 				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
@@ -67,10 +70,13 @@ public class BoosterBar {
 	}
 
 	public BossBar getBar() {
+
 		return bar;
 	}
 
 	public void addPlayer(@NotNull Player player) {
+
 		bar.addPlayer(player);
 	}
+
 }

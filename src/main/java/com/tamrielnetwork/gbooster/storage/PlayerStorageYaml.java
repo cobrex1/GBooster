@@ -33,6 +33,7 @@ public class PlayerStorageYaml extends PlayerStorage {
 	private final FileConfiguration playersConf;
 
 	public PlayerStorageYaml() {
+
 		playersFile = new File(main.getDataFolder(), "players.yml");
 		playersConf = YamlConfiguration.loadConfiguration(playersFile);
 		save();
@@ -40,6 +41,7 @@ public class PlayerStorageYaml extends PlayerStorage {
 
 	@Override
 	public void loadPlayers() {
+
 		for (String key : playersConf.getKeys(false)) {
 			boosterPlayers.add(new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
 		}
@@ -47,6 +49,7 @@ public class PlayerStorageYaml extends PlayerStorage {
 
 	@Override
 	public void savePlayers() {
+
 		clear();
 
 		for (BoosterPlayer boosterPlayer : boosterPlayers) {
@@ -62,16 +65,19 @@ public class PlayerStorageYaml extends PlayerStorage {
 
 	@Override
 	protected void clear() {
+
 		for (String key : playersConf.getKeys(false)) {
 			playersConf.set(key, null);
 		}
 	}
 
 	public void save() {
+
 		try {
 			playersConf.save(playersFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

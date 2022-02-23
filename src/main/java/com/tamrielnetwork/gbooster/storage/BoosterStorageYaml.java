@@ -33,6 +33,7 @@ public class BoosterStorageYaml extends BoostersStorage {
 	private final FileConfiguration boostersConf;
 
 	public BoosterStorageYaml() {
+
 		boostersFile = new File(main.getDataFolder(), "boosters.yml");
 		boostersConf = YamlConfiguration.loadConfiguration(boostersFile);
 		save();
@@ -40,6 +41,7 @@ public class BoosterStorageYaml extends BoostersStorage {
 
 	@Override
 	public void loadBoosters() {
+
 		for (String key : boostersConf.getKeys(false)) {
 			Booster booster = main.getBoostersManager().getBoosterById(Objects.requireNonNull(boostersConf.getString(key + ".id")));
 
@@ -71,16 +73,19 @@ public class BoosterStorageYaml extends BoostersStorage {
 
 	@Override
 	public void clear() {
+
 		for (String key : boostersConf.getKeys(false)) {
 			boostersConf.set(key, null);
 		}
 	}
 
 	public void save() {
+
 		try {
 			boostersConf.save(boostersFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

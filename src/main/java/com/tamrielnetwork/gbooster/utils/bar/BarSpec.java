@@ -31,6 +31,7 @@ public class BarSpec {
 	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	public static void doBar(@NotNull BossBar bar) {
+
 		double time = main.getActiveBoostersManager().getMostOldBoosterInMinutes() / 60.0;
 
 		if (time > 1.0)
@@ -42,6 +43,7 @@ public class BarSpec {
 	}
 
 	public static boolean noActiveBoosters(@NotNull BossBar bar) {
+
 		if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
 			if (main.getConfig().getBoolean("empty-bar")) {
@@ -54,4 +56,5 @@ public class BarSpec {
 		}
 		return false;
 	}
+
 }

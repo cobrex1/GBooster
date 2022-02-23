@@ -44,11 +44,12 @@ public class GBoosterCmd implements TabExecutor {
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+
 		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 4)) {
 			return true;
 		}
 
-		switch (args[0]) {
+		switch (args[0].toLowerCase()) {
 			case "give" -> doGive(sender, args);
 			case "use" -> doUse(sender, args);
 			case "time" -> doTime(sender, args);
@@ -58,9 +59,9 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
+
 		Booster booster = main.getBoostersManager().getBoosterById(args[2]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
-
 
 		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.give", 4, booster, boosterPlayer)) {
 			return;
@@ -79,6 +80,10 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
+
+		if (Cmd.isInvalidSender(sender)) {
+			return;
+		}
 		Player senderPlayer = (Player) sender;
 		Booster booster = main.getBoostersManager().getBoosterById(args[1]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByUUID(senderPlayer.getUniqueId());
@@ -93,6 +98,7 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void doTime(@NotNull CommandSender sender, @NotNull String[] args) {
+
 		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.time", 1)) {
 			return;
 		}
@@ -106,6 +112,7 @@ public class GBoosterCmd implements TabExecutor {
 
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
+
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
 			if (sender.hasPermission("gbooster.give")) {
@@ -142,4 +149,5 @@ public class GBoosterCmd implements TabExecutor {
 		}
 		return tabComplete;
 	}
+
 }

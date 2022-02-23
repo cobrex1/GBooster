@@ -40,6 +40,7 @@ public class BoosterPlayer {
 	private final Map<BoosterType, Long> boostersCountdown = new HashMap<>();
 
 	public BoosterPlayer(@NotNull UUID uuid, @NotNull String name) {
+
 		this.name = name;
 		this.uuid = uuid;
 	}
@@ -53,6 +54,7 @@ public class BoosterPlayer {
 	}
 
 	public BoosterPlayer(@NotNull String key, @NotNull ConfigurationSection section) {
+
 		this.uuid = UUID.fromString(key);
 		this.name = section.getString("name");
 
@@ -68,12 +70,14 @@ public class BoosterPlayer {
 	}
 
 	public void addBooster(@NotNull String boosterId, int amount) {
+
 		int previousAmount = boostersStorage.getOrDefault(boosterId, 0);
 
 		boostersStorage.put(boosterId, amount + previousAmount);
 	}
 
 	public boolean takeBooster(@NotNull Booster booster) {
+
 		Integer amount = boostersStorage.get(booster.getId());
 
 		if (amount == null || amount == 0)
@@ -85,6 +89,7 @@ public class BoosterPlayer {
 	}
 
 	public boolean canUseBooster(@NotNull Booster booster) {
+
 		if (boostersCountdown.containsKey(booster.getBoosterType()) && boostersCountdown.get(booster.getBoosterType()) + 60 * 60 * 1000 > System.currentTimeMillis()) {
 			return false;
 		}
@@ -95,14 +100,18 @@ public class BoosterPlayer {
 	}
 
 	public UUID getUuid() {
+
 		return uuid;
 	}
 
 	public String getName() {
+
 		return name;
 	}
 
 	public Map<String, Integer> getBoostersStorage() {
+
 		return boostersStorage;
 	}
+
 }

@@ -43,4 +43,5 @@ public class JobsPayment implements Listener {
 			event.set(CurrencyType.MONEY, event.getPayment().get(CurrencyType.MONEY) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
 		}
 	}
+
 }

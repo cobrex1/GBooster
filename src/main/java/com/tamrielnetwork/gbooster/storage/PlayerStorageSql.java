@@ -30,11 +30,13 @@ import java.util.UUID;
 public class PlayerStorageSql extends PlayerStorage {
 
 	public PlayerStorageSql() {
+
 		new SqlManager();
 	}
 
 	@Override
 	public void loadPlayers() {
+
 		try (PreparedStatement selectStatement = SqlManager.getConnection().prepareStatement("SELECT * FROM PlayersBoosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
@@ -59,6 +61,7 @@ public class PlayerStorageSql extends PlayerStorage {
 
 	@Override
 	public void savePlayers() {
+
 		clear();
 
 		for (BoosterPlayer boosterPlayer : boosterPlayers) {
@@ -79,10 +82,12 @@ public class PlayerStorageSql extends PlayerStorage {
 
 	@Override
 	protected void clear() {
+
 		try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE PlayersBoosters")) {
 			truncateStatement.executeUpdate();
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
 		}
 	}
+
 }

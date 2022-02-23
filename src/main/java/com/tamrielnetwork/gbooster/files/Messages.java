@@ -32,18 +32,22 @@ public class Messages {
 	private final FileConfiguration messagesConf;
 
 	public Messages() {
+
 		messagesFile = new File(main.getDataFolder(), "messages.yml");
 		saveMessagesFile();
 		messagesConf = YamlConfiguration.loadConfiguration(messagesFile);
 	}
 
 	private void saveMessagesFile() {
+
 		if (!messagesFile.exists()) {
 			main.saveResource("messages.yml", false);
 		}
 	}
 
 	public FileConfiguration getMessagesConf() {
+
 		return messagesConf;
 	}
+
 }

@@ -32,6 +32,7 @@ public class McMMOPlayerXpGain implements Listener {
 
 	@EventHandler
 	public void onMcMMOPlayerXpGain(@NotNull McMMOPlayerXpGainEvent event) {
+
 		event.setRawXpGained((event.getRawXpGained() * (float) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)));
 	}
 

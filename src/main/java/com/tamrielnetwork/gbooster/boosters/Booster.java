@@ -31,6 +31,7 @@ public class Booster {
 	private final int duration;
 
 	public Booster(@NotNull String id, @NotNull ConfigurationSection section) {
+
 		this.id = id;
 		this.boosterType = BoosterType.valueOf(Objects.requireNonNull(section.getString("type")).toUpperCase());
 		this.multiplier = section.getDouble("multiplier");
@@ -38,18 +39,23 @@ public class Booster {
 	}
 
 	public String getId() {
+
 		return id;
 	}
 
 	public BoosterType getBoosterType() {
+
 		return boosterType;
 	}
 
 	public double getMultiplier() {
+
 		return multiplier;
 	}
 
 	public int getDuration() {
+
 		return duration;
 	}
+
 }

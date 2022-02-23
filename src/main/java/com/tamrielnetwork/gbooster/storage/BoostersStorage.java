@@ -41,10 +41,12 @@ public abstract class BoostersStorage {
 	public abstract void clear();
 
 	public void activateBooster(@NotNull Booster booster) {
+
 		activeBoosters.put(booster, System.currentTimeMillis());
 	}
 
 	public double getBoosterMultiplier(@NotNull BoosterType boosterType, boolean addJobsBooster) {
+
 		double totalMultiplier = 0;
 
 		if (addJobsBooster)
@@ -69,6 +71,7 @@ public abstract class BoostersStorage {
 	}
 
 	public int getMostOldBoosterInMinutes() {
+
 		long mostOldBoosterCountdown = Long.MAX_VALUE;
 
 		for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()) {
@@ -91,14 +94,18 @@ public abstract class BoostersStorage {
 	}
 
 	public Multimap<Booster, Long> getActiveBoosters() {
+
 		return activeBoosters;
 	}
 
 	public void addJobsBooster(double jobsBooster) {
+
 		this.jobsBooster += jobsBooster;
 	}
 
 	public double getJobsBooster() {
+
 		return jobsBooster;
 	}
+
 }

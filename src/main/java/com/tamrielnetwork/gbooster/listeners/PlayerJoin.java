@@ -31,6 +31,7 @@ public class PlayerJoin implements Listener {
 
 	@EventHandler
 	public void onJoin(@NotNull PlayerJoinEvent event) {
+
 		if (!main.getBoosterBar().getBar().getPlayers().contains(event.getPlayer())) {
 			main.getBoosterBar().addPlayer(event.getPlayer());
 		}
@@ -39,4 +40,5 @@ public class PlayerJoin implements Listener {
 			main.getPlayerStorage().registerPlayer(event.getPlayer().getUniqueId(), event.getPlayer().getName());
 		}
 	}
+
 }

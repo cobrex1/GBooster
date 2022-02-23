@@ -32,6 +32,8 @@ public class JobsScheduleStart implements Listener {
 
 	@EventHandler
 	public void onBoosterStart(@NotNull JobsScheduleStartEvent event) {
+
 		main.getActiveBoostersManager().addJobsBooster(event.getSchedule().getBoost().get(CurrencyType.EXP) + 1);
 	}
+
 }

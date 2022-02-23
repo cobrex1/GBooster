@@ -32,6 +32,8 @@ public class PlayerExpChange implements Listener {
 
 	@EventHandler
 	public void onPlayerExpChange(@NotNull PlayerExpChangeEvent event) {
+
 		event.setAmount((event.getAmount() * (int) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)));
 	}
+
 }

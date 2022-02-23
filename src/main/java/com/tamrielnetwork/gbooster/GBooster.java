@@ -21,10 +21,21 @@ package com.tamrielnetwork.gbooster;
 import com.tamrielnetwork.gbooster.bar.BoosterBar;
 import com.tamrielnetwork.gbooster.commands.GBoosterCmd;
 import com.tamrielnetwork.gbooster.files.Messages;
-import com.tamrielnetwork.gbooster.listeners.*;
+import com.tamrielnetwork.gbooster.listeners.JobsExpGain;
+import com.tamrielnetwork.gbooster.listeners.JobsPayment;
+import com.tamrielnetwork.gbooster.listeners.JobsScheduleStart;
+import com.tamrielnetwork.gbooster.listeners.JobsScheduleStop;
+import com.tamrielnetwork.gbooster.listeners.McMMOPlayerXpGain;
+import com.tamrielnetwork.gbooster.listeners.PlayerExpChange;
+import com.tamrielnetwork.gbooster.listeners.PlayerJoin;
 import com.tamrielnetwork.gbooster.managers.BoostersManager;
 import com.tamrielnetwork.gbooster.papi.BoosterExpansion;
-import com.tamrielnetwork.gbooster.storage.*;
+import com.tamrielnetwork.gbooster.storage.BoosterStorageSql;
+import com.tamrielnetwork.gbooster.storage.BoosterStorageYaml;
+import com.tamrielnetwork.gbooster.storage.BoostersStorage;
+import com.tamrielnetwork.gbooster.storage.PlayerStorage;
+import com.tamrielnetwork.gbooster.storage.PlayerStorageSql;
+import com.tamrielnetwork.gbooster.storage.PlayerStorageYaml;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -42,6 +53,7 @@ public final class GBooster extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+
 		generateConfig();
 
 		registerListeners();
@@ -70,12 +82,14 @@ public final class GBooster extends JavaPlugin {
 
 	@Override
 	public void onDisable() {
+
 		playerStorage.savePlayers();
 		boostersStorage.saveBoosters();
 		Bukkit.getLogger().info("GBooster v" + this.getDescription().getVersion() + " disabled");
 	}
 
 	private void registerListeners() {
+
 		if (getServer().getPluginManager().getPlugin("Jobs") != null) {
 			Bukkit.getLogger().info("Found Jobs! - Registering listeners!");
 			getServer().getPluginManager().registerEvents(new JobsExpGain(), this);
@@ -96,6 +110,7 @@ public final class GBooster extends JavaPlugin {
 	}
 
 	private void generateConfig() {
+
 		File config = new File(getDataFolder(), "config.yml");
 		if (!config.exists()) {
 			saveDefaultConfig();
@@ -103,6 +118,7 @@ public final class GBooster extends JavaPlugin {
 	}
 
 	private void setupStorage() {
+
 		String storageSystem = getConfig().getString("storage-system");
 
 		if (Objects.requireNonNull(storageSystem).equalsIgnoreCase("mysql")) {
@@ -115,32 +131,40 @@ public final class GBooster extends JavaPlugin {
 	}
 
 	public void startSaveTask() {
+
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
+
 				playerStorage.savePlayers();
 			}
 		}.runTaskTimer(this, getConfig().getInt("saving-time") * 20L, getConfig().getInt("saving-time") * 20L);
 	}
 
 	public BoostersManager getBoostersManager() {
+
 		return boostersManager;
 	}
 
 	public BoostersStorage getActiveBoostersManager() {
+
 		return boostersStorage;
 	}
 
 	public PlayerStorage getPlayerStorage() {
+
 		return playerStorage;
 	}
 
 	public BoosterBar getBoosterBar() {
+
 		return boosterBar;
 	}
 
 	public Messages getMessages() {
+
 		return messages;
 	}
+
 }
