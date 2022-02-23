@@ -33,7 +33,7 @@ public class CmdSpec {
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, int length, Booster booster, BoosterPlayer boosterPlayer) {
 
-		switch (args[0]) {
+		switch (args[0].toLowerCase()) {
 			case "give":
 				if (Cmd.isNotPermitted(sender, perm)) {
 					return true;
