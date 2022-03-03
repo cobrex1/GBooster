@@ -68,6 +68,7 @@ public class PlayerStorageYaml extends PlayerStorage {
 
 		for (String key : playersConf.getKeys(false)) {
 			playersConf.set(key, null);
+			save();
 		}
 	}
 
