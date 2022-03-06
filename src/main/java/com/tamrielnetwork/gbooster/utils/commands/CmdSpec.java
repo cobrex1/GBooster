@@ -131,10 +131,10 @@ public class CmdSpec {
 
 	private static boolean hasBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer, @NotNull Booster booster) {
 
-		if (!boosterPlayer.takeBooster(booster)) {
-			Chat.sendMessage(sender, "no-booster");
+		if (boosterPlayer.takeBooster(booster)) {
 			return true;
 		}
+		Chat.sendMessage(sender, "no-booster");
 		return false;
 	}
 
