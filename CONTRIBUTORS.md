@@ -4,7 +4,7 @@
 
 * [Manu](https://github.com/zManu27/)
 
-### Additions and fixes
+### Additions & Fixes
 
 * [Cobrex1](https://github.com/cobrex1/)
 * [Romvnly-Gaming](https://github.com/Romvnly-Gaming)
