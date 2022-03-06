@@ -94,12 +94,11 @@ public class GBoosterCmd implements TabExecutor {
 		}
 
 		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
-			Bukkit.getPluginManager().callEvent(boosterActivateEvent);
-		});
+		Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> Bukkit.getPluginManager().callEvent(boosterActivateEvent));
 
-		if (boosterActivateEvent.isCancelled())
+		if (boosterActivateEvent.isCancelled()) {
 			return;
+		}
 
 		main.getActiveBoostersManager().activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
