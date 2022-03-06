@@ -20,6 +20,7 @@ package com.tamrielnetwork.gbooster.commands;
 
 import com.google.common.collect.ImmutableMap;
 import com.tamrielnetwork.gbooster.GBooster;
+import com.tamrielnetwork.gbooster.api.BoosterActivateEvent;
 import com.tamrielnetwork.gbooster.boosters.Booster;
 import com.tamrielnetwork.gbooster.player.BoosterPlayer;
 import com.tamrielnetwork.gbooster.utils.Chat;
@@ -91,6 +92,14 @@ public class GBoosterCmd implements TabExecutor {
 		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.use", 2, booster, boosterPlayer)) {
 			return;
 		}
+
+		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
+		Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+			Bukkit.getPluginManager().callEvent(boosterActivateEvent);
+		});
+
+		if (boosterActivateEvent.isCancelled())
+			return;
 
 		main.getActiveBoostersManager().activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
