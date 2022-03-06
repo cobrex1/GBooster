@@ -4,10 +4,11 @@
 
 * [Manu](https://github.com/zManu27/)
 
-### Fixes
+### Additions and fixes
 
 * [Cobrex1](https://github.com/cobrex1/)
 * [Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+* [JustinDevB](https://github.com/JustinDevB)
 
 ### README.md
 

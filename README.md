@@ -220,8 +220,9 @@ Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://github.com/zManu27/)
-* [Fixes - Cobrex1](https://github.com/cobrex1/)
-* [Fixes - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+* [Additions and Fixes - Cobrex1](https://github.com/cobrex1/)
+* [Additions and Fixes - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+* [Additions and Fixes - JustinDevB](https://github.com/JustinDevB)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
