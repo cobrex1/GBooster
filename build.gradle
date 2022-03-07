@@ -55,7 +55,7 @@ processResources {
 
 sonarqube {
     properties {
-        property "sonar.projectKey", "TamrielNetwork_DropConfirm"
+        property "sonar.projectKey", "TamrielNetwork_GBooster"
         property "sonar.organization", "tamrielnetwork"
         property "sonar.host.url", "https://sonarcloud.io"
     }
