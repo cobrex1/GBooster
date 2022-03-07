@@ -50,7 +50,7 @@ public class SqlManager {
 		enableConnection();
 
 		try (PreparedStatement statementPlayersTable = SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
-		     PreparedStatement statementBoostersTable = SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")){
+		     PreparedStatement statementBoostersTable = SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")) {
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
 		} catch (SQLException ignored) {
