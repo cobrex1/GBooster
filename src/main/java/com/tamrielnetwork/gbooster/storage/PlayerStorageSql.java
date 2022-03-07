@@ -59,7 +59,7 @@ public class PlayerStorageSql extends PlayerStorage {
 				}
 			}
 		} catch (SQLException ignored) {
-			Bukkit.getLogger().info(SQLEXCEPTION);
+			Bukkit.getLogger().warning(SQLEXCEPTION);
 		}
 	}
 
@@ -78,7 +78,7 @@ public class PlayerStorageSql extends PlayerStorage {
 					insertStatement.setInt(4, boosterEntry.getValue());
 					insertStatement.executeUpdate();
 				} catch (SQLException ignored) {
-					Bukkit.getLogger().info(SQLEXCEPTION);
+					Bukkit.getLogger().warning(SQLEXCEPTION);
 				}
 			}
 		}
@@ -90,7 +90,7 @@ public class PlayerStorageSql extends PlayerStorage {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE PlayersBoosters")) {
 			truncateStatement.executeUpdate();
 		} catch (SQLException ignored) {
-			Bukkit.getLogger().info(SQLEXCEPTION);
+			Bukkit.getLogger().warning(SQLEXCEPTION);
 		}
 	}
 

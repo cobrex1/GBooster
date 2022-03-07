@@ -54,7 +54,7 @@ public class SqlManager {
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
 		} catch (SQLException ignored) {
-			Bukkit.getLogger().info(SQLEXCEPTION);
+			Bukkit.getLogger().warning(SQLEXCEPTION);
 		}
 	}
 
@@ -79,7 +79,7 @@ public class SqlManager {
 
 			main.getLogger().info("Connected successfully with the database!");
 		} catch (SQLException ignored) {
-			Bukkit.getLogger().info(SQLEXCEPTION);
+			Bukkit.getLogger().warning(SQLEXCEPTION);
 		}
 	}
 
