@@ -19,6 +19,7 @@
 package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.boosters.Booster;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -29,6 +30,7 @@ import java.util.Objects;
 
 public class BoosterStorageYaml extends BoostersStorage {
 
+	private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
 	private final File boostersFile;
 	private final FileConfiguration boostersConf;
 
@@ -83,8 +85,8 @@ public class BoosterStorageYaml extends BoostersStorage {
 
 		try {
 			boostersConf.save(boostersFile);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ignored) {
+			Bukkit.getLogger().info(IOEXCEPTION);
 		}
 	}
 

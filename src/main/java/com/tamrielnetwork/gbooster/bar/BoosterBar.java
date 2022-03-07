@@ -69,7 +69,7 @@ public class BoosterBar {
 			bar.setVisible(true);
 			bar.setTitle(getTitle());
 
-		}, 0, 20 * 5);
+		}, 0, 20 * 5L);
 	}
 
 	private String getTitle() {

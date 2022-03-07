@@ -19,16 +19,19 @@
 package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.player.BoosterPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Map;
 import java.util.Objects;
 
 public class PlayerStorageYaml extends PlayerStorage {
 
+	private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
 	private final File playersFile;
 	private final FileConfiguration playersConf;
 
@@ -76,8 +79,8 @@ public class PlayerStorageYaml extends PlayerStorage {
 
 		try {
 			playersConf.save(playersFile);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ignored) {
+			Bukkit.getLogger().info(IOEXCEPTION);
 		}
 	}
 
