@@ -20,6 +20,7 @@ package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.boosters.Booster;
 import com.tamrielnetwork.gbooster.storage.mysql.SqlManager;
+import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +28,8 @@ import java.sql.SQLException;
 import java.util.Map;
 
 public class BoosterStorageSql extends BoostersStorage {
+
+	private static final String SQLEXCEPTION = "GBooster encountered an SQLException while executing task";
 
 	@Override
 	public void loadBoosters() {
@@ -43,8 +46,8 @@ public class BoosterStorageSql extends BoostersStorage {
 					activeBoosters.put(booster, rs.getLong(2));
 				}
 			}
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
+		} catch (SQLException ignored) {
+			Bukkit.getLogger().info(SQLEXCEPTION);
 		}
 	}
 
@@ -58,8 +61,8 @@ public class BoosterStorageSql extends BoostersStorage {
 				insertStatement.setString(1, entry.getKey().getId());
 				insertStatement.setLong(2, entry.getValue());
 				insertStatement.executeUpdate();
-			} catch (SQLException throwables) {
-				throwables.printStackTrace();
+			} catch (SQLException ignored) {
+				Bukkit.getLogger().info(SQLEXCEPTION);
 			}
 		}
 	}
@@ -69,8 +72,8 @@ public class BoosterStorageSql extends BoostersStorage {
 
 		try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE Boosters")) {
 			truncateStatement.executeUpdate();
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
+		} catch (SQLException ignored) {
+			Bukkit.getLogger().info(SQLEXCEPTION);
 		}
 	}
 

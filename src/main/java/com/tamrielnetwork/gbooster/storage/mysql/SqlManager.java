@@ -19,6 +19,7 @@
 package com.tamrielnetwork.gbooster.storage.mysql;
 
 import com.tamrielnetwork.gbooster.GBooster;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,10 +30,14 @@ import java.sql.SQLException;
 
 public class SqlManager {
 
+	private static final String SQLEXCEPTION = "GBooster encountered an SQLException while executing task";
 	private static Connection connection;
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 	private final int port;
-	private final String host, database, username, password;
+	private final String host;
+	private final String database;
+	private final String username;
+	private final String password;
 
 	public SqlManager() {
 
@@ -44,15 +49,12 @@ public class SqlManager {
 
 		enableConnection();
 
-		try {
-			PreparedStatement statementPlayersTable = SqlManager.getConnection()
-					.prepareStatement("CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
-			PreparedStatement statementBoostersTable = SqlManager.getConnection()
-					.prepareStatement("CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)");
+		try (PreparedStatement statementPlayersTable = SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
+		     PreparedStatement statementBoostersTable = SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")){
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ignored) {
+			Bukkit.getLogger().info(SQLEXCEPTION);
 		}
 	}
 
@@ -73,12 +75,11 @@ public class SqlManager {
 				return;
 			}
 
-			Class.forName("com.mysql.jdbc.Driver");
 			setConnection(DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password));
 
 			main.getLogger().info("Connected successfully with the database!");
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException ignored) {
+			Bukkit.getLogger().info(SQLEXCEPTION);
 		}
 	}
 
