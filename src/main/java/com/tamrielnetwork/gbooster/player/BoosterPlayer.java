@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -37,7 +38,7 @@ public class BoosterPlayer {
 	private final String name;
 	private final UUID uuid;
 	private final Map<String, Integer> boostersStorage = new HashMap<>();
-	private final Map<BoosterType, Long> boostersCountdown = new HashMap<>();
+	private final EnumMap<BoosterType, Long> boostersCountdown = new EnumMap<>(BoosterType.class);
 
 	public BoosterPlayer(@NotNull UUID uuid, @NotNull String name) {
 

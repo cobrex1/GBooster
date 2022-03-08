@@ -31,37 +31,21 @@ public class CmdSpec {
 
 	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
+	private CmdSpec() {
+
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, int length, Booster booster, BoosterPlayer boosterPlayer) {
 
 		switch (args[0].toLowerCase()) {
 			case "give":
-				if (Cmd.isNotPermitted(sender, perm)) {
-					return true;
-				}
-				if (Cmd.isArgsLengthNotEqualTo(sender, args, length)) {
-					return true;
-				}
-				if (isInvalidBooster(sender, booster)) {
-					return true;
-				}
-				if (isInvalidNumber(sender, args[3])) {
+				if (Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length) || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])) {
 					return true;
 				}
 				return isInvalidBoosterPlayer(sender, boosterPlayer);
 			case "use":
-				if (Cmd.isNotPermitted(sender, perm)) {
-					return true;
-				}
-				if (Cmd.isArgsLengthNotEqualTo(sender, args, length)) {
-					return true;
-				}
-				if (isInvalidBooster(sender, booster)) {
-					return true;
-				}
-				if (isOnCountdown(sender, boosterPlayer, booster)) {
-					return true;
-				}
-				if (exceedsLimit(sender, booster)) {
+				if (Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length) || isInvalidBooster(sender, booster) || isOnCountdown(sender, boosterPlayer, booster) || exceedsLimit(sender, booster)) {
 					return true;
 				}
 				return !hasBooster(sender, boosterPlayer, booster);

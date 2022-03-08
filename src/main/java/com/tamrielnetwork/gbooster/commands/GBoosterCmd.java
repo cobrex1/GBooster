@@ -41,20 +41,25 @@ import java.util.Objects;
 
 public class GBoosterCmd implements TabExecutor {
 
+	private static final String GBOOSTER_GIVE = "gbooster.give";
+	private static final String GBOOSTER_USE = "gbooster.use";
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
 		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 4)) {
-			return true;
+			return false;
 		}
 
 		switch (args[0].toLowerCase()) {
 			case "give" -> doGive(sender, args);
 			case "use" -> doUse(sender, args);
 			case "time" -> doTime(sender, args);
-			default -> Chat.sendMessage(sender, "cmd");
+			default -> {
+				Chat.sendMessage(sender, "cmd");
+				return false;
+			}
 		}
 		return true;
 	}
@@ -64,7 +69,7 @@ public class GBoosterCmd implements TabExecutor {
 		Booster booster = main.getBoostersManager().getBoosterById(args[2]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
 
-		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.give", 4, booster, boosterPlayer)) {
+		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_GIVE, 4, booster, boosterPlayer)) {
 			return;
 		}
 
@@ -89,7 +94,7 @@ public class GBoosterCmd implements TabExecutor {
 		Booster booster = main.getBoostersManager().getBoosterById(args[1]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByUUID(senderPlayer.getUniqueId());
 
-		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.use", 2, booster, boosterPlayer)) {
+		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, 2, booster, boosterPlayer)) {
 			return;
 		}
 
@@ -123,10 +128,10 @@ public class GBoosterCmd implements TabExecutor {
 
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
-			if (sender.hasPermission("gbooster.give")) {
+			if (sender.hasPermission(GBOOSTER_GIVE)) {
 				tabComplete.add("give");
 			}
-			if (sender.hasPermission("gbooster.use")) {
+			if (sender.hasPermission(GBOOSTER_USE)) {
 				tabComplete.add("use");
 			}
 			if (sender.hasPermission("gbooster.time")) {
@@ -137,7 +142,7 @@ public class GBoosterCmd implements TabExecutor {
 			List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig().getConfigurationSection("boosters")).getKeys(false));
 			switch (args[0]) {
 				case "give":
-					if (sender.hasPermission("gbooster.give")) {
+					if (sender.hasPermission(GBOOSTER_GIVE)) {
 						switch (args.length) {
 							case 3 -> tabComplete.addAll(keys);
 							case 4 -> tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
@@ -146,7 +151,7 @@ public class GBoosterCmd implements TabExecutor {
 					}
 					break;
 				case "use":
-					if (sender.hasPermission("gbooster.use") && args.length == 2) {
+					if (sender.hasPermission(GBOOSTER_USE) && args.length == 2) {
 						tabComplete.addAll(keys);
 					}
 					break;

@@ -36,6 +36,11 @@ public class Chat {
 
 	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
+	private Chat() {
+
+		throw new IllegalStateException("Utility class");
+	}
+
 	public static void sendMessage(@NotNull CommandSender player, @NotNull Map<String, String> placeholders, @NotNull String message) {
 
 		List<String> messages = getMessages(message);
