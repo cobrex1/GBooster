@@ -68,7 +68,7 @@ public class BoosterActivateEvent extends Event implements Cancellable {
 
 	public @NotNull HandlerList getHandlers() {
 
-		return HANDLERS;
+		return getHandlerList();
 	}
 
 }

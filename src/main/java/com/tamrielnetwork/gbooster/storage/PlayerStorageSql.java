@@ -44,23 +44,28 @@ public class PlayerStorageSql extends PlayerStorage {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 
-					if (main.getBoostersManager().isBooster(rs.getString(3))) {
-						continue;
-					}
-
-					BoosterPlayer boosterPlayer = getBoosterPlayerByUUID(UUID.fromString(rs.getString(1)));
-
-					if (boosterPlayer == null) {
-						boosterPlayers.add(new BoosterPlayer(rs));
-						continue;
-					}
-
-					boosterPlayer.getBoostersStorage().put(rs.getString(3), rs.getInt(4));
+					manageStorage(rs);
 				}
 			}
 		} catch (SQLException ignored) {
 			Bukkit.getLogger().warning(SQLEXCEPTION);
 		}
+	}
+
+	private void manageStorage(ResultSet rs) throws SQLException {
+
+		if (main.getBoostersManager().isBooster(rs.getString(3))) {
+			return;
+		}
+
+		BoosterPlayer boosterPlayer = getBoosterPlayerByUUID(UUID.fromString(rs.getString(1)));
+
+		if (boosterPlayer == null) {
+			boosterPlayers.add(new BoosterPlayer(rs));
+			return;
+		}
+
+		boosterPlayer.getBoostersStorage().put(rs.getString(3), rs.getInt(4));
 	}
 
 	@Override

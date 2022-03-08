@@ -36,6 +36,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class GBoosterCmd implements TabExecutor {
@@ -78,10 +79,10 @@ public class GBoosterCmd implements TabExecutor {
 		boosterPlayer.addBooster(booster.getId(), amount);
 
 		if (onlineBoosterPlayer != null) {
-			Chat.sendMessage(onlineBoosterPlayer, java.util.Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()), "receive-boosters");
+			Chat.sendMessage(onlineBoosterPlayer, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()), "receive-boosters");
 		}
 
-		Chat.sendMessage(sender, java.util.Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
+		Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
@@ -106,7 +107,7 @@ public class GBoosterCmd implements TabExecutor {
 
 		main.getActiveBoostersManager().activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
-		Chat.sendBroadcast(java.util.Map.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
+		Chat.sendBroadcast(Map.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
 	}
 
 	private void doTime(@NotNull CommandSender sender, @NotNull String[] args) {
@@ -119,7 +120,7 @@ public class GBoosterCmd implements TabExecutor {
 			Chat.sendMessage(sender, "no-active-booster");
 			return;
 		}
-		Chat.sendMessage(sender, java.util.Map.of("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())), "booster-timer");
+		Chat.sendMessage(sender, Map.of("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())), "booster-timer");
 	}
 
 	@Override
@@ -127,26 +128,18 @@ public class GBoosterCmd implements TabExecutor {
 
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
-			if (sender.hasPermission(GBOOSTER_GIVE)) {
-				tabComplete.add("give");
-			}
-			if (sender.hasPermission(GBOOSTER_USE)) {
-				tabComplete.add("use");
-			}
-			if (sender.hasPermission("gbooster.time")) {
-				tabComplete.add("time");
-			}
+			tabCompleteFirstArg(sender, tabComplete);
 		}
 		if (args.length > 1) {
 			List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig().getConfigurationSection("boosters")).getKeys(false));
 			switch (args[0]) {
 				case "give":
 					if (sender.hasPermission(GBOOSTER_GIVE)) {
-						switch (args.length) {
-							case 3 -> tabComplete.addAll(keys);
-							case 4 -> tabComplete.addAll(List.of(new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"}));
-							default -> tabComplete = null;
-						}
+						return switch (args.length) {
+							case 3 -> keys;
+							case 4 -> List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
+							default -> null;
+						};
 					}
 					break;
 				case "use":
@@ -160,6 +153,19 @@ public class GBoosterCmd implements TabExecutor {
 			}
 		}
 		return tabComplete;
+	}
+
+	private void tabCompleteFirstArg(@NotNull CommandSender sender, @NotNull List<String> tabComplete) {
+
+		if (sender.hasPermission(GBOOSTER_GIVE)) {
+			tabComplete.add("give");
+		}
+		if (sender.hasPermission(GBOOSTER_USE)) {
+			tabComplete.add("use");
+		}
+		if (sender.hasPermission("gbooster.time")) {
+			tabComplete.add("time");
+		}
 	}
 
 }
