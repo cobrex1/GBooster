@@ -45,7 +45,8 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
-        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#configuration - config.yml">Configuration</a></li>
+        <li><a href="#configuration - messages.yml">Configuration</a></li>
         <li><a href="#placeholders">Placeholders</a></li>
         <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
       </ul>
@@ -107,7 +108,7 @@ To get the plugin running on your server follow these simple steps.
 * Command: `/gbooster time`
 * Description: Shows time of booster that ends next
 
-### Configuration
+### Configuration - config.yml
 
 ```
 #---------------------------------------------------------------#
@@ -163,6 +164,28 @@ boosters:
     # Don't use floating-point numbers for type minecraft!
     multiplier: 2
     duration: 3600
+```
+
+### Configuration - messages.yml
+
+```
+cmd: "&fUsage: &b/gbooster use &3<booster>"
+give-boosters: "&fYou gave %amount% %booster% to %player%"
+# Comment line (#) below and uncomment the one below that to get a message!
+receive-boosters: [ ]
+#receive-boosters: "&aYou got &c%amount%x &b%booster%"
+active-booster: "&aYou just activated a booster"
+active-booster-broadcast: "&b%player%&a just activated a booster"
+no-active-booster: "&cThere is no active booster!"
+booster-timer: "&fNext booster ends in &b%duration%&f minutes."
+no-perms: "&cYou don't have enough permissions!"
+player-only: "&cThis command can only be executed by players!"
+invalid-player: "&cInvalid player!"
+invalid-booster: "&cID doesn't exist!"
+invalid-amount: "&cInvalid amount!"
+countdown-active: "&cYou can only use the same type of booster once every hour!"
+limit: "&cThe global limit has been reached!"
+no-booster: "&cYou don't have a booster of this type!"
 ```
 
 ### Placeholders
