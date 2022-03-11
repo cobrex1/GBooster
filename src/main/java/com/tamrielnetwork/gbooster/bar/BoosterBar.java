@@ -21,6 +21,7 @@ package com.tamrielnetwork.gbooster.bar;
 import com.tamrielnetwork.gbooster.GBooster;
 import com.tamrielnetwork.gbooster.boosters.BoosterType;
 import com.tamrielnetwork.gbooster.utils.Chat;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -51,7 +52,10 @@ public class BoosterBar {
 			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
 				if (main.getConfig().getBoolean("empty-bar")) {
-					bar.setTitle(Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("default-bar-message"))));
+
+					String defaultBarMessage = main.getConfig().getString("default-bar-message");
+					bar.setTitle(Chat.replaceColors(Objects.requireNonNull(defaultBarMessage)));
+
 				} else {
 					bar.setVisible(false);
 				}
@@ -73,13 +77,25 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
+		String title = main.getConfig().getString("bar-pattern");
 
-		return Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
+		title = Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
 				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
 				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
 				.replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
 				.replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)) * 100)))
 				.replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
+
+		if (bar != null) {
+			if(bar.getPlayers().size() > 0) {
+				Player somePlayer = bar.getPlayers().get(0);
+				if (somePlayer != null) {
+					title = PlaceholderAPI.setPlaceholders(somePlayer, title);
+				}
+			}
+		}
+
+		return title;
 	}
 
 	public BossBar getBar() {
