@@ -76,9 +76,11 @@ public class GBoosterCmd
 		Player onlineBoosterPlayer = Bukkit.getPlayer(boosterPlayer.getUuid());
 		boosterPlayer.addBooster(booster.getId(), amount);
 		if (onlineBoosterPlayer != null) {
-			Chat.sendMessage(onlineBoosterPlayer, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()), "receive-boosters");
+			Chat.sendMessage(onlineBoosterPlayer, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()),
+			                 "receive-boosters");
 		}
-		Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
+		Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%",
+		                                boosterPlayer.getName()), "give-boosters");
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
@@ -121,8 +123,8 @@ public class GBoosterCmd
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
-	                                            @NotNull String alias, @NotNull String[] args) {
+	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias,
+	                                            @NotNull String[] args) {
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
 			tabCompleteFirstArg(sender, tabComplete);

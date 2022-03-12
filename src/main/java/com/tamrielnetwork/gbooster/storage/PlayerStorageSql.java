@@ -74,7 +74,8 @@ public class PlayerStorageSql
 			for (Map.Entry<String, Integer> boosterEntry : boosterPlayer.getBoostersStorage()
 			                                                            .entrySet()) {
 				try (PreparedStatement insertStatement = SqlManager.getConnection()
-				                                                   .prepareStatement("INSERT INTO PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
+				                                                   .prepareStatement(
+						                                                   "INSERT INTO PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
 					insertStatement.setString(1, boosterPlayer.getUuid()
 					                                          .toString());
 					insertStatement.setString(2, boosterPlayer.getName());

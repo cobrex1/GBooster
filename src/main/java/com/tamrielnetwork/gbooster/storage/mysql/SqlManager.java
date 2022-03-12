@@ -52,9 +52,11 @@ public class SqlManager {
 		                    .getString("mysql.password");
 		enableConnection();
 		try (PreparedStatement statementPlayersTable = SqlManager.getConnection()
-		                                                         .prepareStatement("CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
+		                                                         .prepareStatement(
+				                                                         "CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
 		     PreparedStatement statementBoostersTable = SqlManager.getConnection()
-		                                                          .prepareStatement("CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")) {
+		                                                          .prepareStatement(
+				                                                          "CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")) {
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
 		}
@@ -77,7 +79,8 @@ public class SqlManager {
 			if (getConnection() != null && !getConnection().isClosed()) {
 				return;
 			}
-			setConnection(DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password));
+			setConnection(
+					DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password));
 			main.getLogger()
 			    .info("Connected successfully with the database!");
 		}

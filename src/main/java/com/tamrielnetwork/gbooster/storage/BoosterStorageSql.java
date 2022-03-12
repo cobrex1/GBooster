@@ -58,7 +58,8 @@ public class BoosterStorageSql
 		clear();
 		for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
 			try (PreparedStatement insertStatement = SqlManager.getConnection()
-			                                                   .prepareStatement("INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
+			                                                   .prepareStatement(
+					                                                   "INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
 				insertStatement.setString(1, entry.getKey()
 				                                  .getId());
 				insertStatement.setLong(2, entry.getValue());
