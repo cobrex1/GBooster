@@ -48,7 +48,6 @@ public class BoosterBar {
 
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
 
-			// Check if there are no active boosters
 			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
 
 				if (main.getConfig().getBoolean("empty-bar")) {
@@ -77,21 +76,18 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
-		String title = main.getConfig().getString("bar-pattern");
 
-		title = Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
+		String title = Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
 				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
 				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
 				.replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
 				.replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)) * 100)))
 				.replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
 
-		if (bar != null) {
-			if(bar.getPlayers().size() > 0) {
-				Player somePlayer = bar.getPlayers().get(0);
-				if (somePlayer != null) {
-					title = PlaceholderAPI.setPlaceholders(somePlayer, title);
-				}
+		if (bar != null && !bar.getPlayers().isEmpty()) {
+			Player player = bar.getPlayers().get(0);
+			if (player != null) {
+				title = PlaceholderAPI.setPlaceholders(player, title);
 			}
 		}
 
