@@ -38,7 +38,8 @@ public class JobsExpGain
 		        .getJobsBooster() >= 1) {
 			event.setExp((event.getExp() / main.getActiveBoostersManager()
 			                                   .getJobsBooster()) * main.getActiveBoostersManager()
-			                                                            .getBoosterMultiplier(BoosterType.JOBS_XP, true));
+			                                                            .getBoosterMultiplier(BoosterType.JOBS_XP,
+			                                                                                  true));
 		}
 		else {
 			event.setExp(event.getExp() * main.getActiveBoostersManager()

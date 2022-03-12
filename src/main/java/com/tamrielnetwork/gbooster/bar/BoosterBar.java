@@ -75,17 +75,18 @@ public class BoosterBar {
 		                                                             .getString("bar-pattern"))
 		                                         .replace("%minecraft%", String.valueOf(Math.round(
 				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
-		                                         .replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager()
-		                                                                                            .getBoosterMultiplier(
-				                                                                                            BoosterType.MCMMO,
-				                                                                                            false)) * 100)))
+				                                              .getBoosterMultiplier(BoosterType.MINECRAFT, false))
+				                                         * 100)))
+		                                         .replace("%mcmmo%", String.valueOf(Math.round(
+				                                         (main.getActiveBoostersManager()
+				                                              .getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
 		                                         .replace("%jobs_xp%", String.valueOf(Math.round(
 				                                         (main.getActiveBoostersManager()
 				                                              .getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
 		                                         .replace("%jobs_money%", String.valueOf(Math.round(
 				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.JOBS_MONEY, true)) * 100)))
+				                                              .getBoosterMultiplier(BoosterType.JOBS_MONEY, true))
+				                                         * 100)))
 		                                         .replace("%duration%", String.valueOf(main.getActiveBoostersManager()
 		                                                                                   .getMostOldBoosterInMinutes())));
 		if (bar != null && !bar.getPlayers()

@@ -61,7 +61,8 @@ public abstract class BoostersStorage {
 
 	public boolean canUseBooster(@NotNull Booster booster) {
 		double totalAmount = getBoosterMultiplier(booster.getBoosterType(),
-		                                          booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);
+		                                          booster.getBoosterType() == BoosterType.JOBS_MONEY
+		                                          || booster.getBoosterType() == BoosterType.JOBS_XP);
 		return totalAmount + booster.getMultiplier() <= 8;
 	}
 

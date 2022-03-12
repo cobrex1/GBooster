@@ -44,7 +44,8 @@ public class PlayerStorageYaml
 	@Override
 	public void loadPlayers() {
 		for (String key : playersConf.getKeys(false)) {
-			boosterPlayers.add(new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
+			boosterPlayers.add(
+					new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
 		}
 	}
 

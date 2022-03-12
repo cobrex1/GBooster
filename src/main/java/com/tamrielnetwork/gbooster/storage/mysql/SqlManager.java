@@ -79,8 +79,8 @@ public class SqlManager {
 			if (getConnection() != null && !getConnection().isClosed()) {
 				return;
 			}
-			setConnection(
-					DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password));
+			setConnection(DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username,
+			                                          password));
 			main.getLogger()
 			    .info("Connected successfully with the database!");
 		}
