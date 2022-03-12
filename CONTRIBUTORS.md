@@ -6,9 +6,10 @@
 
 ### Additions & Fixes
 
-* [Cobrex1](https://github.com/cobrex1/)
-* [Romvnly-Gaming](https://github.com/Romvnly-Gaming)
-* [JustinDevB](https://github.com/JustinDevB)
+* [McMMO & Jobs softdepend - Cobrex1](https://github.com/cobrex1/)
+* [Various dependency updates - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+* [BoosterActivateEvent - JustinDevB](https://github.com/JustinDevB)
+* [PAPI parsing BossBar - benlmyers](https://github.com/benlmyers)
 
 ### README.md
 
