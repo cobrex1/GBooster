@@ -25,49 +25,42 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class BoosterExpansion extends PlaceholderExpansion {
+public class BoosterExpansion
+		extends PlaceholderExpansion {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@Override
 	public boolean canRegister() {
-
 		return true;
 	}
 
 	@Override
 	public @NotNull String getAuthor() {
-
 		return "Manu, Tamriel Network";
 	}
 
 	@Override
 	public @NotNull String getIdentifier() {
-
 		return "GBooster";
 	}
 
 	@Override
 	public @NotNull String getVersion() {
-
 		return "1.3.2";
 	}
 
 	@Override
 	public String onRequest(@NotNull OfflinePlayer player, @NotNull String identifier) {
-
-		for (Booster booster : main.getBoostersManager().getBoosters()) {
+		for (Booster booster : main.getBoostersManager()
+		                           .getBoosters()) {
 			if (identifier.equals(booster.getId())) {
-
-				return String.valueOf(
-						main.getPlayerStorage()
-								.getBoosterPlayerByUUID(player.getUniqueId())
-								.getBoostersStorage()
-								.getOrDefault(identifier, 0));
+				return String.valueOf(main.getPlayerStorage()
+				                          .getBoosterPlayerByUUID(player.getUniqueId())
+				                          .getBoostersStorage()
+				                          .getOrDefault(identifier, 0));
 			}
 		}
-
 		return "0";
 	}
-
 }

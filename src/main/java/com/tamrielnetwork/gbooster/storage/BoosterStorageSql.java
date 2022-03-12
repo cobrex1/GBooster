@@ -27,54 +27,59 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class BoosterStorageSql extends BoostersStorage {
+public class BoosterStorageSql
+		extends BoostersStorage {
 
 	private static final String SQLEXCEPTION = "GBooster encountered an SQLException while executing task";
 
 	@Override
 	public void loadBoosters() {
-
-		try (PreparedStatement selectStatement = SqlManager.getConnection().prepareStatement("SELECT * FROM Boosters")) {
+		try (PreparedStatement selectStatement = SqlManager.getConnection()
+		                                                   .prepareStatement("SELECT * FROM Boosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
-
-					Booster booster = main.getBoostersManager().getBoosterById(rs.getString(1));
-
-					if (booster == null)
+					Booster booster = main.getBoostersManager()
+					                      .getBoosterById(rs.getString(1));
+					if (booster == null) {
 						continue;
-
+					}
 					activeBoosters.put(booster, rs.getLong(2));
 				}
 			}
-		} catch (SQLException ignored) {
-			Bukkit.getLogger().warning(SQLEXCEPTION);
+		}
+		catch (SQLException ignored) {
+			Bukkit.getLogger()
+			      .warning(SQLEXCEPTION);
 		}
 	}
 
 	@Override
 	public void saveBoosters() {
-
 		clear();
-
 		for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
-			try (PreparedStatement insertStatement = SqlManager.getConnection().prepareStatement("INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
-				insertStatement.setString(1, entry.getKey().getId());
+			try (PreparedStatement insertStatement = SqlManager.getConnection()
+			                                                   .prepareStatement("INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
+				insertStatement.setString(1, entry.getKey()
+				                                  .getId());
 				insertStatement.setLong(2, entry.getValue());
 				insertStatement.executeUpdate();
-			} catch (SQLException ignored) {
-				Bukkit.getLogger().warning(SQLEXCEPTION);
+			}
+			catch (SQLException ignored) {
+				Bukkit.getLogger()
+				      .warning(SQLEXCEPTION);
 			}
 		}
 	}
 
 	@Override
 	public void clear() {
-
-		try (PreparedStatement truncateStatement = SqlManager.getConnection().prepareStatement("TRUNCATE TABLE Boosters")) {
+		try (PreparedStatement truncateStatement = SqlManager.getConnection()
+		                                                     .prepareStatement("TRUNCATE TABLE Boosters")) {
 			truncateStatement.executeUpdate();
-		} catch (SQLException ignored) {
-			Bukkit.getLogger().warning(SQLEXCEPTION);
+		}
+		catch (SQLException ignored) {
+			Bukkit.getLogger()
+			      .warning(SQLEXCEPTION);
 		}
 	}
-
 }

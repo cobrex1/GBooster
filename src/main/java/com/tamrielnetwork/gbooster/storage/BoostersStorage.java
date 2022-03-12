@@ -41,71 +41,58 @@ public abstract class BoostersStorage {
 	public abstract void clear();
 
 	public void activateBooster(@NotNull Booster booster) {
-
 		activeBoosters.put(booster, System.currentTimeMillis());
 	}
 
 	public double getBoosterMultiplier(@NotNull BoosterType boosterType, boolean addJobsBooster) {
-
 		double totalMultiplier = 0;
-
-		if (addJobsBooster)
+		if (addJobsBooster) {
 			totalMultiplier += jobsBooster;
-
+		}
 		for (Booster booster : activeBoosters.keys()) {
-
 			if (booster.getBoosterType() == boosterType) {
 				totalMultiplier += booster.getMultiplier();
 			}
 		}
-
-		return totalMultiplier == 0 ? 1 : totalMultiplier;
+		return totalMultiplier == 0
+		       ? 1
+		       : totalMultiplier;
 	}
 
 	public boolean canUseBooster(@NotNull Booster booster) {
-
-		double totalAmount = getBoosterMultiplier(booster.getBoosterType(),
-				booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);
-
+		double totalAmount = getBoosterMultiplier(booster.getBoosterType(), booster.getBoosterType() == BoosterType.JOBS_MONEY || booster.getBoosterType() == BoosterType.JOBS_XP);
 		return totalAmount + booster.getMultiplier() <= 8;
 	}
 
 	public int getMostOldBoosterInMinutes() {
-
 		long mostOldBoosterCountdown = Long.MAX_VALUE;
-
-		for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()) {
-
-			long boosterCountdown = entry.getKey().getDuration() * 1000L + entry.getValue();
-
+		for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters)
+		                                                       .entries()) {
+			long boosterCountdown = entry.getKey()
+			                             .getDuration() * 1000L + entry.getValue();
 			if (boosterCountdown <= System.currentTimeMillis()) {
 				activeBoosters.remove(entry.getKey(), entry.getValue());
 				continue;
 			}
-
 			if (mostOldBoosterCountdown > boosterCountdown) {
 				mostOldBoosterCountdown = boosterCountdown;
 			}
 		}
-
-		if (mostOldBoosterCountdown == Long.MAX_VALUE) return 0;
-
+		if (mostOldBoosterCountdown == Long.MAX_VALUE) {
+			return 0;
+		}
 		return ((int) ((mostOldBoosterCountdown - System.currentTimeMillis()) / 1000 / 60)) + 1;
 	}
 
 	public Multimap<Booster, Long> getActiveBoosters() {
-
 		return activeBoosters;
 	}
 
 	public void addJobsBooster(double jobsBooster) {
-
 		this.jobsBooster += jobsBooster;
 	}
 
 	public double getJobsBooster() {
-
 		return jobsBooster;
 	}
-
 }

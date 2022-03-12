@@ -32,12 +32,11 @@ public class CmdSpec {
 	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	private CmdSpec() {
-
 		throw new IllegalStateException("Utility class");
 	}
 
-	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, int length, Booster booster, BoosterPlayer boosterPlayer) {
-
+	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
+	                                   int length, Booster booster, BoosterPlayer boosterPlayer) {
 		switch (args[0].toLowerCase()) {
 			case "give":
 				if (Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length) || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])) {
@@ -54,8 +53,8 @@ public class CmdSpec {
 		}
 	}
 
-	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm, int length) {
-
+	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
+	                                   int length) {
 		if (Cmd.isNotPermitted(sender, perm)) {
 			return true;
 		}
@@ -63,27 +62,22 @@ public class CmdSpec {
 	}
 
 	private static boolean isInvalidBoosterPlayer(@NotNull CommandSender sender, BoosterPlayer boosterPlayer) {
-
 		if (boosterPlayer == null) {
 			Chat.sendMessage(sender, "invalid-player");
 			return true;
 		}
-
 		return false;
 	}
 
 	private static boolean isInvalidBooster(@NotNull CommandSender sender, Booster booster) {
-
 		if (booster == null) {
 			Chat.sendMessage(sender, "invalid-booster");
 			return true;
 		}
-
 		return false;
 	}
 
 	private static boolean isInvalidNumber(@NotNull CommandSender sender, @NotNull String arg) {
-
 		if (!StringUtils.isNumeric(arg)) {
 			Chat.sendMessage(sender, "invalid-amount");
 			return true;
@@ -95,8 +89,8 @@ public class CmdSpec {
 		return false;
 	}
 
-	private static boolean isOnCountdown(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer, @NotNull Booster booster) {
-
+	private static boolean isOnCountdown(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
+	                                     @NotNull Booster booster) {
 		if (!boosterPlayer.canUseBooster(booster)) {
 			Chat.sendMessage(sender, "countdown-active");
 			return true;
@@ -105,21 +99,20 @@ public class CmdSpec {
 	}
 
 	private static boolean exceedsLimit(@NotNull CommandSender sender, @NotNull Booster booster) {
-
-		if (!main.getActiveBoostersManager().canUseBooster(booster)) {
+		if (!main.getActiveBoostersManager()
+		         .canUseBooster(booster)) {
 			Chat.sendMessage(sender, "limit");
 			return true;
 		}
 		return false;
 	}
 
-	private static boolean hasBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer, @NotNull Booster booster) {
-
+	private static boolean hasBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
+	                                  @NotNull Booster booster) {
 		if (boosterPlayer.takeBooster(booster)) {
 			return true;
 		}
 		Chat.sendMessage(sender, "no-booster");
 		return false;
 	}
-
 }

@@ -39,28 +39,28 @@ public abstract class PlayerStorage {
 	protected abstract void clear();
 
 	public BoosterPlayer getBoosterPlayerByUUID(@NotNull UUID uuid) {
-
 		return boosterPlayers.stream()
-				.filter(boosterPlayer -> boosterPlayer.getUuid().equals(uuid))
-				.findFirst().orElse(null);
+		                     .filter(boosterPlayer -> boosterPlayer.getUuid()
+		                                                           .equals(uuid))
+		                     .findFirst()
+		                     .orElse(null);
 	}
 
 	public BoosterPlayer getBoosterPlayerByName(@NotNull String name) {
-
 		return boosterPlayers.stream()
-				.filter(boosterPlayer -> boosterPlayer.getName().equalsIgnoreCase(name))
-				.findFirst().orElse(null);
+		                     .filter(boosterPlayer -> boosterPlayer.getName()
+		                                                           .equalsIgnoreCase(name))
+		                     .findFirst()
+		                     .orElse(null);
 	}
 
 	public void registerPlayer(@NotNull UUID uuid, @NotNull String name) {
-
 		boosterPlayers.add(new BoosterPlayer(uuid, name));
 	}
 
 	public boolean isPlayerRegistered(@NotNull UUID uuid) {
-
 		return boosterPlayers.stream()
-				.anyMatch(player -> player.getUuid().equals(uuid));
+		                     .anyMatch(player -> player.getUuid()
+		                                               .equals(uuid));
 	}
-
 }

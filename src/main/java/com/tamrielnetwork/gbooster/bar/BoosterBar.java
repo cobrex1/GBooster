@@ -38,70 +38,67 @@ public class BoosterBar {
 	private final BossBar bar;
 
 	public BoosterBar() {
-
 		this.bar = Bukkit.createBossBar(getTitle(), BarColor.BLUE, BarStyle.SOLID);
-
 		startTask();
 	}
 
 	private void startTask() {
-
-		Bukkit.getScheduler().scheduleSyncRepeatingTask(main, () -> {
-
-			if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
-
-				if (main.getConfig().getBoolean("empty-bar")) {
-
-					String defaultBarMessage = main.getConfig().getString("default-bar-message");
-					bar.setTitle(Chat.replaceColors(Objects.requireNonNull(defaultBarMessage)));
-
-				} else {
-					bar.setVisible(false);
-				}
-
-				return;
-			}
-
-			double time = main.getActiveBoostersManager().getMostOldBoosterInMinutes() / 60.0;
-
-			if (time > 1.0)
-				time = 1;
-
-			bar.setProgress(time);
-
-			bar.setVisible(true);
-			bar.setTitle(getTitle());
-
-		}, 0, 20 * 5L);
+		Bukkit.getScheduler()
+		      .scheduleSyncRepeatingTask(main, () -> {
+			      if (main.getActiveBoostersManager()
+			              .getActiveBoosters()
+			              .size() == 0) {
+				      if (main.getConfig()
+				              .getBoolean("empty-bar")) {
+					      String defaultBarMessage = main.getConfig()
+					                                     .getString("default-bar-message");
+					      bar.setTitle(Chat.replaceColors(Objects.requireNonNull(defaultBarMessage)));
+				      }
+				      else {
+					      bar.setVisible(false);
+				      }
+				      return;
+			      }
+			      double time = main.getActiveBoostersManager()
+			                        .getMostOldBoosterInMinutes() / 60.0;
+			      if (time > 1.0) {
+				      time = 1;
+			      }
+			      bar.setProgress(time);
+			      bar.setVisible(true);
+			      bar.setTitle(getTitle());
+		      }, 0, 20 * 5L);
 	}
 
 	private String getTitle() {
-
-		String title = Chat.replaceColors(Objects.requireNonNull(main.getConfig().getString("bar-pattern"))
-				.replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
-				.replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
-				.replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
-				.replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true)) * 100)))
-				.replace("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())));
-
-		if (bar != null && !bar.getPlayers().isEmpty()) {
-			Player player = bar.getPlayers().get(0);
+		String title = Chat.replaceColors(Objects.requireNonNull(main.getConfig()
+		                                                             .getString("bar-pattern"))
+		                                         .replace("%minecraft%", String.valueOf(Math.round((main.getActiveBoostersManager()
+		                                                                                                .getBoosterMultiplier(BoosterType.MINECRAFT, false)) * 100)))
+		                                         .replace("%mcmmo%", String.valueOf(Math.round((main.getActiveBoostersManager()
+		                                                                                            .getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
+		                                         .replace("%jobs_xp%", String.valueOf(Math.round((main.getActiveBoostersManager()
+		                                                                                              .getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
+		                                         .replace("%jobs_money%", String.valueOf(Math.round((main.getActiveBoostersManager()
+		                                                                                                 .getBoosterMultiplier(BoosterType.JOBS_MONEY, true)) * 100)))
+		                                         .replace("%duration%", String.valueOf(main.getActiveBoostersManager()
+		                                                                                   .getMostOldBoosterInMinutes())));
+		if (bar != null && !bar.getPlayers()
+		                       .isEmpty()) {
+			Player player = bar.getPlayers()
+			                   .get(0);
 			if (player != null) {
 				title = PlaceholderAPI.setPlaceholders(player, title);
 			}
 		}
-
 		return title;
 	}
 
 	public BossBar getBar() {
-
 		return bar;
 	}
 
 	public void addPlayer(@NotNull Player player) {
-
 		bar.addPlayer(player);
 	}
-
 }

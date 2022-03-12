@@ -26,14 +26,14 @@ import org.bukkit.event.player.PlayerExpChangeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class PlayerExpChange implements Listener {
+public class PlayerExpChange
+		implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
 	public void onPlayerExpChange(@NotNull PlayerExpChangeEvent event) {
-
-		event.setAmount((event.getAmount() * (int) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MINECRAFT, false)));
+		event.setAmount((event.getAmount() * (int) main.getActiveBoostersManager()
+		                                               .getBoosterMultiplier(BoosterType.MINECRAFT, false)));
 	}
-
 }

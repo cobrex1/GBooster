@@ -27,20 +27,28 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class JobsPayment implements Listener {
+public class JobsPayment
+		implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
 	public void onPayment(@NotNull JobsPaymentEvent event) {
-
-		if (event.getPayment().get(CurrencyType.MONEY) == null) return;
-
-		if (main.getActiveBoostersManager().getJobsBooster() >= 1) {
-			event.set(CurrencyType.MONEY, (event.getPayment().get(CurrencyType.MONEY) / main.getActiveBoostersManager().getJobsBooster()) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
-		} else {
-			event.set(CurrencyType.MONEY, event.getPayment().get(CurrencyType.MONEY) * main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
+		if (event.getPayment()
+		         .get(CurrencyType.MONEY) == null) {
+			return;
+		}
+		if (main.getActiveBoostersManager()
+		        .getJobsBooster() >= 1) {
+			event.set(CurrencyType.MONEY, (event.getPayment()
+			                                    .get(CurrencyType.MONEY) / main.getActiveBoostersManager()
+			                                                                   .getJobsBooster()) * main.getActiveBoostersManager()
+			                                                                                            .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
+		}
+		else {
+			event.set(CurrencyType.MONEY, event.getPayment()
+			                                   .get(CurrencyType.MONEY) * main.getActiveBoostersManager()
+			                                                                  .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
 		}
 	}
-
 }

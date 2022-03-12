@@ -39,19 +39,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class GBoosterCmd implements TabExecutor {
+public class GBoosterCmd
+		implements TabExecutor {
 
 	private static final String GBOOSTER_GIVE = "gbooster.give";
 	private static final String GBOOSTER_USE = "gbooster.use";
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@Override
-	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-
+	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
+	                         @NotNull String[] args) {
 		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 4)) {
 			return false;
 		}
-
 		switch (args[0].toLowerCase()) {
 			case "give" -> doGive(sender, args);
 			case "use" -> doUse(sender, args);
@@ -65,73 +65,72 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
-
-		Booster booster = main.getBoostersManager().getBoosterById(args[2]);
-		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
-
+		Booster booster = main.getBoostersManager()
+		                      .getBoosterById(args[2]);
+		BoosterPlayer boosterPlayer = main.getPlayerStorage()
+		                                  .getBoosterPlayerByName(args[1]);
 		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_GIVE, 4, booster, boosterPlayer)) {
 			return;
 		}
-
 		int amount = Integer.parseInt(args[3]);
 		Player onlineBoosterPlayer = Bukkit.getPlayer(boosterPlayer.getUuid());
-
 		boosterPlayer.addBooster(booster.getId(), amount);
-
 		if (onlineBoosterPlayer != null) {
 			Chat.sendMessage(onlineBoosterPlayer, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()), "receive-boosters");
 		}
-
 		Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
-
 		if (Cmd.isInvalidSender(sender)) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
-		Booster booster = main.getBoostersManager().getBoosterById(args[1]);
-		BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByUUID(senderPlayer.getUniqueId());
-
+		Booster booster = main.getBoostersManager()
+		                      .getBoosterById(args[1]);
+		BoosterPlayer boosterPlayer = main.getPlayerStorage()
+		                                  .getBoosterPlayerByUUID(senderPlayer.getUniqueId());
 		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, 2, booster, boosterPlayer)) {
 			return;
 		}
-
 		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> Bukkit.getPluginManager().callEvent(boosterActivateEvent));
-
+		Bukkit.getScheduler()
+		      .scheduleSyncDelayedTask(main, () -> Bukkit.getPluginManager()
+		                                                 .callEvent(boosterActivateEvent));
 		if (boosterActivateEvent.isCancelled()) {
 			return;
 		}
-
-		main.getActiveBoostersManager().activateBooster(booster);
+		main.getActiveBoostersManager()
+		    .activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
 		Chat.sendBroadcast(Map.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
 	}
 
 	private void doTime(@NotNull CommandSender sender, @NotNull String[] args) {
-
 		if (CmdSpec.isInvalidCmd(sender, args, "gbooster.time", 1)) {
 			return;
 		}
-
-		if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
+		if (main.getActiveBoostersManager()
+		        .getActiveBoosters()
+		        .size() == 0) {
 			Chat.sendMessage(sender, "no-active-booster");
 			return;
 		}
-		Chat.sendMessage(sender, Map.of("%duration%", String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes())), "booster-timer");
+		Chat.sendMessage(sender, Map.of("%duration%", String.valueOf(main.getActiveBoostersManager()
+		                                                                 .getMostOldBoosterInMinutes())), "booster-timer");
 	}
 
 	@Override
-	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-
+	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
+	                                            @NotNull String alias, @NotNull String[] args) {
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
 			tabCompleteFirstArg(sender, tabComplete);
 		}
 		if (args.length > 1) {
-			List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig().getConfigurationSection("boosters")).getKeys(false));
+			List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig()
+			                                                               .getConfigurationSection("boosters"))
+			                                           .getKeys(false));
 			switch (args[0]) {
 				case "give":
 					if (sender.hasPermission(GBOOSTER_GIVE)) {
@@ -156,7 +155,6 @@ public class GBoosterCmd implements TabExecutor {
 	}
 
 	private void tabCompleteFirstArg(@NotNull CommandSender sender, @NotNull List<String> tabComplete) {
-
 		if (sender.hasPermission(GBOOSTER_GIVE)) {
 			tabComplete.add("give");
 		}
@@ -167,5 +165,4 @@ public class GBoosterCmd implements TabExecutor {
 			tabComplete.add("time");
 		}
 	}
-
 }

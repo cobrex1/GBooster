@@ -26,14 +26,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class McMMOPlayerXpGain implements Listener {
+public class McMMOPlayerXpGain
+		implements Listener {
 
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
 	@EventHandler
 	public void onMcMMOPlayerXpGain(@NotNull McMMOPlayerXpGainEvent event) {
-
-		event.setRawXpGained((event.getRawXpGained() * (float) main.getActiveBoostersManager().getBoosterMultiplier(BoosterType.MCMMO, false)));
+		event.setRawXpGained((event.getRawXpGained() * (float) main.getActiveBoostersManager()
+		                                                           .getBoosterMultiplier(BoosterType.MCMMO, false)));
 	}
-
 }

@@ -33,29 +33,29 @@ public class BoostersManager {
 	private final List<Booster> boosters = new ArrayList<>();
 
 	public void loadBoosters() {
-
-		for (String key : Objects.requireNonNull(main.getConfig().getConfigurationSection("boosters")).getKeys(false)) {
-			boosters.add(new Booster(key, Objects.requireNonNull(main.getConfig().getConfigurationSection("boosters." + key))));
+		for (String key : Objects.requireNonNull(main.getConfig()
+		                                             .getConfigurationSection("boosters"))
+		                         .getKeys(false)) {
+			boosters.add(new Booster(key, Objects.requireNonNull(main.getConfig()
+			                                                         .getConfigurationSection("boosters." + key))));
 		}
 	}
 
 	public Booster getBoosterById(@NotNull String id) {
-
 		return boosters.stream()
-				.filter(booster -> booster.getId().equals(id))
-				.findFirst().orElse(null);
+		               .filter(booster -> booster.getId()
+		                                         .equals(id))
+		               .findFirst()
+		               .orElse(null);
 	}
 
 	public boolean isBooster(@NotNull String id) {
-
 		return boosters.stream()
-				.map(Booster::getId)
-				.noneMatch(boosterId -> boosterId.equals(id));
+		               .map(Booster::getId)
+		               .noneMatch(boosterId -> boosterId.equals(id));
 	}
 
 	public List<Booster> getBoosters() {
-
 		return boosters;
 	}
-
 }
