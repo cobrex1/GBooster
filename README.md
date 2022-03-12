@@ -79,6 +79,7 @@ This plugin is perfect for any server wishing to receive donations from their pl
 * Support for scheduled boosters from JobsReborn
 * Placeholders and the ability to create a menu to activate boosters
   through [DeluxeMenus](https://www.spigotmc.org/resources/deluxemenus.11734/) for example
+* Usage of Placeholders in BossBar
 
 ### Built With
 
@@ -243,9 +244,10 @@ Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://github.com/zManu27/)
-* [Additions & Fixes - Cobrex1](https://github.com/cobrex1/)
-* [Additions & Fixes - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
-* [Additions & Fixes - JustinDevB](https://github.com/JustinDevB)
+* [McMMO & Jobs softdepend - Cobrex1](https://github.com/cobrex1/)
+* [Various dependency updates - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+* [BoosterActivateEvent - JustinDevB](https://github.com/JustinDevB)
+* [PAPI parsing BossBar - JustinDevB](https://github.com/JustinDevB)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
