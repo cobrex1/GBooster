@@ -44,12 +44,14 @@ public class BoosterExpansion
 
 	@Override
 	public @NotNull String getIdentifier() {
-		return main.getDescription().getName();
+		return main.getDescription()
+		           .getName();
 	}
 
 	@Override
 	public @NotNull String getVersion() {
-		return main.getDescription().getVersion();
+		return main.getDescription()
+		           .getVersion();
 	}
 
 	@Override
@@ -67,7 +69,8 @@ public class BoosterExpansion
 	}
 
 	private String getAuthors() {
-		List<String> authors = main.getDescription().getAuthors();
+		List<String> authors = main.getDescription()
+		                           .getAuthors();
 		StringBuilder authorBuilder = new StringBuilder();
 		for (String author : authors) {
 			if (author.equals(authors.get(0))) {
