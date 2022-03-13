@@ -34,6 +34,7 @@ import java.util.Objects;
 
 public class BoosterBar {
 
+	private static final String DURATION = "duration";
 	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 	private final BossBar bar;
 
@@ -71,39 +72,28 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
-		String barPattern = main.getConfig()
-		                        .getString("bar-pattern");
-		double minecraft = Math.round(main.getActiveBoostersManager()
-		                                  .getBoosterMultiplier(BoosterType.MINECRAFT, false));
-		double mcmmo = Math.round(main.getActiveBoostersManager()
-		                              .getBoosterMultiplier(BoosterType.MCMMO, false));
-		double jobsXp = Math.round(main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.JOBS_XP, true));
-		double jobsMoney = Math.round(main.getActiveBoostersManager()
-		                                  .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
-		double duration = main.getActiveBoostersManager()
-		                      .getMostOldBoosterInMinutes();
-		String title = Chat.replaceColors(Objects.requireNonNull(barPattern));
-		if (minecraft <= 1) {
-			title = title.replace("%minecraft%", "");
-		}
-		if (mcmmo <= 1) {
-			title = title.replace("%mcmmo%", "");
-		}
-		if (jobsXp <= 1) {
-			title = title.replace("%jobs_xp%", "");
-		}
-		if (jobsMoney <= 1) {
-			title = title.replace("%jobs_money%", "");
-		}
-		if (duration <= 1) {
-			title = title.replace("%duration%", "");
-		}
-		title = title.replace("%minecraft%", String.valueOf(minecraft * 100))
-		             .replace("%mcmmo%", String.valueOf(mcmmo * 100))
-		             .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
-		             .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
-		             .replace("%duration%", String.valueOf(duration));
+		int minecraftValue = (int) main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.MINECRAFT, false);
+		int mcmmoValue = (int) main.getActiveBoostersManager()
+		                           .getBoosterMultiplier(BoosterType.MCMMO, false);
+		int jobsXpValue = (int) main.getActiveBoostersManager()
+		                            .getBoosterMultiplier(BoosterType.JOBS_XP, true);
+		int jobsMoneyValue = (int) main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
+		int durationValue = main.getActiveBoostersManager()
+		                        .getMostOldBoosterInMinutes();
+		StringBuilder titleBuilder = new StringBuilder();
+		getValue(titleBuilder, "minecraft", minecraftValue);
+		getValue(titleBuilder, "mcmmo", mcmmoValue);
+		getValue(titleBuilder, "jobs-xp", jobsXpValue);
+		getValue(titleBuilder, "jobs-money", jobsMoneyValue);
+		getValue(titleBuilder, DURATION, durationValue);
+		String title = Chat.replaceColors(Objects.requireNonNull(titleBuilder.toString()));
+		title = title.replace("%minecraft%", String.valueOf(minecraftValue * 100))
+		             .replace("%mcmmo%", String.valueOf(mcmmoValue * 100))
+		             .replace("%jobs_xp%", String.valueOf(jobsXpValue * 100))
+		             .replace("%jobs_money%", String.valueOf(jobsMoneyValue * 100))
+		             .replace("%duration%", String.valueOf(durationValue));
 		if (bar != null && !bar.getPlayers()
 		                       .isEmpty()) {
 			Player player = bar.getPlayers()
@@ -113,6 +103,17 @@ public class BoosterBar {
 			}
 		}
 		return title;
+	}
+
+	private void getValue(StringBuilder titleBuilder, String subSection, int value) {
+		if (value > 1 || Objects.equals(subSection, DURATION)) {
+			if (!titleBuilder.isEmpty() && !Objects.equals(subSection, DURATION)) {
+				titleBuilder.append(main.getConfig()
+				                        .getString("bar-pattern.separator"));
+			}
+			titleBuilder.append(main.getConfig()
+			                        .getString("bar-pattern." + subSection));
+		}
 	}
 
 	public BossBar getBar() {
