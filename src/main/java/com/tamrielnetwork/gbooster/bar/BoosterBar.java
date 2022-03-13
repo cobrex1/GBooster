@@ -28,6 +28,7 @@ import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -44,47 +45,29 @@ public class BoosterBar {
 	}
 
 	private void startTask() {
-		Bukkit.getScheduler()
-		      .scheduleSyncRepeatingTask(main, () -> {
-			      if (main.getActiveBoostersManager()
-			              .getActiveBoosters()
-			              .isEmpty()) {
-				      bar.setVisible(false);
-			      }
-			      double time = main.getActiveBoostersManager()
-			                        .getMostOldBoosterInMinutes() / 60.0;
-			      if (time > 1.0) {
-				      time = 1;
-			      }
-			      bar.setProgress(time);
-			      bar.setVisible(true);
-			      bar.setTitle(getTitle());
-		      }, 0, 20 * 5L);
+		new BukkitRunnable() {
+
+			@Override
+			public void run() {
+				if (main.getActiveBoostersManager()
+				        .getActiveBoosters()
+				        .isEmpty()) {
+					bar.setVisible(false);
+				}
+				double time = main.getActiveBoostersManager()
+				                  .getMostOldBoosterInMinutes() / 60.0;
+				if (time > 1.0) {
+					time = 1;
+				}
+				bar.setProgress(time);
+				bar.setVisible(true);
+				bar.setTitle(getTitle());
+			}
+		}.runTaskTimerAsynchronously(main, 0, 20 * 10L);
 	}
 
 	private String getTitle() {
-		int minecraftValue = (int) main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.MINECRAFT, false);
-		int mcmmoValue = (int) main.getActiveBoostersManager()
-		                           .getBoosterMultiplier(BoosterType.MCMMO, false);
-		int jobsXpValue = (int) main.getActiveBoostersManager()
-		                            .getBoosterMultiplier(BoosterType.JOBS_XP, true);
-		int jobsMoneyValue = (int) main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
-		int durationValue = main.getActiveBoostersManager()
-		                        .getMostOldBoosterInMinutes();
-		StringBuilder titleBuilder = new StringBuilder();
-		appendTitleBuilderIfNecessary(titleBuilder, "minecraft", minecraftValue);
-		appendTitleBuilderIfNecessary(titleBuilder, "mcmmo", mcmmoValue);
-		appendTitleBuilderIfNecessary(titleBuilder, "jobs-xp", jobsXpValue);
-		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
-		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
-		String title = Chat.replaceColors(Objects.requireNonNull(titleBuilder.toString()));
-		title = title.replace("%minecraft%", String.valueOf(minecraftValue * 100))
-		             .replace("%mcmmo%", String.valueOf(mcmmoValue * 100))
-		             .replace("%jobs_xp%", String.valueOf(jobsXpValue * 100))
-		             .replace("%jobs_money%", String.valueOf(jobsMoneyValue * 100))
-		             .replace("%duration%", String.valueOf(durationValue));
+		String title = Chat.replaceColors(Objects.requireNonNull(getTitleForActiveBoosters()));
 		if (bar != null && PlaceholderAPI.containsPlaceholders(title) && !bar.getPlayers()
 		                                                                     .isEmpty()) {
 			Player player = bar.getPlayers()
@@ -105,6 +88,34 @@ public class BoosterBar {
 			titleBuilder.append(main.getConfig()
 			                        .getString("bar-pattern." + subSection));
 		}
+	}
+
+	private String getTitleForActiveBoosters() {
+		int durationValue = main.getActiveBoostersManager()
+		                        .getMostOldBoosterInMinutes();
+		if (durationValue == 0) {
+			return "";
+		}
+		StringBuilder titleBuilder = new StringBuilder();
+		int minecraftValue = (int) main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.MINECRAFT, false);
+		int mcmmoValue = (int) main.getActiveBoostersManager()
+		                           .getBoosterMultiplier(BoosterType.MCMMO, false);
+		int jobsXpValue = (int) main.getActiveBoostersManager()
+		                            .getBoosterMultiplier(BoosterType.JOBS_XP, true);
+		int jobsMoneyValue = (int) main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
+		appendTitleBuilderIfNecessary(titleBuilder, "minecraft", minecraftValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "mcmmo", mcmmoValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "jobs-xp", jobsXpValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
+		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
+		return titleBuilder.toString()
+		                   .replace("%minecraft%", String.valueOf(minecraftValue * 100))
+		                   .replace("%mcmmo%", String.valueOf(mcmmoValue * 100))
+		                   .replace("%jobs_xp%", String.valueOf(jobsXpValue * 100))
+		                   .replace("%jobs_money%", String.valueOf(jobsMoneyValue * 100))
+		                   .replace("%duration%", String.valueOf(durationValue));
 	}
 
 	public BossBar getBar() {
