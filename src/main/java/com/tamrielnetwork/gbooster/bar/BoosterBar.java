@@ -49,16 +49,7 @@ public class BoosterBar {
 			      if (main.getActiveBoostersManager()
 			              .getActiveBoosters()
 			              .size() == 0) {
-				      if (main.getConfig()
-				              .getBoolean("empty-bar")) {
-					      String defaultBarMessage = main.getConfig()
-					                                     .getString("default-bar-message");
-					      bar.setTitle(Chat.replaceColors(Objects.requireNonNull(defaultBarMessage)));
-				      }
-				      else {
-					      bar.setVisible(false);
-				      }
-				      return;
+				      bar.setVisible(false);
 			      }
 			      double time = main.getActiveBoostersManager()
 			                        .getMostOldBoosterInMinutes() / 60.0;
@@ -83,11 +74,11 @@ public class BoosterBar {
 		int durationValue = main.getActiveBoostersManager()
 		                        .getMostOldBoosterInMinutes();
 		StringBuilder titleBuilder = new StringBuilder();
-		getValue(titleBuilder, "minecraft", minecraftValue);
-		getValue(titleBuilder, "mcmmo", mcmmoValue);
-		getValue(titleBuilder, "jobs-xp", jobsXpValue);
-		getValue(titleBuilder, "jobs-money", jobsMoneyValue);
-		getValue(titleBuilder, DURATION, durationValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "minecraft", minecraftValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "mcmmo", mcmmoValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "jobs-xp", jobsXpValue);
+		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
+		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
 		String title = Chat.replaceColors(Objects.requireNonNull(titleBuilder.toString()));
 		title = title.replace("%minecraft%", String.valueOf(minecraftValue * 100))
 		             .replace("%mcmmo%", String.valueOf(mcmmoValue * 100))
@@ -105,7 +96,7 @@ public class BoosterBar {
 		return title;
 	}
 
-	private void getValue(StringBuilder titleBuilder, String subSection, int value) {
+	private void appendTitleBuilderIfNecessary(StringBuilder titleBuilder, String subSection, int value) {
 		if (value > 1 || Objects.equals(subSection, DURATION)) {
 			if (!titleBuilder.isEmpty() && !Objects.equals(subSection, DURATION)) {
 				titleBuilder.append(main.getConfig()

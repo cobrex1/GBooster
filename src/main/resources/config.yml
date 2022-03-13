@@ -17,12 +17,6 @@ bar-pattern:
   duration: " &7[&f%duration% min&7]"
   separator: " &8&mo&r "
 
-# Message that will be displayed if empty-bar is set to true
-default-bar-message: "&c&lNo active boosters"
-
-# Set false to not display the default message when no boosters are active
-empty-bar: false
-
 # Choose a storage system (mysql or yaml)
 storage-system: yaml
 
