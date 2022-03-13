@@ -37,17 +37,19 @@ public class BoosterExpansion
 
 	@Override
 	public @NotNull String getAuthor() {
-		return "Manu, Tamriel Network";
+		return getAuthors();
 	}
 
 	@Override
 	public @NotNull String getIdentifier() {
-		return "GBooster";
+		return main.getDescription()
+		           .getName();
 	}
 
 	@Override
 	public @NotNull String getVersion() {
-		return "1.3.2";
+		return main.getDescription()
+		           .getVersion();
 	}
 
 	@Override
@@ -62,5 +64,20 @@ public class BoosterExpansion
 			}
 		}
 		return "0";
+	}
+
+	private String getAuthors() {
+		java.util.List<String> authors = main.getDescription()
+		                                     .getAuthors();
+		StringBuilder authorBuilder = new StringBuilder();
+		for (String author : authors) {
+			if (author.equals(authors.get(0))) {
+				authorBuilder.append(author);
+				continue;
+			}
+			authorBuilder.append(" ")
+			             .append(authors);
+		}
+		return authorBuilder.toString();
 	}
 }
