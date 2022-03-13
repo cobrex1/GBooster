@@ -74,7 +74,7 @@ public class BoosterBar {
 
 	private String getTitle() {
 		String title = Chat.replaceColors(Objects.requireNonNull(getTitleForActiveBoosters()));
-		if (bar != null && PlaceholderAPI.containsPlaceholders(title) && !bar.getPlayers()
+		if (PlaceholderAPI.containsPlaceholders(title) && bar != null && !bar.getPlayers()
 		                                                                     .isEmpty()) {
 			Player player = bar.getPlayers()
 			                   .get(0);
