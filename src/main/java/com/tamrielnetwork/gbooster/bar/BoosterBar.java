@@ -117,10 +117,10 @@ public class BoosterBar {
 		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
 		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
 		return titleBuilder.toString()
-		                   .replace("%minecraft%", String.valueOf((minecraftValue * 100)))
-		                   .replace("%mcmmo%", String.valueOf((int) (mcmmoValue * 100)))
-		                   .replace("%jobs_xp%", String.valueOf((int) (jobsXpValue * 100)))
-		                   .replace("%jobs_money%", String.valueOf((int) (jobsMoneyValue * 100)))
+		                   .replace("%minecraft%", String.valueOf((short) (minecraftValue * 100)))
+		                   .replace("%mcmmo%", String.valueOf((short) (mcmmoValue * 100)))
+		                   .replace("%jobs_xp%", String.valueOf((short) (jobsXpValue * 100)))
+		                   .replace("%jobs_money%", String.valueOf((short) (jobsMoneyValue * 100)))
 		                   .replace("%duration%", String.valueOf(durationValue));
 	}
 
