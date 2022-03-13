@@ -49,10 +49,14 @@ public class BoosterBar {
 
 			@Override
 			public void run() {
-				String title = getTitle();
 				if (main.getActiveBoostersManager()
 				        .getActiveBoosters()
-				        .isEmpty() || title.isEmpty()) {
+				        .isEmpty()) {
+					bar.setVisible(false);
+					return;
+				}
+				String title = getTitle();
+				if (title.isEmpty()) {
 					bar.setVisible(false);
 					return;
 				}
