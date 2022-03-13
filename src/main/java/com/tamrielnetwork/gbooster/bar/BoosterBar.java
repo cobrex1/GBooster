@@ -85,8 +85,8 @@ public class BoosterBar {
 		             .replace("%jobs_xp%", String.valueOf(jobsXpValue * 100))
 		             .replace("%jobs_money%", String.valueOf(jobsMoneyValue * 100))
 		             .replace("%duration%", String.valueOf(durationValue));
-		if (bar != null && !bar.getPlayers()
-		                       .isEmpty()) {
+		if (bar != null && PlaceholderAPI.containsPlaceholders(title) && !bar.getPlayers()
+		                                                                     .isEmpty()) {
 			Player player = bar.getPlayers()
 			                   .get(0);
 			if (player != null) {
