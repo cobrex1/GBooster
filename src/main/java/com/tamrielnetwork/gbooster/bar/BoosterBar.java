@@ -41,10 +41,10 @@ public class BoosterBar {
 
 	public BoosterBar() {
 		this.bar = Bukkit.createBossBar(getTitle(), BarColor.BLUE, BarStyle.SOLID);
-		startTask();
+		doTimer();
 	}
 
-	private void startTask() {
+	private void doTimer() {
 		new BukkitRunnable() {
 
 			@Override
