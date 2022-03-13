@@ -73,13 +73,9 @@ public class BoosterPlayer {
 		boostersStorage.put(boosterId, amount + previousAmount);
 	}
 
-	public boolean takeBooster(@NotNull Booster booster) {
+	public void takeBooster(@NotNull Booster booster) {
 		Integer amount = boostersStorage.get(booster.getId());
-		if (amount == null || amount == 0) {
-			return false;
-		}
 		boostersStorage.put(booster.getId(), amount - 1);
-		return true;
 	}
 
 	public boolean canUseBooster(@NotNull Booster booster) {
@@ -89,6 +85,11 @@ public class BoosterPlayer {
 		}
 		boostersCountdown.put(booster.getBoosterType(), System.currentTimeMillis());
 		return true;
+	}
+
+	public boolean hasBooster(@NotNull Booster booster) {
+		Integer amount = boostersStorage.get(booster.getId());
+		return amount != null && amount != 0;
 	}
 
 	public UUID getUuid() {

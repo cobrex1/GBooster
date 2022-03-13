@@ -46,11 +46,16 @@ public class CmdSpec {
 				return isInvalidBoosterPlayer(sender, boosterPlayer);
 			case "use":
 				if (Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length)
-				    || isInvalidBooster(sender, booster) || isOnCountdown(sender, boosterPlayer, booster)
-				    || exceedsLimit(sender, booster)) {
+				    || isInvalidBooster(sender, booster) || exceedsLimit(sender, booster) || hasNoBooster(sender,
+				                                                                                          boosterPlayer,
+				                                                                                          booster)) {
 					return true;
 				}
-				return !hasBooster(sender, boosterPlayer, booster);
+				if (isOnCountdown(sender, boosterPlayer, booster)) {
+					return true;
+				}
+				boosterPlayer.takeBooster(booster);
+				return false;
 			default:
 				return true;
 		}
@@ -110,12 +115,12 @@ public class CmdSpec {
 		return false;
 	}
 
-	private static boolean hasBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
-	                                  @NotNull Booster booster) {
-		if (boosterPlayer.takeBooster(booster)) {
+	private static boolean hasNoBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
+	                                    @NotNull Booster booster) {
+		if (!boosterPlayer.hasBooster(booster)) {
+			Chat.sendMessage(sender, "no-booster");
 			return true;
 		}
-		Chat.sendMessage(sender, "no-booster");
 		return false;
 	}
 }
