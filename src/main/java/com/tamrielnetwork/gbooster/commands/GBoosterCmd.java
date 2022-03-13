@@ -96,6 +96,7 @@ public class GBoosterCmd
 		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, 2, booster, boosterPlayer)) {
 			return;
 		}
+		boosterPlayer.takeBooster(booster);
 		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
 		Bukkit.getScheduler()
 		      .scheduleSyncDelayedTask(main, () -> Bukkit.getPluginManager()
