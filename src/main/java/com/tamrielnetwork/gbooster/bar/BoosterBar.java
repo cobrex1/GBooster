@@ -83,12 +83,27 @@ public class BoosterBar {
 		                                  .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
 		double duration = main.getActiveBoostersManager()
 		                      .getMostOldBoosterInMinutes();
-		String title = Chat.replaceColors(Objects.requireNonNull(barPattern)
-		                                         .replace("%minecraft%", String.valueOf(minecraft * 100))
-		                                         .replace("%mcmmo%", String.valueOf(mcmmo * 100))
-		                                         .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
-		                                         .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
-		                                         .replace("%duration%", String.valueOf(duration)));
+		String title = Chat.replaceColors(Objects.requireNonNull(barPattern));
+		if (minecraft <= 1) {
+			title = title.replace("%minecraft%", "");
+		}
+		if (mcmmo <= 1) {
+			title = title.replace("%mcmmo%", "");
+		}
+		if (jobsXp <= 1) {
+			title = title.replace("%jobs_xp%", "");
+		}
+		if (jobsMoney <= 1) {
+			title = title.replace("%jobs_money%", "");
+		}
+		if (duration <= 1) {
+			title = title.replace("%duration%", "");
+		}
+		title = title.replace("%minecraft%", String.valueOf(minecraft * 100))
+		             .replace("%mcmmo%", String.valueOf(mcmmo * 100))
+		             .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
+		             .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
+		             .replace("%duration%", String.valueOf(duration));
 		if (bar != null && !bar.getPlayers()
 		                       .isEmpty()) {
 			Player player = bar.getPlayers()
