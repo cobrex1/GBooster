@@ -48,7 +48,7 @@ public class BoosterBar {
 		      .scheduleSyncRepeatingTask(main, () -> {
 			      if (main.getActiveBoostersManager()
 			              .getActiveBoosters()
-			              .size() == 0) {
+			              .isEmpty()) {
 				      bar.setVisible(false);
 			      }
 			      double time = main.getActiveBoostersManager()
