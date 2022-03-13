@@ -25,6 +25,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
+
 public class BoosterExpansion
 		extends PlaceholderExpansion {
 
@@ -42,14 +44,12 @@ public class BoosterExpansion
 
 	@Override
 	public @NotNull String getIdentifier() {
-		return main.getDescription()
-		           .getName();
+		return main.getDescription().getName();
 	}
 
 	@Override
 	public @NotNull String getVersion() {
-		return main.getDescription()
-		           .getVersion();
+		return main.getDescription().getVersion();
 	}
 
 	@Override
@@ -67,16 +67,15 @@ public class BoosterExpansion
 	}
 
 	private String getAuthors() {
-		java.util.List<String> authors = main.getDescription()
-		                                     .getAuthors();
+		List<String> authors = main.getDescription().getAuthors();
 		StringBuilder authorBuilder = new StringBuilder();
 		for (String author : authors) {
 			if (author.equals(authors.get(0))) {
 				authorBuilder.append(author);
 				continue;
 			}
-			authorBuilder.append(" ")
-			             .append(authors);
+			authorBuilder.append(", ")
+			             .append(author);
 		}
 		return authorBuilder.toString();
 	}
