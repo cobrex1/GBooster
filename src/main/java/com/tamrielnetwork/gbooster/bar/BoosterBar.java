@@ -54,6 +54,7 @@ public class BoosterBar {
 				        .getActiveBoosters()
 				        .isEmpty() || title.isEmpty()) {
 					bar.setVisible(false);
+					return;
 				}
 				double time = main.getActiveBoostersManager()
 				                  .getMostOldBoosterInMinutes() / 60.0;
@@ -62,7 +63,7 @@ public class BoosterBar {
 				}
 				bar.setProgress(time);
 				bar.setVisible(true);
-				bar.setTitle(getTitle());
+				bar.setTitle(title);
 			}
 		}.runTaskTimerAsynchronously(main, 0, 20 * 10L);
 	}

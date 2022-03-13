@@ -9,6 +9,7 @@
 
 # This bar will be displayed in order when boosters are active
 # To not display anything for specified values set them to: ""
+# Set every value to "" to disable the bar.
 bar-pattern:
   minecraft: "&a%minecraft%% &fExp"
   mcmmo: "&a%mcmmo%% &fMcMMO"
