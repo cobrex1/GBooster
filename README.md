@@ -121,15 +121,16 @@ To get the plugin running on your server follow these simple steps.
 #         \/        \/                  \/            \/        #
 #---------------------------------------------------------------#
 
-# This bar will be displayed when boosters are active
-bar-pattern: "&8&mo&r &a%minecraft%% &fExp &8&mo&r &a%mcmmo%% &fMcMMO &8&mo&r &a%jobs_xp%% &fJob &8&mo&r &a%jobs_money%% &e$"
-#bar-pattern: "&8&mo&r &a%minecraft%% &fExp &8&mo&r &a%mcmmo%% &fMcMMO &8&mo&r &a%jobs_xp%% &fJob &8&mo&r &a%jobs_money%% &e$ &7[&f%duration% min&7]"
-
-# Message that will be displayed if empty-bar is set to true
-default-bar-message: "&c&lNo active boosters"
-
-# Set false to not display the default message when no boosters are active
-empty-bar: false
+# This bar will be displayed in order when boosters are active
+# To not display anything for specified values set them to: ""
+# Set every value to "" to disable the bar.
+bar-pattern:
+  minecraft: "&a%minecraft%% &fExp"
+  mcmmo: "&a%mcmmo%% &fMcMMO"
+  jobs-xp: "&a%jobs_xp%% &fJob"
+  jobs-money: "&a%jobs_money%% &e$"
+  duration: " &7[&f%duration% min&7]"
+  separator: " &8&mo&r "
 
 # Choose a storage system (mysql or yaml)
 storage-system: yaml
