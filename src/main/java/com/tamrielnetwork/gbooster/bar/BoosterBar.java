@@ -85,7 +85,7 @@ public class BoosterBar {
 		return title;
 	}
 
-	private void appendTitleBuilderIfNecessary(StringBuilder titleBuilder, String subSection, int value) {
+	private void appendTitleBuilderIfNecessary(StringBuilder titleBuilder, String subSection, float value) {
 		if (value > 1 || Objects.equals(subSection, DURATION)) {
 			if (!titleBuilder.isEmpty() && !Objects.equals(subSection, DURATION)) {
 				titleBuilder.append(main.getConfig()
@@ -97,30 +97,30 @@ public class BoosterBar {
 	}
 
 	private String getTitleForActiveBoosters() {
-		int durationValue = main.getActiveBoostersManager()
-		                        .getMostOldBoosterInMinutes();
+		short durationValue = (short) main.getActiveBoostersManager()
+		                                  .getMostOldBoosterInMinutes();
 		if (durationValue == 0) {
 			return "";
 		}
 		StringBuilder titleBuilder = new StringBuilder();
-		int minecraftValue = (int) main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.MINECRAFT, false);
-		int mcmmoValue = (int) main.getActiveBoostersManager()
-		                           .getBoosterMultiplier(BoosterType.MCMMO, false);
-		int jobsXpValue = (int) main.getActiveBoostersManager()
-		                            .getBoosterMultiplier(BoosterType.JOBS_XP, true);
-		int jobsMoneyValue = (int) main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
+		byte minecraftValue = (byte) main.getActiveBoostersManager()
+		                                 .getBoosterMultiplier(BoosterType.MINECRAFT, false);
+		float mcmmoValue = (float) main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.MCMMO, false);
+		float jobsXpValue = (float) main.getActiveBoostersManager()
+		                                .getBoosterMultiplier(BoosterType.JOBS_XP, true);
+		float jobsMoneyValue = (float) main.getActiveBoostersManager()
+		                                   .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
 		appendTitleBuilderIfNecessary(titleBuilder, "minecraft", minecraftValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "mcmmo", mcmmoValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "jobs-xp", jobsXpValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
 		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
 		return titleBuilder.toString()
-		                   .replace("%minecraft%", String.valueOf(minecraftValue * 100))
-		                   .replace("%mcmmo%", String.valueOf(mcmmoValue * 100))
-		                   .replace("%jobs_xp%", String.valueOf(jobsXpValue * 100))
-		                   .replace("%jobs_money%", String.valueOf(jobsMoneyValue * 100))
+		                   .replace("%minecraft%", String.valueOf((minecraftValue * 100)))
+		                   .replace("%mcmmo%", String.valueOf((int) (mcmmoValue * 100)))
+		                   .replace("%jobs_xp%", String.valueOf((int) (jobsXpValue * 100)))
+		                   .replace("%jobs_money%", String.valueOf((int) (jobsMoneyValue * 100)))
 		                   .replace("%duration%", String.valueOf(durationValue));
 	}
 

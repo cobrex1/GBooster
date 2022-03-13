@@ -43,14 +43,15 @@ public class JobsPayment
 			event.set(CurrencyType.MONEY, (event.getPayment()
 			                                    .get(CurrencyType.MONEY) / main.getActiveBoostersManager()
 			                                                                   .getJobsBooster())
-			                              * main.getActiveBoostersManager()
-			                                    .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
+			                              * (float) main.getActiveBoostersManager()
+			                                            .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
 		}
 		else {
 			event.set(CurrencyType.MONEY, event.getPayment()
-			                                   .get(CurrencyType.MONEY) * main.getActiveBoostersManager()
-			                                                                  .getBoosterMultiplier(
-					                                                                  BoosterType.JOBS_MONEY, true));
+			                                   .get(CurrencyType.MONEY) * (float) main.getActiveBoostersManager()
+			                                                                          .getBoosterMultiplier(
+					                                                                          BoosterType.JOBS_MONEY,
+					                                                                          true));
 		}
 	}
 }

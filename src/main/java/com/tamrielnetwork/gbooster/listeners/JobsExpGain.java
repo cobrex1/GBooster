@@ -33,17 +33,16 @@ public class JobsExpGain
 
 	@EventHandler
 	public void onExpGain(@NotNull JobsExpGainEvent event) {
-		// Check if getJobsBooster returns >= 1 to prevent dividing by < 1
 		if (main.getActiveBoostersManager()
 		        .getJobsBooster() >= 1) {
 			event.setExp((event.getExp() / main.getActiveBoostersManager()
-			                                   .getJobsBooster()) * main.getActiveBoostersManager()
-			                                                            .getBoosterMultiplier(BoosterType.JOBS_XP,
-			                                                                                  true));
+			                                   .getJobsBooster()) * (float) main.getActiveBoostersManager()
+			                                                                    .getBoosterMultiplier(
+					                                                                    BoosterType.JOBS_XP, true));
 		}
 		else {
-			event.setExp(event.getExp() * main.getActiveBoostersManager()
-			                                  .getBoosterMultiplier(BoosterType.JOBS_XP, true));
+			event.setExp(event.getExp() * (float) main.getActiveBoostersManager()
+			                                          .getBoosterMultiplier(BoosterType.JOBS_XP, true));
 		}
 	}
 }
