@@ -71,24 +71,24 @@ public class BoosterBar {
 	}
 
 	private String getTitle() {
-		String title = Chat.replaceColors(Objects.requireNonNull(main.getConfig()
-		                                                             .getString("bar-pattern"))
-		                                         .replace("%minecraft%", String.valueOf(Math.round(
-				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.MINECRAFT, false))
-				                                         * 100)))
-		                                         .replace("%mcmmo%", String.valueOf(Math.round(
-				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.MCMMO, false)) * 100)))
-		                                         .replace("%jobs_xp%", String.valueOf(Math.round(
-				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.JOBS_XP, true)) * 100)))
-		                                         .replace("%jobs_money%", String.valueOf(Math.round(
-				                                         (main.getActiveBoostersManager()
-				                                              .getBoosterMultiplier(BoosterType.JOBS_MONEY, true))
-				                                         * 100)))
-		                                         .replace("%duration%", String.valueOf(main.getActiveBoostersManager()
-		                                                                                   .getMostOldBoosterInMinutes())));
+		String barPattern = main.getConfig()
+		                        .getString("bar-pattern");
+		double minecraft = Math.round(main.getActiveBoostersManager()
+		                                  .getBoosterMultiplier(BoosterType.MINECRAFT, false));
+		double mcmmo = Math.round(main.getActiveBoostersManager()
+		                              .getBoosterMultiplier(BoosterType.MCMMO, false));
+		double jobsXp = Math.round(main.getActiveBoostersManager()
+		                               .getBoosterMultiplier(BoosterType.JOBS_XP, true));
+		double jobsMoney = Math.round(main.getActiveBoostersManager()
+		                                  .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
+		double duration = main.getActiveBoostersManager()
+		                      .getMostOldBoosterInMinutes();
+		String title = Chat.replaceColors(Objects.requireNonNull(barPattern)
+		                                         .replace("%minecraft%", String.valueOf(minecraft * 100)))
+		                   .replace("%mcmmo%", String.valueOf(mcmmo * 100))
+		                   .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
+		                   .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
+		                   .replace("%duration%", String.valueOf(duration));
 		if (bar != null && !bar.getPlayers()
 		                       .isEmpty()) {
 			Player player = bar.getPlayers()
