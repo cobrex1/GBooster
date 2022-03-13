@@ -98,9 +98,8 @@ public class GBoosterCmd
 		}
 		boosterPlayer.takeBooster(booster);
 		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
-		Bukkit.getScheduler()
-		      .scheduleSyncDelayedTask(main, () -> Bukkit.getPluginManager()
-		                                                 .callEvent(boosterActivateEvent));
+		Bukkit.getPluginManager()
+		      .callEvent(boosterActivateEvent);
 		if (boosterActivateEvent.isCancelled()) {
 			return;
 		}
