@@ -49,9 +49,10 @@ public class BoosterBar {
 
 			@Override
 			public void run() {
+				String title = getTitle();
 				if (main.getActiveBoostersManager()
 				        .getActiveBoosters()
-				        .isEmpty()) {
+				        .isEmpty() || title.isEmpty()) {
 					bar.setVisible(false);
 				}
 				double time = main.getActiveBoostersManager()
