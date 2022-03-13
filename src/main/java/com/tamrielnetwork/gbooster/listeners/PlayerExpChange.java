@@ -33,7 +33,7 @@ public class PlayerExpChange
 
 	@EventHandler
 	public void onPlayerExpChange(@NotNull PlayerExpChangeEvent event) {
-		event.setAmount((event.getAmount() * (int) main.getActiveBoostersManager()
+		event.setAmount((event.getAmount() * (byte) main.getActiveBoostersManager()
 		                                               .getBoosterMultiplier(BoosterType.MINECRAFT, false)));
 	}
 }
