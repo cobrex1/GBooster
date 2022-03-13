@@ -84,11 +84,11 @@ public class BoosterBar {
 		double duration = main.getActiveBoostersManager()
 		                      .getMostOldBoosterInMinutes();
 		String title = Chat.replaceColors(Objects.requireNonNull(barPattern)
-		                                         .replace("%minecraft%", String.valueOf(minecraft * 100)))
-		                   .replace("%mcmmo%", String.valueOf(mcmmo * 100))
-		                   .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
-		                   .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
-		                   .replace("%duration%", String.valueOf(duration));
+		                                         .replace("%minecraft%", String.valueOf(minecraft * 100))
+		                                         .replace("%mcmmo%", String.valueOf(mcmmo * 100))
+		                                         .replace("%jobs_xp%", String.valueOf(jobsXp * 100))
+		                                         .replace("%jobs_money%", String.valueOf(jobsMoney * 100))
+		                                         .replace("%duration%", String.valueOf(duration)));
 		if (bar != null && !bar.getPlayers()
 		                       .isEmpty()) {
 			Player player = bar.getPlayers()
