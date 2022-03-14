@@ -52,10 +52,7 @@ public class CmdSpec {
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
 	                                   int length) {
-		if (Cmd.isNotPermitted(sender, perm)) {
-			return true;
-		}
-		return Cmd.isArgsLengthNotEqualTo(sender, args, length);
+		return Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length);
 	}
 
 	private static boolean isInvalidBoosterPlayer(@NotNull CommandSender sender, BoosterPlayer boosterPlayer) {
