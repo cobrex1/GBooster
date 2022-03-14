@@ -192,11 +192,25 @@ no-booster: "&cYou don't have a booster of this type!"
 
 ### Placeholders
 
-Display amount of boosters from player
+1. Display amount of boosters from player
 
 * Structure: `%gbooster_` + `booster_id`¹ + `%`
 * ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
 * Example: `%gbooster_minecraft_xp_2%`
+* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+
+2. Display multiplier of booster id in percent
+
+* Structure: `%gbooster_` + `booster_id`¹ + `_multiplier%`
+* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+* Example: `%gbooster_minecraft_xp_2_multiplier%`
+* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+
+3. Display duration of booster id in minutes
+
+* Structure: `%gbooster_` + `booster_id`¹ + `_duration%`
+* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+* Example: `%gbooster_minecraft_xp_2_duration%`
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 ### Servers using GBooster
