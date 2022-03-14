@@ -185,7 +185,7 @@ player-only: "&cThis command can only be executed by players!"
 invalid-player: "&cInvalid player!"
 invalid-booster: "&cID doesn't exist!"
 invalid-amount: "&cInvalid amount!"
-countdown-active: "&cYou can only use the same type of booster once every hour!"
+countdown-active: "&cYou can only use the same type of booster once!"
 limit: "&cThe global limit has been reached!"
 no-booster: "&cYou don't have a booster of this type!"
 ```
