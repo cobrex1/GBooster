@@ -80,7 +80,7 @@ public class BoosterPlayer {
 
 	public boolean canUseBooster(@NotNull Booster booster) {
 		if (boostersCountdown.containsKey(booster.getBoosterType())
-		    && boostersCountdown.get(booster.getBoosterType()) + 60 * 60 * 1000 > System.currentTimeMillis()) {
+		    && boostersCountdown.get(booster.getBoosterType()) + booster.getDuration() * 1000L > System.currentTimeMillis()) {
 			return false;
 		}
 		boostersCountdown.put(booster.getBoosterType(), System.currentTimeMillis());
