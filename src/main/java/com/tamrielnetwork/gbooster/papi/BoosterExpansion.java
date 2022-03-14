@@ -64,6 +64,12 @@ public class BoosterExpansion
 				                          .getBoostersStorage()
 				                          .getOrDefault(identifier, 0));
 			}
+			if (identifier.equals(booster.getId() + "_multiplier")) {
+				return String.valueOf((short) (booster.getMultiplier() * 100));
+			}
+			if (identifier.equals(booster.getId() + "_duration")) {
+				return String.valueOf((short) (booster.getDuration() / 60));
+			}
 		}
 		return "0";
 	}
