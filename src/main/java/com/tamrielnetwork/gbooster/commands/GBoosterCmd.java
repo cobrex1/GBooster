@@ -143,11 +143,11 @@ public class GBoosterCmd
 		List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig()
 		                                                               .getConfigurationSection("boosters"))
 		                                           .getKeys(false));
-		if (args[0].equalsIgnoreCase("use") && sender.hasPermission(GBOOSTER_USE) && args.length == 2) {
+		if (args.length == 2 && args[0].equalsIgnoreCase("use") && sender.hasPermission(GBOOSTER_USE)) {
 			tabComplete.addAll(keys);
 			return tabComplete;
 		}
-		if (args[0].equalsIgnoreCase("give") && sender.hasPermission(GBOOSTER_GIVE) && args.length == 3) {
+		if (args.length == 3 && args[0].equalsIgnoreCase("give") && sender.hasPermission(GBOOSTER_GIVE)) {
 			return keys;
 		}
 		return null;
