@@ -129,44 +129,27 @@ public class GBoosterCmd
 	                                            @NotNull String alias, @NotNull String[] args) {
 		@Nullable List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
-			tabCompleteFirstArg(sender, tabComplete);
-		}
-		if (args.length > 1) {
-			List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig()
-			                                                               .getConfigurationSection("boosters"))
-			                                           .getKeys(false));
-			switch (args[0]) {
-				case "give":
-					if (sender.hasPermission(GBOOSTER_GIVE)) {
-						return switch (args.length) {
-							case 3 -> keys;
-							case 4 -> List.of("1", "2", "3", "4", "5", "6", "7", "8", "9");
-							default -> null;
-						};
-					}
-					break;
-				case "use":
-					if (sender.hasPermission(GBOOSTER_USE) && args.length == 2) {
-						tabComplete.addAll(keys);
-					}
-					break;
-				default:
-					tabComplete = null;
-					break;
+			if (sender.hasPermission(GBOOSTER_GIVE)) {
+				tabComplete.add("give");
 			}
+			if (sender.hasPermission(GBOOSTER_USE)) {
+				tabComplete.add("use");
+			}
+			if (sender.hasPermission("gbooster.time")) {
+				tabComplete.add("time");
+			}
+			return tabComplete;
 		}
-		return tabComplete;
-	}
-
-	private void tabCompleteFirstArg(@NotNull CommandSender sender, @NotNull List<String> tabComplete) {
-		if (sender.hasPermission(GBOOSTER_GIVE)) {
-			tabComplete.add("give");
+		List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig()
+		                                                               .getConfigurationSection("boosters"))
+		                                           .getKeys(false));
+		if (args[0].equalsIgnoreCase("use") && sender.hasPermission(GBOOSTER_USE) && args.length == 2) {
+			tabComplete.addAll(keys);
+			return tabComplete;
 		}
-		if (sender.hasPermission(GBOOSTER_USE)) {
-			tabComplete.add("use");
+		if (args[0].equalsIgnoreCase("give") && sender.hasPermission(GBOOSTER_GIVE) && args.length == 3) {
+			return keys;
 		}
-		if (sender.hasPermission("gbooster.time")) {
-			tabComplete.add("time");
-		}
+		return null;
 	}
 }
