@@ -213,6 +213,11 @@ no-booster: "&cYou don't have a booster of this type!"
 * Example: `%gbooster_minecraft_xp_2_duration%`
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
+4. Display time until next booster runs out
+
+* Structure: `%gbooster_time%`
+* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+
 ### Servers using GBooster
 
 * [TamrielNetwork - tamriel.me](https://tamriel.site)

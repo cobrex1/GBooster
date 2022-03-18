@@ -65,11 +65,14 @@ public class GBoosterCmd
 	}
 
 	private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
+		if (Cmd.isArgsLengthNotEqualTo(sender, args, 4)) {
+			return;
+		}
 		Booster booster = main.getBoostersManager()
 		                      .getBoosterById(args[2]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage()
 		                                  .getBoosterPlayerByName(args[1]);
-		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_GIVE, 4, booster, boosterPlayer)) {
+		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_GIVE, booster, boosterPlayer)) {
 			return;
 		}
 		int amount = Integer.parseInt(args[3]);
@@ -85,7 +88,7 @@ public class GBoosterCmd
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
-		if (Cmd.isInvalidSender(sender)) {
+		if (Cmd.isArgsLengthNotEqualTo(sender, args, 2) || Cmd.isInvalidSender(sender)) {
 			return;
 		}
 		Player senderPlayer = (Player) sender;
@@ -93,7 +96,7 @@ public class GBoosterCmd
 		                      .getBoosterById(args[1]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage()
 		                                  .getBoosterPlayerByUUID(senderPlayer.getUniqueId());
-		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, 2, booster, boosterPlayer)) {
+		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, booster, boosterPlayer)) {
 			return;
 		}
 		boosterPlayer.takeBooster(booster);

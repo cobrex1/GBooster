@@ -36,16 +36,14 @@ public class CmdSpec {
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
-	                                   int length, Booster booster, BoosterPlayer boosterPlayer) {
+	                                   Booster booster, BoosterPlayer boosterPlayer) {
 		return switch (args[0].toLowerCase()) {
-			case "give" -> Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length)
-			               || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])
-			               || isInvalidBoosterPlayer(sender, boosterPlayer);
-			case "use" -> Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length)
-			              || isInvalidBooster(sender, booster) || exceedsLimit(sender, booster) || hasNoBooster(sender,
-			                                                                                                    boosterPlayer,
+			case "give" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster) || isInvalidNumber(
+					sender, args[3]) || isInvalidBoosterPlayer(sender, boosterPlayer);
+			case "use" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster) || exceedsLimit(sender,
 			                                                                                                    booster)
-			              || isOnCountdown(sender, boosterPlayer, booster);
+			              || hasNoBooster(sender, boosterPlayer, booster) || isOnCountdown(sender, boosterPlayer,
+			                                                                               booster);
 			default -> true;
 		};
 	}

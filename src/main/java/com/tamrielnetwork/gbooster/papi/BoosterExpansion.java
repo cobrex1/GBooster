@@ -70,6 +70,10 @@ public class BoosterExpansion
 			if (identifier.equals(booster.getId() + "_duration")) {
 				return String.valueOf((short) (booster.getDuration() / 60));
 			}
+			if (identifier.equals("time")) {
+				return String.valueOf(main.getActiveBoostersManager()
+				                          .getMostOldBoosterInMinutes());
+			}
 		}
 		return "0";
 	}
