@@ -45,8 +45,13 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
-        <li><a href="#configuration - config.yml">Configuration</a></li>
-        <li><a href="#configuration - messages.yml">Configuration</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#configuration">Configuration</a>
+      <ul>
+        <li><a href="#configyml">config.yml</a></li>
+        <li><a href="#messagesyml">messages.yml</a></li>
         <li><a href="#placeholders">Placeholders</a></li>
         <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
       </ul>
@@ -109,7 +114,9 @@ To get the plugin running on your server follow these simple steps.
 * Command: `/gbooster time`
 * Description: Shows time of booster that ends next
 
-### Configuration - config.yml
+## Configuration
+
+### config.yml
 
 ```
 #---------------------------------------------------------------#
@@ -168,7 +175,7 @@ boosters:
     duration: 3600
 ```
 
-### Configuration - messages.yml
+### messages.yml
 
 ```
 cmd: "&fUsage: &b/gbooster use &3<booster>"
