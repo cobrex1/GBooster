@@ -19,6 +19,7 @@
 package com.tamrielnetwork.gbooster.storage.mysql;
 
 import com.tamrielnetwork.gbooster.GBooster;
+import com.tamrielnetwork.gbooster.utils.sql.Sql;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -53,10 +54,12 @@ public class SqlManager {
 		enableConnection();
 		try (PreparedStatement statementPlayersTable = SqlManager.getConnection()
 		                                                         .prepareStatement(
-				                                                         "CREATE TABLE IF NOT EXISTS PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
+				                                                         "CREATE TABLE IF NOT EXISTS " + Sql.getPrefix()
+				                                                         + "PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
 		     PreparedStatement statementBoostersTable = SqlManager.getConnection()
-		                                                          .prepareStatement(
-				                                                          "CREATE TABLE IF NOT EXISTS Boosters (`ID` TEXT, `Time` BIGINT)")) {
+		                                                          .prepareStatement("CREATE TABLE IF NOT EXISTS "
+		                                                                            + Sql.getPrefix()
+		                                                                            + "Boosters (`ID` TEXT, `Time` BIGINT)")) {
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
 		}

@@ -20,6 +20,7 @@ package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.player.BoosterPlayer;
 import com.tamrielnetwork.gbooster.storage.mysql.SqlManager;
+import com.tamrielnetwork.gbooster.utils.sql.Sql;
 import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
@@ -40,7 +41,8 @@ public class PlayerStorageSql
 	@Override
 	public void loadPlayers() {
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("SELECT * FROM PlayersBoosters")) {
+		                                                   .prepareStatement("SELECT * FROM " + Sql.getPrefix()
+		                                                                     + "PlayersBoosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					manageStorage(rs);
@@ -74,8 +76,8 @@ public class PlayerStorageSql
 			for (Map.Entry<String, Integer> boosterEntry : boosterPlayer.getBoostersStorage()
 			                                                            .entrySet()) {
 				try (PreparedStatement insertStatement = SqlManager.getConnection()
-				                                                   .prepareStatement(
-						                                                   "INSERT INTO PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
+				                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix()
+				                                                                     + "PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
 					insertStatement.setString(1, boosterPlayer.getUuid()
 					                                          .toString());
 					insertStatement.setString(2, boosterPlayer.getName());
@@ -94,7 +96,8 @@ public class PlayerStorageSql
 	@Override
 	protected void clear() {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection()
-		                                                     .prepareStatement("TRUNCATE TABLE PlayersBoosters")) {
+		                                                     .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
+		                                                                       + "PlayersBoosters")) {
 			truncateStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {

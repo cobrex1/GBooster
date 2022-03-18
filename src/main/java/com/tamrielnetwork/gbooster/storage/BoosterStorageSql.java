@@ -20,6 +20,7 @@ package com.tamrielnetwork.gbooster.storage;
 
 import com.tamrielnetwork.gbooster.boosters.Booster;
 import com.tamrielnetwork.gbooster.storage.mysql.SqlManager;
+import com.tamrielnetwork.gbooster.utils.sql.Sql;
 import org.bukkit.Bukkit;
 
 import java.sql.PreparedStatement;
@@ -35,7 +36,8 @@ public class BoosterStorageSql
 	@Override
 	public void loadBoosters() {
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("SELECT * FROM Boosters")) {
+		                                                   .prepareStatement(
+				                                                   "SELECT * FROM " + Sql.getPrefix() + "Boosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					Booster booster = main.getBoostersManager()
@@ -58,8 +60,8 @@ public class BoosterStorageSql
 		clear();
 		for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
 			try (PreparedStatement insertStatement = SqlManager.getConnection()
-			                                                   .prepareStatement(
-					                                                   "INSERT INTO Boosters (ID, Time) VALUES (?, ?)")) {
+			                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix()
+			                                                                     + "Boosters (ID, Time) VALUES (?, ?)")) {
 				insertStatement.setString(1, entry.getKey()
 				                                  .getId());
 				insertStatement.setLong(2, entry.getValue());
@@ -75,7 +77,8 @@ public class BoosterStorageSql
 	@Override
 	public void clear() {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection()
-		                                                     .prepareStatement("TRUNCATE TABLE Boosters")) {
+		                                                     .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
+		                                                                       + "Boosters")) {
 			truncateStatement.executeUpdate();
 		}
 		catch (SQLException ignored) {
