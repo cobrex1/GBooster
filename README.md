@@ -151,6 +151,8 @@ mysql:
   database: gbooster
   username: "gbooster"
   password: ""
+  prefix: "server_"
+  # prefix: "" -> # Use for no prefix
 
 boosters:
   jobs_xp_2:
