@@ -223,7 +223,6 @@ no-booster: "&cYou don't have a booster of this type!"
 4. Display time until next booster runs out
 
 * Structure: `%gbooster_time%`
-* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 ### Servers using GBooster
 
