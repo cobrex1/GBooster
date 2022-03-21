@@ -38,7 +38,7 @@ public abstract class BoostersStorage {
 
 	public abstract void saveBoosters();
 
-	public abstract void clear();
+	protected abstract void clear();
 
 	public void activateBooster(@NotNull Booster booster) {
 		activeBoosters.put(booster, System.currentTimeMillis());

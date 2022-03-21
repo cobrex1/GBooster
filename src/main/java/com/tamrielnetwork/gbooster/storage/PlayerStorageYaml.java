@@ -68,11 +68,10 @@ public class PlayerStorageYaml
 	protected void clear() {
 		for (String key : playersConf.getKeys(false)) {
 			playersConf.set(key, null);
-			save();
 		}
 	}
 
-	public void save() {
+	private void save() {
 		try {
 			playersConf.save(playersFile);
 		}

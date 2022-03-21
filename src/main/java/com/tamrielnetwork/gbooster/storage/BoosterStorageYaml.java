@@ -68,13 +68,13 @@ public class BoosterStorageYaml
 	}
 
 	@Override
-	public void clear() {
+	protected void clear() {
 		for (String key : boostersConf.getKeys(false)) {
 			boostersConf.set(key, null);
 		}
 	}
 
-	public void save() {
+	private void save() {
 		try {
 			boostersConf.save(boostersFile);
 		}

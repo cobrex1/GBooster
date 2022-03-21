@@ -75,7 +75,7 @@ public class BoosterStorageSql
 	}
 
 	@Override
-	public void clear() {
+	protected void clear() {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection()
 		                                                     .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
 		                                                                       + "Boosters")) {
