@@ -53,9 +53,9 @@
         <li><a href="#configyml">config.yml</a></li>
         <li><a href="#messagesyml">messages.yml</a></li>
         <li><a href="#placeholders">Placeholders</a></li>
-        <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
       </ul>
     </li>
+    <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
@@ -227,7 +227,8 @@ no-booster: "&cYou don't have a booster of this type!"
 
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
-### Servers using GBooster
+
+## Servers using GBooster
 
 * [TamrielNetwork - tamriel.me](https://tamriel.site)
 
@@ -269,7 +270,7 @@ Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
-### Acknowledgements
+## Acknowledgements
 
 * [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
 * [Initial Development - Manu](https://github.com/zManu27/)
