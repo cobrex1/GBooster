@@ -153,7 +153,7 @@ public final class GBooster
 			public void run() {
 				playerStorage.savePlayers();
 			}
-		}.runTaskTimer(this, getConfig().getInt("saving-time") * 20L, getConfig().getInt("saving-time") * 20L);
+		}.runTaskTimerAsynchronously(this, getConfig().getInt("saving-time") * 20L, getConfig().getInt("saving-time") * 20L);
 	}
 
 	public BoostersManager getBoostersManager() {
