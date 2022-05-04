@@ -227,10 +227,6 @@ no-booster: "&cYou don't have a booster of this type!"
 
 * [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
-## Servers using GBooster
-
-* [TamrielNetwork - tamriel.me](https://tamriel.site)
-
 <!-- ROADMAP -->
 
 ## Roadmap
