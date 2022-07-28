@@ -8,7 +8,7 @@ plugins {
     id "org.sonarqube" version "3.4.0.2513"
 }
 
-group 'com.tamrielnetwork.gbooster'
+group 'dev.meinel.leo.gbooster'
 version '1.4.2'
 
 repositories {
@@ -52,8 +52,8 @@ processResources {
 
 sonarqube {
     properties {
-        property "sonar.projectKey", "TamrielNetwork_GBooster"
-        property "sonar.organization", "tamrielnetwork"
+        property "sonar.projectKey", "LeoMeinel_GBooster"
+        property "sonar.organization", "LeoMeinel"
         property "sonar.host.url", "https://sonarcloud.io"
     }
 }
