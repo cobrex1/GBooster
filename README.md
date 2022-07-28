@@ -10,7 +10,7 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/TamrielNetwork/GBooster">
+  <a href="https://github.com/LeoMeinel/GBooster">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -19,14 +19,14 @@
   <p align="center">
     Global Boosters for Spigot and Paper
     <br />
-    <a href="https://github.com/TamrielNetwork/GBooster"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LeoMeinel/GBooster"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/TamrielNetwork/GBooster">View Demo</a>
+    <a href="https://github.com/LeoMeinel/GBooster">View Demo</a>
     ·
-    <a href="https://github.com/TamrielNetwork/GBooster/issues">Report Bug</a>
+    <a href="https://github.com/LeoMeinel/GBooster/issues">Report Bug</a>
     ·
-    <a href="https://github.com/TamrielNetwork/GBooster/issues">Request Feature</a>
+    <a href="https://github.com/LeoMeinel/GBooster/issues">Request Feature</a>
   </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -225,13 +225,13 @@ no-booster: "&cYou don't have a booster of this type!"
 
 5. Usage Example
 
-* [DeluxeMenus](https://github.com/TamrielNetwork/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+* [DeluxeMenus](https://github.com/LeoMeinel/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/TamrielNetwork/GBooster/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/LeoMeinel/GBooster/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -261,7 +261,7 @@ Leopold Meinel - [@TamrielN](https://twitter.com/TamrielN) - Twitter
 
 Leopold Meinel - [contact@tamriel.me](mailto:contact@tamriel.me) - eMail
 
-Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
+Project Link - [GBooster](https://github.com/LeoMeinel/GBooster) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -276,27 +276,27 @@ Project Link - [GBooster](https://github.com/TamrielNetwork/GBooster) - GitHub
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/TamrielNetwork/GBooster?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/GBooster?style=for-the-badge
 
-[contributors-url]: https://github.com/TamrielNetwork/GBooster/graphs/contributors
+[contributors-url]: https://github.com/LeoMeinel/GBooster/graphs/contributors
 
-[forks-shield]: https://img.shields.io/github/forks/TamrielNetwork/GBooster?label=Forks&style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/GBooster?label=Forks&style=for-the-badge
 
-[forks-url]: https://github.com/TamrielNetwork/GBooster/network/members
+[forks-url]: https://github.com/LeoMeinel/GBooster/network/members
 
-[stars-shield]: https://img.shields.io/github/stars/TamrielNetwork/GBooster?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/GBooster?style=for-the-badge
 
-[stars-url]: https://github.com/TamrielNetwork/GBooster/stargazers
+[stars-url]: https://github.com/LeoMeinel/GBooster/stargazers
 
-[issues-shield]: https://img.shields.io/github/issues/TamrielNetwork/GBooster?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/GBooster?style=for-the-badge
 
-[issues-url]: https://github.com/TamrielNetwork/GBooster/issues
+[issues-url]: https://github.com/LeoMeinel/GBooster/issues
 
-[license-shield]: https://img.shields.io/github/license/TamrielNetwork/GBooster?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/LeoMeinel/GBooster?style=for-the-badge
 
-[license-url]: https://github.com/TamrielNetwork/GBooster/blob/main/LICENSE
+[license-url]: https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
 
-[quality-shield]: https://img.shields.io/codefactor/grade/github/TamrielNetwork/GBooster?style=for-the-badge
+[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/GBooster?style=for-the-badge
 
-[quality-url]: https://www.codefactor.io/repository/github/TamrielNetwork/GBooster
+[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/GBooster
 
