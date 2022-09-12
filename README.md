@@ -1,4 +1,5 @@
 <!-- PROJECT SHIELDS -->
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -76,20 +77,20 @@ This plugin is perfect for any server wishing to receive donations from their pl
 
 ### Features
 
-* Global Minecraft Experience Boosters
-* Global McMMO Experience Boosters
-* Global Jobs Experience and Money Boosters
-* MySQL/MariaDB support
-* A Bar that shows active boosters and hides automatically when there are none active
-* Support for scheduled boosters from JobsReborn
-* Placeholders and the ability to create a menu to activate boosters
+- Global Minecraft Experience Boosters
+- Global McMMO Experience Boosters
+- Global Jobs Experience and Money Boosters
+- MySQL/MariaDB support
+- A Bar that shows active boosters and hides automatically when there are none active
+- Support for scheduled boosters from JobsReborn
+- Placeholders and the ability to create a menu to activate boosters
   through [DeluxeMenus](https://www.spigotmc.org/resources/deluxemenus.11734/) for example
-* Usage of Placeholders in BossBar
+- Usage of Placeholders in BossBar
 
 ### Built With
 
-* [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
-* [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
+- [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
+- [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
 
 <!-- GETTING STARTED -->
 
@@ -101,18 +102,18 @@ To get the plugin running on your server follow these simple steps.
 
 1. Permission: `gbooster.give`
 
-* Command: `/gbooster give <player> <boosterid> <amount>`
-* Description: Give a player a certain amount of boosters
+- Command: `/gbooster give <player> <boosterid> <amount>`
+- Description: Give a player a certain amount of boosters
 
 2. Permission: `gbooster.use`
 
-* Command: `/gbooster use <boosterid>`
-* Description: Use a specified booster
+- Command: `/gbooster use <boosterid>`
+- Description: Use a specified booster
 
 3. Permission: `gbooster.time`
 
-* Command: `/gbooster time`
-* Description: Shows time of booster that ends next
+- Command: `/gbooster time`
+- Description: Shows time of booster that ends next
 
 ## Configuration
 
@@ -203,29 +204,29 @@ no-booster: "&cYou don't have a booster of this type!"
 
 1. Display amount of boosters from player
 
-* Structure: `%gbooster_` + `booster_id`¹ + `%`
-* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
-* Example: `%gbooster_minecraft_xp_2%`
+- Structure: `%gbooster_` + `booster_id`¹ + `%`
+- ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+- Example: `%gbooster_minecraft_xp_2%`
 
 2. Display multiplier of booster id in percent
 
-* Structure: `%gbooster_` + `booster_id`¹ + `_multiplier%`
-* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
-* Example: `%gbooster_minecraft_xp_2_multiplier%`
+- Structure: `%gbooster_` + `booster_id`¹ + `_multiplier%`
+- ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+- Example: `%gbooster_minecraft_xp_2_multiplier%`
 
 3. Display duration of booster id in minutes
 
-* Structure: `%gbooster_` + `booster_id`¹ + `_duration%`
-* ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
-* Example: `%gbooster_minecraft_xp_2_duration%`
+- Structure: `%gbooster_` + `booster_id`¹ + `_duration%`
+- ¹ Exact ID from config.yml including `_`, can be found under `boosters:`
+- Example: `%gbooster_minecraft_xp_2_duration%`
 
 4. Display time until next booster runs out
 
-* Structure: `%gbooster_time%`
+- Structure: `%gbooster_time%`
 
 5. Usage Example
 
-* [DeluxeMenus](https://github.com/LeoMeinel/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+- [DeluxeMenus](https://github.com/LeoMeinel/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 <!-- ROADMAP -->
 
@@ -265,36 +266,24 @@ Project Link - [GBooster](https://github.com/LeoMeinel/GBooster) - GitHub
 
 ## Acknowledgements
 
-* [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
-* [Initial Development - Manu](https://github.com/zManu27/)
-* [McMMO & Jobs softdepend - Cobrex1](https://github.com/cobrex1/)
-* [Various dependency updates - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
-* [BoosterActivateEvent - JustinDevB](https://github.com/JustinDevB)
-* [PAPI parsing BossBar - benlmyers](https://github.com/benlmyers)
+- [README.md - othneildrew](https://github.com/othneildrew/Best-README-Template)
+- [Initial Development - Manu](https://github.com/zManu27/)
+- [McMMO & Jobs softdepend - Cobrex1](https://github.com/cobrex1/)
+- [Various dependency updates - Romvnly-Gaming](https://github.com/Romvnly-Gaming)
+- [BoosterActivateEvent - JustinDevB](https://github.com/JustinDevB)
+- [PAPI parsing BossBar - benlmyers](https://github.com/benlmyers)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
 [contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/GBooster?style=for-the-badge
-
 [contributors-url]: https://github.com/LeoMeinel/GBooster/graphs/contributors
-
 [forks-shield]: https://img.shields.io/github/forks/LeoMeinel/GBooster?label=Forks&style=for-the-badge
-
 [forks-url]: https://github.com/LeoMeinel/GBooster/network/members
-
 [stars-shield]: https://img.shields.io/github/stars/LeoMeinel/GBooster?style=for-the-badge
-
 [stars-url]: https://github.com/LeoMeinel/GBooster/stargazers
-
 [issues-shield]: https://img.shields.io/github/issues/LeoMeinel/GBooster?style=for-the-badge
-
 [issues-url]: https://github.com/LeoMeinel/GBooster/issues
-
 [license-shield]: https://img.shields.io/github/license/LeoMeinel/GBooster?style=for-the-badge
-
 [license-url]: https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
-
 [quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/GBooster?style=for-the-badge
-
 [quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/GBooster
-

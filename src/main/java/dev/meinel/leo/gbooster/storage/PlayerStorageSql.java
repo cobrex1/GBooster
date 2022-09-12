@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: PlayerStorageSql.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.storage;
@@ -41,23 +33,22 @@ public class PlayerStorageSql
 	@Override
 	public void loadPlayers() {
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement("SELECT * FROM " + Sql.getPrefix()
-		                                                                     + "PlayersBoosters")) {
+				.prepareStatement("SELECT * FROM " + Sql.getPrefix()
+						+ "PlayersBoosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					manageStorage(rs);
 				}
 			}
-		}
-		catch (SQLException ignored) {
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 
 	private void manageStorage(ResultSet rs) throws SQLException {
 		if (main.getBoostersManager()
-		        .isBooster(rs.getString(3))) {
+				.isBooster(rs.getString(3))) {
 			return;
 		}
 		BoosterPlayer boosterPlayer = getBoosterPlayerByUUID(UUID.fromString(rs.getString(1)));
@@ -66,7 +57,7 @@ public class PlayerStorageSql
 			return;
 		}
 		boosterPlayer.getBoostersStorage()
-		             .put(rs.getString(3), rs.getInt(4));
+				.put(rs.getString(3), rs.getInt(4));
 	}
 
 	@Override
@@ -74,20 +65,19 @@ public class PlayerStorageSql
 		clear();
 		for (BoosterPlayer boosterPlayer : boosterPlayers) {
 			for (Map.Entry<String, Integer> boosterEntry : boosterPlayer.getBoostersStorage()
-			                                                            .entrySet()) {
+					.entrySet()) {
 				try (PreparedStatement insertStatement = SqlManager.getConnection()
-				                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix()
-				                                                                     + "PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
+						.prepareStatement("INSERT INTO " + Sql.getPrefix()
+								+ "PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
 					insertStatement.setString(1, boosterPlayer.getUuid()
-					                                          .toString());
+							.toString());
 					insertStatement.setString(2, boosterPlayer.getName());
 					insertStatement.setString(3, boosterEntry.getKey());
 					insertStatement.setInt(4, boosterEntry.getValue());
 					insertStatement.executeUpdate();
-				}
-				catch (SQLException ignored) {
+				} catch (SQLException ignored) {
 					Bukkit.getLogger()
-					      .warning(SQLEXCEPTION);
+							.warning(SQLEXCEPTION);
 				}
 			}
 		}
@@ -96,13 +86,12 @@ public class PlayerStorageSql
 	@Override
 	protected void clear() {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection()
-		                                                     .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
-		                                                                       + "PlayersBoosters")) {
+				.prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
+						+ "PlayersBoosters")) {
 			truncateStatement.executeUpdate();
-		}
-		catch (SQLException ignored) {
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 }

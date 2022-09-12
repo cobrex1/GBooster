@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: GBoosterCmd.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.commands;
@@ -48,7 +40,7 @@ public class GBoosterCmd
 
 	@Override
 	public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label,
-	                         @NotNull String[] args) {
+			@NotNull String[] args) {
 		if (Cmd.isArgsLengthEqualTo(sender, args, 0) || Cmd.isArgsLengthGreaterThan(sender, args, 4)) {
 			return false;
 		}
@@ -69,9 +61,9 @@ public class GBoosterCmd
 			return;
 		}
 		Booster booster = main.getBoostersManager()
-		                      .getBoosterById(args[2]);
+				.getBoosterById(args[2]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage()
-		                                  .getBoosterPlayerByName(args[1]);
+				.getBoosterPlayerByName(args[1]);
 		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_GIVE, booster, boosterPlayer)) {
 			return;
 		}
@@ -80,11 +72,11 @@ public class GBoosterCmd
 		boosterPlayer.addBooster(booster.getId(), amount);
 		if (onlineBoosterPlayer != null) {
 			Chat.sendMessage(onlineBoosterPlayer,
-			                 Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()),
-			                 "receive-boosters");
+					Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()),
+					"receive-boosters");
 		}
 		Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId(), "%player%",
-		                                boosterPlayer.getName()), "give-boosters");
+				boosterPlayer.getName()), "give-boosters");
 	}
 
 	private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
@@ -93,21 +85,21 @@ public class GBoosterCmd
 		}
 		Player senderPlayer = (Player) sender;
 		Booster booster = main.getBoostersManager()
-		                      .getBoosterById(args[1]);
+				.getBoosterById(args[1]);
 		BoosterPlayer boosterPlayer = main.getPlayerStorage()
-		                                  .getBoosterPlayerByUUID(senderPlayer.getUniqueId());
+				.getBoosterPlayerByUUID(senderPlayer.getUniqueId());
 		if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, booster, boosterPlayer)) {
 			return;
 		}
 		boosterPlayer.takeBooster(booster);
 		BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
 		Bukkit.getPluginManager()
-		      .callEvent(boosterActivateEvent);
+				.callEvent(boosterActivateEvent);
 		if (boosterActivateEvent.isCancelled()) {
 			return;
 		}
 		main.getActiveBoostersManager()
-		    .activateBooster(booster);
+				.activateBooster(booster);
 		Chat.sendMessage(sender, "active-booster");
 		Chat.sendBroadcast(Map.of("%player%", boosterPlayer.getName()), "active-booster-broadcast");
 	}
@@ -117,20 +109,21 @@ public class GBoosterCmd
 			return;
 		}
 		if (main.getActiveBoostersManager()
-		        .getActiveBoosters()
-		        .size() == 0) {
+				.getActiveBoosters()
+				.size() == 0) {
 			Chat.sendMessage(sender, "no-active-booster");
 			return;
 		}
 		Chat.sendMessage(sender, Map.of("%duration%", String.valueOf(main.getActiveBoostersManager()
-		                                                                 .getMostOldBoosterInMinutes())),
-		                 "booster-timer");
+				.getMostOldBoosterInMinutes())),
+				"booster-timer");
 	}
 
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command,
-	                                            @NotNull String alias, @NotNull String[] args) {
-		@Nullable List<String> tabComplete = new ArrayList<>();
+			@NotNull String alias, @NotNull String[] args) {
+		@Nullable
+		List<String> tabComplete = new ArrayList<>();
 		if (args.length == 1) {
 			if (sender.hasPermission(GBOOSTER_GIVE)) {
 				tabComplete.add("give");
@@ -144,8 +137,8 @@ public class GBoosterCmd
 			return tabComplete;
 		}
 		List<String> keys = new ArrayList<>(Objects.requireNonNull(main.getConfig()
-		                                                               .getConfigurationSection("boosters"))
-		                                           .getKeys(false));
+				.getConfigurationSection("boosters"))
+				.getKeys(false));
 		if (args.length == 2 && args[0].equalsIgnoreCase("use") && sender.hasPermission(GBOOSTER_USE)) {
 			tabComplete.addAll(keys);
 			return tabComplete;

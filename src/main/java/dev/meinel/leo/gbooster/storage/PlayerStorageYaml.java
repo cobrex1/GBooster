@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: PlayerStorageYaml.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.storage;
@@ -54,11 +46,11 @@ public class PlayerStorageYaml
 		clear();
 		for (BoosterPlayer boosterPlayer : boosterPlayers) {
 			playersConf.set(boosterPlayer.getUuid()
-			                             .toString() + ".name", boosterPlayer.getName());
+					.toString() + ".name", boosterPlayer.getName());
 			for (Map.Entry<String, Integer> booster : boosterPlayer.getBoostersStorage()
-			                                                       .entrySet()) {
+					.entrySet()) {
 				playersConf.set(boosterPlayer.getUuid()
-				                             .toString() + ".boosters." + booster.getKey(), booster.getValue());
+						.toString() + ".boosters." + booster.getKey(), booster.getValue());
 			}
 		}
 		save();
@@ -74,10 +66,9 @@ public class PlayerStorageYaml
 	private void save() {
 		try {
 			playersConf.save(playersFile);
-		}
-		catch (IOException ignored) {
+		} catch (IOException ignored) {
 			Bukkit.getLogger()
-			      .info(IOEXCEPTION);
+					.info(IOEXCEPTION);
 		}
 	}
 }

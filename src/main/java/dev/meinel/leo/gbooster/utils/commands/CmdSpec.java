@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: CmdSpec.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.utils.commands;
@@ -36,20 +28,20 @@ public class CmdSpec {
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
-	                                   Booster booster, BoosterPlayer boosterPlayer) {
+			Booster booster, BoosterPlayer boosterPlayer) {
 		return switch (args[0].toLowerCase()) {
 			case "give" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster) || isInvalidNumber(
 					sender, args[3]) || isInvalidBoosterPlayer(sender, boosterPlayer);
 			case "use" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster) || exceedsLimit(sender,
-			                                                                                                    booster)
-			              || hasNoBooster(sender, boosterPlayer, booster) || isOnCountdown(sender, boosterPlayer,
-			                                                                               booster);
+					booster)
+					|| hasNoBooster(sender, boosterPlayer, booster) || isOnCountdown(sender, boosterPlayer,
+							booster);
 			default -> true;
 		};
 	}
 
 	public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args, @NotNull String perm,
-	                                   int length) {
+			int length) {
 		return Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length);
 	}
 
@@ -78,7 +70,7 @@ public class CmdSpec {
 	}
 
 	private static boolean isOnCountdown(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
-	                                     @NotNull Booster booster) {
+			@NotNull Booster booster) {
 		if (!boosterPlayer.canUseBooster(booster)) {
 			Chat.sendMessage(sender, "countdown-active");
 			return true;
@@ -88,7 +80,7 @@ public class CmdSpec {
 
 	private static boolean exceedsLimit(@NotNull CommandSender sender, @NotNull Booster booster) {
 		if (!main.getActiveBoostersManager()
-		         .canUseBooster(booster)) {
+				.canUseBooster(booster)) {
 			Chat.sendMessage(sender, "limit");
 			return true;
 		}
@@ -96,7 +88,7 @@ public class CmdSpec {
 	}
 
 	private static boolean hasNoBooster(@NotNull CommandSender sender, @NotNull BoosterPlayer boosterPlayer,
-	                                    @NotNull Booster booster) {
+			@NotNull Booster booster) {
 		if (!boosterPlayer.hasBooster(booster)) {
 			Chat.sendMessage(sender, "no-booster");
 			return true;

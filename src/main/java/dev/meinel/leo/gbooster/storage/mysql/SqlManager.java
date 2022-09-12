@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: SqlManager.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.storage.mysql;
@@ -42,30 +34,29 @@ public class SqlManager {
 
 	public SqlManager() {
 		this.host = main.getConfig()
-		                .getString("mysql.host");
+				.getString("mysql.host");
 		this.port = main.getConfig()
-		                .getInt("mysql.port");
+				.getInt("mysql.port");
 		this.database = main.getConfig()
-		                    .getString("mysql.database");
+				.getString("mysql.database");
 		this.username = main.getConfig()
-		                    .getString("mysql.username");
+				.getString("mysql.username");
 		this.password = main.getConfig()
-		                    .getString("mysql.password");
+				.getString("mysql.password");
 		enableConnection();
 		try (PreparedStatement statementPlayersTable = SqlManager.getConnection()
-		                                                         .prepareStatement(
-				                                                         "CREATE TABLE IF NOT EXISTS " + Sql.getPrefix()
-				                                                         + "PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
-		     PreparedStatement statementBoostersTable = SqlManager.getConnection()
-		                                                          .prepareStatement("CREATE TABLE IF NOT EXISTS "
-		                                                                            + Sql.getPrefix()
-		                                                                            + "Boosters (`ID` TEXT, `Time` BIGINT)")) {
+				.prepareStatement(
+						"CREATE TABLE IF NOT EXISTS " + Sql.getPrefix()
+								+ "PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
+				PreparedStatement statementBoostersTable = SqlManager.getConnection()
+						.prepareStatement("CREATE TABLE IF NOT EXISTS "
+								+ Sql.getPrefix()
+								+ "Boosters (`ID` TEXT, `Time` BIGINT)")) {
 			statementPlayersTable.executeUpdate();
 			statementBoostersTable.executeUpdate();
-		}
-		catch (SQLException ignored) {
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 
@@ -83,13 +74,12 @@ public class SqlManager {
 				return;
 			}
 			setConnection(DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username,
-			                                          password));
+					password));
 			main.getLogger()
-			    .info("Connected successfully with the database!");
-		}
-		catch (SQLException ignored) {
+					.info("Connected successfully with the database!");
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 }

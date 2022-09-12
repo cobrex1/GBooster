@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: BoosterBar.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.bar;
@@ -50,8 +42,8 @@ public class BoosterBar {
 			@Override
 			public void run() {
 				if (main.getActiveBoostersManager()
-				        .getActiveBoosters()
-				        .isEmpty()) {
+						.getActiveBoosters()
+						.isEmpty()) {
 					bar.setVisible(false);
 					return;
 				}
@@ -61,7 +53,7 @@ public class BoosterBar {
 					return;
 				}
 				double time = main.getActiveBoostersManager()
-				                  .getMostOldBoosterInMinutes() / 60.0;
+						.getMostOldBoosterInMinutes() / 60.0;
 				if (time > 1.0) {
 					time = 1;
 				}
@@ -75,9 +67,9 @@ public class BoosterBar {
 	private String getTitle() {
 		String title = Chat.replaceColors(Objects.requireNonNull(getTitleForActiveBoosters()));
 		if (PlaceholderAPI.containsPlaceholders(title) && bar != null && !bar.getPlayers()
-		                                                                     .isEmpty()) {
+				.isEmpty()) {
 			Player player = bar.getPlayers()
-			                   .get(0);
+					.get(0);
 			if (player != null) {
 				title = PlaceholderAPI.setPlaceholders(player, title);
 			}
@@ -89,39 +81,39 @@ public class BoosterBar {
 		if (value > 1 || Objects.equals(subSection, DURATION)) {
 			if (!titleBuilder.isEmpty() && !Objects.equals(subSection, DURATION)) {
 				titleBuilder.append(main.getConfig()
-				                        .getString("bar-pattern.separator"));
+						.getString("bar-pattern.separator"));
 			}
 			titleBuilder.append(main.getConfig()
-			                        .getString("bar-pattern." + subSection));
+					.getString("bar-pattern." + subSection));
 		}
 	}
 
 	private String getTitleForActiveBoosters() {
 		short durationValue = (short) main.getActiveBoostersManager()
-		                                  .getMostOldBoosterInMinutes();
+				.getMostOldBoosterInMinutes();
 		if (durationValue == 0) {
 			return "";
 		}
 		StringBuilder titleBuilder = new StringBuilder();
 		byte minecraftValue = (byte) main.getActiveBoostersManager()
-		                                 .getBoosterMultiplier(BoosterType.MINECRAFT, false);
+				.getBoosterMultiplier(BoosterType.MINECRAFT, false);
 		float mcmmoValue = (float) main.getActiveBoostersManager()
-		                               .getBoosterMultiplier(BoosterType.MCMMO, false);
+				.getBoosterMultiplier(BoosterType.MCMMO, false);
 		float jobsXpValue = (float) main.getActiveBoostersManager()
-		                                .getBoosterMultiplier(BoosterType.JOBS_XP, true);
+				.getBoosterMultiplier(BoosterType.JOBS_XP, true);
 		float jobsMoneyValue = (float) main.getActiveBoostersManager()
-		                                   .getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
+				.getBoosterMultiplier(BoosterType.JOBS_MONEY, true);
 		appendTitleBuilderIfNecessary(titleBuilder, "minecraft", minecraftValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "mcmmo", mcmmoValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "jobs-xp", jobsXpValue);
 		appendTitleBuilderIfNecessary(titleBuilder, "jobs-money", jobsMoneyValue);
 		appendTitleBuilderIfNecessary(titleBuilder, DURATION, durationValue);
 		return titleBuilder.toString()
-		                   .replace("%minecraft%", String.valueOf((short) (minecraftValue * 100)))
-		                   .replace("%mcmmo%", String.valueOf((short) (mcmmoValue * 100)))
-		                   .replace("%jobs_xp%", String.valueOf((short) (jobsXpValue * 100)))
-		                   .replace("%jobs_money%", String.valueOf((short) (jobsMoneyValue * 100)))
-		                   .replace("%duration%", String.valueOf(durationValue));
+				.replace("%minecraft%", String.valueOf((short) (minecraftValue * 100)))
+				.replace("%mcmmo%", String.valueOf((short) (mcmmoValue * 100)))
+				.replace("%jobs_xp%", String.valueOf((short) (jobsXpValue * 100)))
+				.replace("%jobs_money%", String.valueOf((short) (jobsMoneyValue * 100)))
+				.replace("%duration%", String.valueOf(durationValue));
 	}
 
 	public BossBar getBar() {

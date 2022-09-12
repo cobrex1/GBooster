@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: BoosterExpansion.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.papi;
@@ -45,24 +37,24 @@ public class BoosterExpansion
 	@Override
 	public @NotNull String getIdentifier() {
 		return main.getDescription()
-		           .getName();
+				.getName();
 	}
 
 	@Override
 	public @NotNull String getVersion() {
 		return main.getDescription()
-		           .getVersion();
+				.getVersion();
 	}
 
 	@Override
 	public String onRequest(@NotNull OfflinePlayer player, @NotNull String identifier) {
 		for (Booster booster : main.getBoostersManager()
-		                           .getBoosters()) {
+				.getBoosters()) {
 			if (identifier.equals(booster.getId())) {
 				return String.valueOf(main.getPlayerStorage()
-				                          .getBoosterPlayerByUUID(player.getUniqueId())
-				                          .getBoostersStorage()
-				                          .getOrDefault(identifier, 0));
+						.getBoosterPlayerByUUID(player.getUniqueId())
+						.getBoostersStorage()
+						.getOrDefault(identifier, 0));
 			}
 			if (identifier.equals(booster.getId() + "_multiplier")) {
 				return String.valueOf((short) (booster.getMultiplier() * 100));
@@ -72,7 +64,7 @@ public class BoosterExpansion
 			}
 			if (identifier.equals("time")) {
 				return String.valueOf(main.getActiveBoostersManager()
-				                          .getMostOldBoosterInMinutes());
+						.getMostOldBoosterInMinutes());
 			}
 		}
 		return "0";
@@ -80,7 +72,7 @@ public class BoosterExpansion
 
 	private String getAuthors() {
 		List<String> authors = main.getDescription()
-		                           .getAuthors();
+				.getAuthors();
 		StringBuilder authorBuilder = new StringBuilder();
 		for (String author : authors) {
 			if (author.equals(authors.get(0))) {
@@ -88,7 +80,7 @@ public class BoosterExpansion
 				continue;
 			}
 			authorBuilder.append(", ")
-			             .append(author);
+					.append(author);
 		}
 		return authorBuilder.toString();
 	}

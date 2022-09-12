@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: BoosterStorageYaml.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.storage;
@@ -45,7 +37,7 @@ public class BoosterStorageYaml
 	public void loadBoosters() {
 		for (String key : boostersConf.getKeys(false)) {
 			Booster booster = main.getBoostersManager()
-			                      .getBoosterById(Objects.requireNonNull(boostersConf.getString(key + ".id")));
+					.getBoosterById(Objects.requireNonNull(boostersConf.getString(key + ".id")));
 			if (booster == null) {
 				continue;
 			}
@@ -60,7 +52,7 @@ public class BoosterStorageYaml
 		int counter = 1;
 		for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()) {
 			boostersConf.set(counter + ".id", entry.getKey()
-			                                       .getId());
+					.getId());
 			boostersConf.set(counter + ".time", entry.getValue());
 			counter++;
 		}
@@ -77,10 +69,9 @@ public class BoosterStorageYaml
 	private void save() {
 		try {
 			boostersConf.save(boostersFile);
-		}
-		catch (IOException ignored) {
+		} catch (IOException ignored) {
 			Bukkit.getLogger()
-			      .info(IOEXCEPTION);
+					.info(IOEXCEPTION);
 		}
 	}
 }

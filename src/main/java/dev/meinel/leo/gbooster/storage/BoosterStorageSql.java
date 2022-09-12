@@ -1,19 +1,11 @@
 /*
- * GBooster is a Spigot Plugin providing Global Boosters for Jobs McMMO and Minecraft.
- * Copyright © 2022 Leopold Meinel & contributors
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
+ * File: BoosterStorageSql.java
+ * Author: Leopold Meinel (leo@meinel.dev)
+ * -----
+ * Copyright (c) 2022 Leopold Meinel & contributors
+ * SPDX ID: GPL-3.0-or-later
+ * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
+ * -----
  */
 
 package dev.meinel.leo.gbooster.storage;
@@ -36,22 +28,21 @@ public class BoosterStorageSql
 	@Override
 	public void loadBoosters() {
 		try (PreparedStatement selectStatement = SqlManager.getConnection()
-		                                                   .prepareStatement(
-				                                                   "SELECT * FROM " + Sql.getPrefix() + "Boosters")) {
+				.prepareStatement(
+						"SELECT * FROM " + Sql.getPrefix() + "Boosters")) {
 			try (ResultSet rs = selectStatement.executeQuery()) {
 				while (rs.next()) {
 					Booster booster = main.getBoostersManager()
-					                      .getBoosterById(rs.getString(1));
+							.getBoosterById(rs.getString(1));
 					if (booster == null) {
 						continue;
 					}
 					activeBoosters.put(booster, rs.getLong(2));
 				}
 			}
-		}
-		catch (SQLException ignored) {
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 
@@ -60,16 +51,15 @@ public class BoosterStorageSql
 		clear();
 		for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
 			try (PreparedStatement insertStatement = SqlManager.getConnection()
-			                                                   .prepareStatement("INSERT INTO " + Sql.getPrefix()
-			                                                                     + "Boosters (ID, Time) VALUES (?, ?)")) {
+					.prepareStatement("INSERT INTO " + Sql.getPrefix()
+							+ "Boosters (ID, Time) VALUES (?, ?)")) {
 				insertStatement.setString(1, entry.getKey()
-				                                  .getId());
+						.getId());
 				insertStatement.setLong(2, entry.getValue());
 				insertStatement.executeUpdate();
-			}
-			catch (SQLException ignored) {
+			} catch (SQLException ignored) {
 				Bukkit.getLogger()
-				      .warning(SQLEXCEPTION);
+						.warning(SQLEXCEPTION);
 			}
 		}
 	}
@@ -77,13 +67,12 @@ public class BoosterStorageSql
 	@Override
 	protected void clear() {
 		try (PreparedStatement truncateStatement = SqlManager.getConnection()
-		                                                     .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
-		                                                                       + "Boosters")) {
+				.prepareStatement("TRUNCATE TABLE " + Sql.getPrefix()
+						+ "Boosters")) {
 			truncateStatement.executeUpdate();
-		}
-		catch (SQLException ignored) {
+		} catch (SQLException ignored) {
 			Bukkit.getLogger()
-			      .warning(SQLEXCEPTION);
+					.warning(SQLEXCEPTION);
 		}
 	}
 }
