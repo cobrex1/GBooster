@@ -26,65 +26,65 @@ import java.util.Objects;
 
 public class Chat {
 
-	private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+    private static final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-	private Chat() {
-		throw new IllegalStateException("Utility class");
-	}
+    private Chat() {
+        throw new IllegalStateException("Utility class");
+    }
 
-	public static void sendMessage(@NotNull CommandSender player, @NotNull Map<String, String> placeholders,
-			@NotNull String message) {
-		List<String> messages = getMessages(message);
-		for (String string : messages) {
-			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-				if (string.contains(entry.getKey())) {
-					string = string.replace(entry.getKey(), entry.getValue());
-				}
-			}
-			player.sendMessage(replaceColors(string));
-		}
-	}
+    public static void sendMessage(@NotNull CommandSender player, @NotNull Map<String, String> placeholders,
+            @NotNull String message) {
+        List<String> messages = getMessages(message);
+        for (String string : messages) {
+            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+                if (string.contains(entry.getKey())) {
+                    string = string.replace(entry.getKey(), entry.getValue());
+                }
+            }
+            player.sendMessage(replaceColors(string));
+        }
+    }
 
-	public static void sendMessage(@NotNull CommandSender player, @NotNull String message) {
-		player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages()
-				.getMessagesConf()
-				.getString(message))));
-	}
+    public static void sendMessage(@NotNull CommandSender player, @NotNull String message) {
+        player.sendMessage(replaceColors(Objects.requireNonNull(main.getMessages()
+                .getMessagesConf()
+                .getString(message))));
+    }
 
-	public static void sendBroadcast(@NotNull Map<String, String> placeholders, @NotNull String message) {
-		List<String> messages = getMessages(message);
-		for (String string : messages) {
-			for (Map.Entry<String, String> entry : placeholders.entrySet()) {
-				if (string.contains(entry.getKey())) {
-					string = string.replace(entry.getKey(), entry.getValue());
-				}
-			}
-			for (Player player : Bukkit.getServer()
-					.getOnlinePlayers()) {
-				player.sendMessage(replaceColors(string));
-				player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
-			}
-		}
-	}
+    public static void sendBroadcast(@NotNull Map<String, String> placeholders, @NotNull String message) {
+        List<String> messages = getMessages(message);
+        for (String string : messages) {
+            for (Map.Entry<String, String> entry : placeholders.entrySet()) {
+                if (string.contains(entry.getKey())) {
+                    string = string.replace(entry.getKey(), entry.getValue());
+                }
+            }
+            for (Player player : Bukkit.getServer()
+                    .getOnlinePlayers()) {
+                player.sendMessage(replaceColors(string));
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+            }
+        }
+    }
 
-	private static List<String> getMessages(@NotNull String message) {
-		List<String> messages;
-		if (main.getMessages()
-				.getMessagesConf()
-				.isList(message)) {
-			messages = Objects.requireNonNull(main.getMessages()
-					.getMessagesConf()
-					.getStringList(message));
-		} else {
-			messages = new ArrayList<>();
-			messages.add(main.getMessages()
-					.getMessagesConf()
-					.getString(message));
-		}
-		return messages;
-	}
+    private static List<String> getMessages(@NotNull String message) {
+        List<String> messages;
+        if (main.getMessages()
+                .getMessagesConf()
+                .isList(message)) {
+            messages = Objects.requireNonNull(main.getMessages()
+                    .getMessagesConf()
+                    .getStringList(message));
+        } else {
+            messages = new ArrayList<>();
+            messages.add(main.getMessages()
+                    .getMessagesConf()
+                    .getString(message));
+        }
+        return messages;
+    }
 
-	public static String replaceColors(@NotNull String string) {
-		return ChatColor.translateAlternateColorCodes('&', string);
-	}
+    public static String replaceColors(@NotNull String string) {
+        return ChatColor.translateAlternateColorCodes('&', string);
+    }
 }

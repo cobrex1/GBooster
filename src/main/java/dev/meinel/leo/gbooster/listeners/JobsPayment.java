@@ -20,31 +20,31 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class JobsPayment
-		implements Listener {
+        implements Listener {
 
-	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-	@EventHandler
-	public void onPayment(@NotNull JobsPaymentEvent event) {
-		if (event.getPayment()
-				.get(CurrencyType.MONEY) == null) {
-			return;
-		}
-		if (main.getActiveBoostersManager()
-				.getJobsBooster() >= 1) {
-			event.set(CurrencyType.MONEY, (event.getPayment()
-					.get(CurrencyType.MONEY)
-					/ main.getActiveBoostersManager()
-							.getJobsBooster())
-					* (float) main.getActiveBoostersManager()
-							.getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
-		} else {
-			event.set(CurrencyType.MONEY, event.getPayment()
-					.get(CurrencyType.MONEY)
-					* (float) main.getActiveBoostersManager()
-							.getBoosterMultiplier(
-									BoosterType.JOBS_MONEY,
-									true));
-		}
-	}
+    @EventHandler
+    public void onPayment(@NotNull JobsPaymentEvent event) {
+        if (event.getPayment()
+                .get(CurrencyType.MONEY) == null) {
+            return;
+        }
+        if (main.getActiveBoostersManager()
+                .getJobsBooster() >= 1) {
+            event.set(CurrencyType.MONEY, (event.getPayment()
+                    .get(CurrencyType.MONEY)
+                    / main.getActiveBoostersManager()
+                            .getJobsBooster())
+                    * (float) main.getActiveBoostersManager()
+                            .getBoosterMultiplier(BoosterType.JOBS_MONEY, true));
+        } else {
+            event.set(CurrencyType.MONEY, event.getPayment()
+                    .get(CurrencyType.MONEY)
+                    * (float) main.getActiveBoostersManager()
+                            .getBoosterMultiplier(
+                                    BoosterType.JOBS_MONEY,
+                                    true));
+        }
+    }
 }

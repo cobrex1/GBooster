@@ -18,43 +18,43 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class BoosterActivateEvent
-		extends Event
-		implements Cancellable {
+        extends Event
+        implements Cancellable {
 
-	private static final HandlerList HANDLERS = new HandlerList();
-	private final Booster booster;
-	private final Player player;
-	private boolean isCancelled;
+    private static final HandlerList HANDLERS = new HandlerList();
+    private final Booster booster;
+    private final Player player;
+    private boolean isCancelled;
 
-	public BoosterActivateEvent(Booster booster, Player player) {
-		this.booster = booster;
-		this.player = player;
-		this.isCancelled = false;
-	}
+    public BoosterActivateEvent(Booster booster, Player player) {
+        this.booster = booster;
+        this.player = player;
+        this.isCancelled = false;
+    }
 
-	public static HandlerList getHandlerList() {
-		return HANDLERS;
-	}
+    public static HandlerList getHandlerList() {
+        return HANDLERS;
+    }
 
-	public Booster getBooster() {
-		return this.booster;
-	}
+    public Booster getBooster() {
+        return this.booster;
+    }
 
-	public Player getPlayer() {
-		return player;
-	}
+    public Player getPlayer() {
+        return player;
+    }
 
-	@Override
-	public boolean isCancelled() {
-		return this.isCancelled;
-	}
+    @Override
+    public boolean isCancelled() {
+        return this.isCancelled;
+    }
 
-	@Override
-	public void setCancelled(boolean cancel) {
-		this.isCancelled = cancel;
-	}
+    @Override
+    public void setCancelled(boolean cancel) {
+        this.isCancelled = cancel;
+    }
 
-	public @NotNull HandlerList getHandlers() {
-		return getHandlerList();
-	}
+    public @NotNull HandlerList getHandlers() {
+        return getHandlerList();
+    }
 }

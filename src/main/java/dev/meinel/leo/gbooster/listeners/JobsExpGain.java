@@ -19,21 +19,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class JobsExpGain
-		implements Listener {
+        implements Listener {
 
-	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-	@EventHandler
-	public void onExpGain(@NotNull JobsExpGainEvent event) {
-		if (main.getActiveBoostersManager()
-				.getJobsBooster() >= 1) {
-			event.setExp((event.getExp() / main.getActiveBoostersManager()
-					.getJobsBooster()) * (float) main.getActiveBoostersManager()
-							.getBoosterMultiplier(
-									BoosterType.JOBS_XP, true));
-		} else {
-			event.setExp(event.getExp() * (float) main.getActiveBoostersManager()
-					.getBoosterMultiplier(BoosterType.JOBS_XP, true));
-		}
-	}
+    @EventHandler
+    public void onExpGain(@NotNull JobsExpGainEvent event) {
+        if (main.getActiveBoostersManager()
+                .getJobsBooster() >= 1) {
+            event.setExp((event.getExp() / main.getActiveBoostersManager()
+                    .getJobsBooster()) * (float) main.getActiveBoostersManager()
+                            .getBoosterMultiplier(
+                                    BoosterType.JOBS_XP, true));
+        } else {
+            event.setExp(event.getExp() * (float) main.getActiveBoostersManager()
+                    .getBoosterMultiplier(BoosterType.JOBS_XP, true));
+        }
+    }
 }

@@ -21,54 +21,54 @@ import java.util.Map;
 import java.util.Objects;
 
 public class PlayerStorageYaml
-		extends PlayerStorage {
+        extends PlayerStorage {
 
-	private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
-	private final File playersFile;
-	private final FileConfiguration playersConf;
+    private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
+    private final File playersFile;
+    private final FileConfiguration playersConf;
 
-	public PlayerStorageYaml() {
-		playersFile = new File(main.getDataFolder(), "players.yml");
-		playersConf = YamlConfiguration.loadConfiguration(playersFile);
-		save();
-	}
+    public PlayerStorageYaml() {
+        playersFile = new File(main.getDataFolder(), "players.yml");
+        playersConf = YamlConfiguration.loadConfiguration(playersFile);
+        save();
+    }
 
-	@Override
-	public void loadPlayers() {
-		for (String key : playersConf.getKeys(false)) {
-			boosterPlayers.add(
-					new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
-		}
-	}
+    @Override
+    public void loadPlayers() {
+        for (String key : playersConf.getKeys(false)) {
+            boosterPlayers.add(
+                    new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
+        }
+    }
 
-	@Override
-	public void savePlayers() {
-		clear();
-		for (BoosterPlayer boosterPlayer : boosterPlayers) {
-			playersConf.set(boosterPlayer.getUuid()
-					.toString() + ".name", boosterPlayer.getName());
-			for (Map.Entry<String, Integer> booster : boosterPlayer.getBoostersStorage()
-					.entrySet()) {
-				playersConf.set(boosterPlayer.getUuid()
-						.toString() + ".boosters." + booster.getKey(), booster.getValue());
-			}
-		}
-		save();
-	}
+    @Override
+    public void savePlayers() {
+        clear();
+        for (BoosterPlayer boosterPlayer : boosterPlayers) {
+            playersConf.set(boosterPlayer.getUuid()
+                    .toString() + ".name", boosterPlayer.getName());
+            for (Map.Entry<String, Integer> booster : boosterPlayer.getBoostersStorage()
+                    .entrySet()) {
+                playersConf.set(boosterPlayer.getUuid()
+                        .toString() + ".boosters." + booster.getKey(), booster.getValue());
+            }
+        }
+        save();
+    }
 
-	@Override
-	protected void clear() {
-		for (String key : playersConf.getKeys(false)) {
-			playersConf.set(key, null);
-		}
-	}
+    @Override
+    protected void clear() {
+        for (String key : playersConf.getKeys(false)) {
+            playersConf.set(key, null);
+        }
+    }
 
-	private void save() {
-		try {
-			playersConf.save(playersFile);
-		} catch (IOException ignored) {
-			Bukkit.getLogger()
-					.info(IOEXCEPTION);
-		}
-	}
+    private void save() {
+        try {
+            playersConf.save(playersFile);
+        } catch (IOException ignored) {
+            Bukkit.getLogger()
+                    .info(IOEXCEPTION);
+        }
+    }
 }

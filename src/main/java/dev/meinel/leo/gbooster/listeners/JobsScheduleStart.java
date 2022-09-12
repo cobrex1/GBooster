@@ -19,15 +19,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
 public class JobsScheduleStart
-		implements Listener {
+        implements Listener {
 
-	private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
+    private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
-	@EventHandler
-	public void onBoosterStart(@NotNull JobsScheduleStartEvent event) {
-		main.getActiveBoostersManager()
-				.addJobsBooster(event.getSchedule()
-						.getBoost()
-						.get(CurrencyType.EXP) + 1);
-	}
+    @EventHandler
+    public void onBoosterStart(@NotNull JobsScheduleStartEvent event) {
+        main.getActiveBoostersManager()
+                .addJobsBooster(event.getSchedule()
+                        .getBoost()
+                        .get(CurrencyType.EXP) + 1);
+    }
 }
