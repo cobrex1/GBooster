@@ -30,41 +30,6 @@
     <a href="https://github.com/LeoMeinel/GBooster/issues">Request Feature</a>
   </p>
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#description">Description</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#commands-and-permissions">Commands and Permissions</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#configuration">Configuration</a>
-      <ul>
-        <li><a href="#configyml">config.yml</a></li>
-        <li><a href="#messagesyml">messages.yml</a></li>
-        <li><a href="#placeholders">Placeholders</a></li>
-      </ul>
-    </li>
-    <li><a href="#servers-using-gbooster">Servers using GBooster</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
@@ -89,7 +54,7 @@ This plugin is perfect for any server wishing to receive donations from their pl
 
 ### Built With
 
-- [Gradle 7](https://docs.gradle.org/7.4/release-notes.html)
+- [Gradle 7](https://docs.gradle.org/7.5.1/release-notes.html)
 - [OpenJDK 17](https://openjdk.java.net/projects/jdk/17/)
 
 <!-- GETTING STARTED -->
@@ -119,7 +84,7 @@ To get the plugin running on your server follow these simple steps.
 
 ### config.yml
 
-```
+```yaml
 #---------------------------------------------------------------#
 #   __________________                       __                 #
 #  /  _____/\______   \ ____   ____  _______/  |_  ___________  #
@@ -180,7 +145,7 @@ boosters:
 
 ### messages.yml
 
-```
+```yaml
 cmd: "&fUsage: &b/gbooster use &3<booster>"
 give-boosters: "&fYou gave %amount% %booster% to %player%"
 # Comment line (#) below and uncomment the one below that to get a message!
