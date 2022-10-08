@@ -11,7 +11,7 @@
 <!--suppress ALL -->
 <br />
 <p align="center">
-  <a href="https://github.com/LeoMeinel/GBooster">
+  <a href="https://github.com/LeoMeinel/gbooster">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -20,14 +20,14 @@
   <p align="center">
     Global Boosters for Spigot and Paper
     <br />
-    <a href="https://github.com/LeoMeinel/GBooster"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/LeoMeinel/gbooster"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LeoMeinel/GBooster">View Demo</a>
+    <a href="https://github.com/LeoMeinel/gbooster">View Demo</a>
     ·
-    <a href="https://github.com/LeoMeinel/GBooster/issues">Report Bug</a>
+    <a href="https://github.com/LeoMeinel/gbooster/issues">Report Bug</a>
     ·
-    <a href="https://github.com/LeoMeinel/GBooster/issues">Request Feature</a>
+    <a href="https://github.com/LeoMeinel/gbooster/issues">Request Feature</a>
   </p>
 
 <!-- ABOUT THE PROJECT -->
@@ -191,13 +191,13 @@ no-booster: "&cYou don't have a booster of this type!"
 
 5. Usage Example
 
-- [DeluxeMenus](https://github.com/LeoMeinel/GBooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
+- [DeluxeMenus](https://github.com/LeoMeinel/gbooster/blob/main/DeluxeMenus/gui_menus/booster_menu.yml)
 
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/LeoMeinel/GBooster/issues) for a list of proposed features (and known
+See the [open issues](https://github.com/LeoMeinel/gbooster/issues) for a list of proposed features (and known
 issues).
 
 <!-- CONTRIBUTING -->
@@ -225,7 +225,7 @@ Distributed under the GNU General Public License v3.0. See `LICENSE` for more in
 
 Leopold Meinel - [leo@meinel.dev](mailto:leo@meinel.dev) - eMail
 
-Project Link - [GBooster](https://github.com/LeoMeinel/GBooster) - GitHub
+Project Link - [GBooster](https://github.com/LeoMeinel/gbooster) - GitHub
 
 <!-- ACKNOWLEDGEMENTS -->
 
@@ -240,15 +240,15 @@ Project Link - [GBooster](https://github.com/LeoMeinel/GBooster) - GitHub
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/GBooster?style=for-the-badge
-[contributors-url]: https://github.com/LeoMeinel/GBooster/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/GBooster?label=Forks&style=for-the-badge
-[forks-url]: https://github.com/LeoMeinel/GBooster/network/members
-[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/GBooster?style=for-the-badge
-[stars-url]: https://github.com/LeoMeinel/GBooster/stargazers
-[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/GBooster?style=for-the-badge
-[issues-url]: https://github.com/LeoMeinel/GBooster/issues
-[license-shield]: https://img.shields.io/github/license/LeoMeinel/GBooster?style=for-the-badge
-[license-url]: https://github.com/LeoMeinel/GBooster/blob/main/LICENSE
-[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/GBooster?style=for-the-badge
-[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/GBooster
+[contributors-shield]: https://img.shields.io/github/contributors-anon/LeoMeinel/gbooster?style=for-the-badge
+[contributors-url]: https://github.com/LeoMeinel/gbooster/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/LeoMeinel/gbooster?label=Forks&style=for-the-badge
+[forks-url]: https://github.com/LeoMeinel/gbooster/network/members
+[stars-shield]: https://img.shields.io/github/stars/LeoMeinel/gbooster?style=for-the-badge
+[stars-url]: https://github.com/LeoMeinel/gbooster/stargazers
+[issues-shield]: https://img.shields.io/github/issues/LeoMeinel/gbooster?style=for-the-badge
+[issues-url]: https://github.com/LeoMeinel/gbooster/issues
+[license-shield]: https://img.shields.io/github/license/LeoMeinel/gbooster?style=for-the-badge
+[license-url]: https://github.com/LeoMeinel/gbooster/blob/main/LICENSE
+[quality-shield]: https://img.shields.io/codefactor/grade/github/LeoMeinel/gbooster?style=for-the-badge
+[quality-url]: https://www.codefactor.io/repository/github/LeoMeinel/gbooster
