@@ -38,7 +38,7 @@ repositories {
 dependencies {
     compileOnly 'io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT'
     implementation 'com.github.Zrips:Jobs:4.17.2'
-    implementation 'com.gmail.nossr50.mcMMO:mcMMO:2.1.217'
+    implementation 'com.gmail.nossr50.mcMMO:mcMMO:2.1.218'
     compileOnly 'me.clip:placeholderapi:2.11.2'
     compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.7'
 }
