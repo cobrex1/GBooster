@@ -2,7 +2,7 @@
  * File: BoosterExpansion.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -36,14 +36,12 @@ public class BoosterExpansion
 
     @Override
     public @NotNull String getIdentifier() {
-        return main.getDescription()
-                .getName();
+        return main.getPluginMeta().getName();
     }
 
     @Override
     public @NotNull String getVersion() {
-        return main.getDescription()
-                .getVersion();
+        return main.getPluginMeta().getVersion();
     }
 
     @Override
@@ -71,8 +69,8 @@ public class BoosterExpansion
     }
 
     private String getAuthors() {
-        List<String> authors = main.getDescription()
-                .getAuthors();
+        List<String> authors = main.getPluginMeta().getAuthors();
+
         StringBuilder authorBuilder = new StringBuilder();
         for (String author : authors) {
             if (author.equals(authors.get(0))) {

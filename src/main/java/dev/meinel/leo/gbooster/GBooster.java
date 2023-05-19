@@ -2,7 +2,7 @@
  * File: GBooster.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -62,8 +62,7 @@ public final class GBooster
         new BoosterExpansion().register();
         startSaveTask();
         Bukkit.getLogger()
-                .info("GBooster v" + this.getDescription()
-                        .getVersion() + " enabled");
+                .info("GBooster v" + this.getPluginMeta().getVersion() + " enabled");
         Bukkit.getLogger()
                 .info("Copyright (C) 2022 Leopold Meinel");
         Bukkit.getLogger()
@@ -79,8 +78,7 @@ public final class GBooster
         playerStorage.savePlayers();
         boostersStorage.saveBoosters();
         Bukkit.getLogger()
-                .info("GBooster v" + this.getDescription()
-                        .getVersion() + " disabled");
+                .info("GBooster v" + this.getPluginMeta().getVersion() + " disabled");
     }
 
     private void registerListeners() {
