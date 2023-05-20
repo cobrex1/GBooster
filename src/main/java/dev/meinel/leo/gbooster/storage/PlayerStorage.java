@@ -2,7 +2,7 @@
  * File: PlayerStorage.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -31,18 +31,13 @@ public abstract class PlayerStorage {
     protected abstract void clear();
 
     public BoosterPlayer getBoosterPlayerByUUID(@NotNull UUID uuid) {
-        return boosterPlayers.stream()
-                .filter(boosterPlayer -> boosterPlayer.getUuid()
-                        .equals(uuid))
-                .findFirst()
-                .orElse(null);
+        return boosterPlayers.stream().filter(boosterPlayer -> boosterPlayer.getUuid().equals(uuid))
+                .findFirst().orElse(null);
     }
 
     public BoosterPlayer getBoosterPlayerByName(@NotNull String name) {
         return boosterPlayers.stream()
-                .filter(boosterPlayer -> boosterPlayer.getName()
-                        .equalsIgnoreCase(name))
-                .findFirst()
+                .filter(boosterPlayer -> boosterPlayer.getName().equalsIgnoreCase(name)).findFirst()
                 .orElse(null);
     }
 
@@ -51,8 +46,6 @@ public abstract class PlayerStorage {
     }
 
     public boolean isPlayerRegistered(@NotNull UUID uuid) {
-        return boosterPlayers.stream()
-                .anyMatch(player -> player.getUuid()
-                        .equals(uuid));
+        return boosterPlayers.stream().anyMatch(player -> player.getUuid().equals(uuid));
     }
 }

@@ -2,7 +2,7 @@
  * File: PlayerStorageYaml.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -20,10 +20,10 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 
-public class PlayerStorageYaml
-        extends PlayerStorage {
+public class PlayerStorageYaml extends PlayerStorage {
 
-    private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
+    private static final String IOEXCEPTION =
+            "GBooster encountered an IOException while executing task";
     private final File playersFile;
     private final FileConfiguration playersConf;
 
@@ -36,8 +36,8 @@ public class PlayerStorageYaml
     @Override
     public void loadPlayers() {
         for (String key : playersConf.getKeys(false)) {
-            boosterPlayers.add(
-                    new BoosterPlayer(key, Objects.requireNonNull(playersConf.getConfigurationSection(key))));
+            boosterPlayers.add(new BoosterPlayer(key,
+                    Objects.requireNonNull(playersConf.getConfigurationSection(key))));
         }
     }
 
@@ -45,12 +45,12 @@ public class PlayerStorageYaml
     public void savePlayers() {
         clear();
         for (BoosterPlayer boosterPlayer : boosterPlayers) {
-            playersConf.set(boosterPlayer.getUuid()
-                    .toString() + ".name", boosterPlayer.getName());
+            playersConf.set(boosterPlayer.getUuid().toString() + ".name", boosterPlayer.getName());
             for (Map.Entry<String, Integer> booster : boosterPlayer.getBoostersStorage()
                     .entrySet()) {
-                playersConf.set(boosterPlayer.getUuid()
-                        .toString() + ".boosters." + booster.getKey(), booster.getValue());
+                playersConf.set(
+                        boosterPlayer.getUuid().toString() + ".boosters." + booster.getKey(),
+                        booster.getValue());
             }
         }
         save();
@@ -67,8 +67,7 @@ public class PlayerStorageYaml
         try {
             playersConf.save(playersFile);
         } catch (IOException ignored) {
-            Bukkit.getLogger()
-                    .info(IOEXCEPTION);
+            Bukkit.getLogger().info(IOEXCEPTION);
         }
     }
 }

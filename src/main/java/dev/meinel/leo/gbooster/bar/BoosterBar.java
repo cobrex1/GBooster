@@ -2,7 +2,7 @@
  * File: BoosterBar.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -41,9 +41,7 @@ public class BoosterBar {
 
             @Override
             public void run() {
-                if (main.getActiveBoostersManager()
-                        .getActiveBoosters()
-                        .isEmpty()) {
+                if (main.getActiveBoostersManager().getActiveBoosters().isEmpty()) {
                     bar.setVisible(false);
                     return;
                 }
@@ -52,8 +50,7 @@ public class BoosterBar {
                     bar.setVisible(false);
                     return;
                 }
-                double time = main.getActiveBoostersManager()
-                        .getMostOldBoosterInMinutes() / 60.0;
+                double time = main.getActiveBoostersManager().getMostOldBoosterInMinutes() / 60.0;
                 if (time > 1.0) {
                     time = 1;
                 }
@@ -66,10 +63,9 @@ public class BoosterBar {
 
     private String getTitle() {
         String title = Chat.replaceColors(Objects.requireNonNull(getTitleForActiveBoosters()));
-        if (PlaceholderAPI.containsPlaceholders(title) && bar != null && !bar.getPlayers()
-                .isEmpty()) {
-            Player player = bar.getPlayers()
-                    .get(0);
+        if (PlaceholderAPI.containsPlaceholders(title) && bar != null
+                && !bar.getPlayers().isEmpty()) {
+            Player player = bar.getPlayers().get(0);
             if (player != null) {
                 title = PlaceholderAPI.setPlaceholders(player, title);
             }
@@ -77,20 +73,18 @@ public class BoosterBar {
         return title;
     }
 
-    private void appendTitleBuilderIfNecessary(StringBuilder titleBuilder, String subSection, float value) {
+    private void appendTitleBuilderIfNecessary(StringBuilder titleBuilder, String subSection,
+            float value) {
         if (value > 1 || Objects.equals(subSection, DURATION)) {
             if (!titleBuilder.isEmpty() && !Objects.equals(subSection, DURATION)) {
-                titleBuilder.append(main.getConfig()
-                        .getString("bar-pattern.separator"));
+                titleBuilder.append(main.getConfig().getString("bar-pattern.separator"));
             }
-            titleBuilder.append(main.getConfig()
-                    .getString("bar-pattern." + subSection));
+            titleBuilder.append(main.getConfig().getString("bar-pattern." + subSection));
         }
     }
 
     private String getTitleForActiveBoosters() {
-        short durationValue = (short) main.getActiveBoostersManager()
-                .getMostOldBoosterInMinutes();
+        short durationValue = (short) main.getActiveBoostersManager().getMostOldBoosterInMinutes();
         if (durationValue == 0) {
             return "";
         }

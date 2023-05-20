@@ -2,7 +2,7 @@
  * File: McMMOPlayerXpGain.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -18,8 +18,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 
-public class McMMOPlayerXpGain
-        implements Listener {
+public class McMMOPlayerXpGain implements Listener {
 
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 

@@ -2,7 +2,7 @@
  * File: BoosterStorageYaml.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -20,10 +20,10 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 
-public class BoosterStorageYaml
-        extends BoostersStorage {
+public class BoosterStorageYaml extends BoostersStorage {
 
-    private static final String IOEXCEPTION = "GBooster encountered an IOException while executing task";
+    private static final String IOEXCEPTION =
+            "GBooster encountered an IOException while executing task";
     private final File boostersFile;
     private final FileConfiguration boostersConf;
 
@@ -51,8 +51,7 @@ public class BoosterStorageYaml
         clear();
         int counter = 1;
         for (Map.Entry<Booster, Long> entry : this.activeBoosters.entries()) {
-            boostersConf.set(counter + ".id", entry.getKey()
-                    .getId());
+            boostersConf.set(counter + ".id", entry.getKey().getId());
             boostersConf.set(counter + ".time", entry.getValue());
             counter++;
         }
@@ -70,8 +69,7 @@ public class BoosterStorageYaml
         try {
             boostersConf.save(boostersFile);
         } catch (IOException ignored) {
-            Bukkit.getLogger()
-                    .info(IOEXCEPTION);
+            Bukkit.getLogger().info(IOEXCEPTION);
         }
     }
 }

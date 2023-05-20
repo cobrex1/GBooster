@@ -2,7 +2,7 @@
  * File: BoostersStorage.java
  * Author: Leopold Meinel (leo@meinel.dev)
  * -----
- * Copyright (c) 2022 Leopold Meinel & contributors
+ * Copyright (c) 2023 Leopold Meinel & contributors
  * SPDX ID: GPL-3.0-or-later
  * URL: https://www.gnu.org/licenses/gpl-3.0-standalone.html
  * -----
@@ -46,9 +46,7 @@ public abstract class BoostersStorage {
                 totalMultiplier += booster.getMultiplier();
             }
         }
-        return totalMultiplier == 0
-                ? 1
-                : totalMultiplier;
+        return totalMultiplier == 0 ? 1 : totalMultiplier;
     }
 
     public boolean canUseBooster(@NotNull Booster booster) {
@@ -60,10 +58,8 @@ public abstract class BoostersStorage {
 
     public int getMostOldBoosterInMinutes() {
         long mostOldBoosterCountdown = Long.MAX_VALUE;
-        for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters)
-                .entries()) {
-            long boosterCountdown = entry.getKey()
-                    .getDuration() * 1000L + entry.getValue();
+        for (Map.Entry<Booster, Long> entry : ArrayListMultimap.create(activeBoosters).entries()) {
+            long boosterCountdown = entry.getKey().getDuration() * 1000L + entry.getValue();
             if (boosterCountdown <= System.currentTimeMillis()) {
                 activeBoosters.remove(entry.getKey(), entry.getValue());
                 continue;

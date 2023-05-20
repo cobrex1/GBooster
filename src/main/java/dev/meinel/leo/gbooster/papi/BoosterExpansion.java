@@ -19,8 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class BoosterExpansion
-        extends PlaceholderExpansion {
+public class BoosterExpansion extends PlaceholderExpansion {
 
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
@@ -46,13 +45,11 @@ public class BoosterExpansion
 
     @Override
     public String onRequest(@NotNull OfflinePlayer player, @NotNull String identifier) {
-        for (Booster booster : main.getBoostersManager()
-                .getBoosters()) {
+        for (Booster booster : main.getBoostersManager().getBoosters()) {
             if (identifier.equals(booster.getId())) {
-                return String.valueOf(main.getPlayerStorage()
-                        .getBoosterPlayerByUUID(player.getUniqueId())
-                        .getBoostersStorage()
-                        .getOrDefault(identifier, 0));
+                return String.valueOf(
+                        main.getPlayerStorage().getBoosterPlayerByUUID(player.getUniqueId())
+                                .getBoostersStorage().getOrDefault(identifier, 0));
             }
             if (identifier.equals(booster.getId() + "_multiplier")) {
                 return String.valueOf((short) (booster.getMultiplier() * 100));
@@ -61,8 +58,7 @@ public class BoosterExpansion
                 return String.valueOf((short) (booster.getDuration() / 60));
             }
             if (identifier.equals("time")) {
-                return String.valueOf(main.getActiveBoostersManager()
-                        .getMostOldBoosterInMinutes());
+                return String.valueOf(main.getActiveBoostersManager().getMostOldBoosterInMinutes());
             }
         }
         return "0";
@@ -77,8 +73,7 @@ public class BoosterExpansion
                 authorBuilder.append(author);
                 continue;
             }
-            authorBuilder.append(", ")
-                    .append(author);
+            authorBuilder.append(", ").append(author);
         }
         return authorBuilder.toString();
     }

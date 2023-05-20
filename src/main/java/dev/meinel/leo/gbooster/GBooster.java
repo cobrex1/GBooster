@@ -35,8 +35,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.io.File;
 import java.util.Objects;
 
-public final class GBooster
-        extends JavaPlugin {
+public final class GBooster extends JavaPlugin {
 
     private BoostersManager boostersManager;
     private BoostersStorage boostersStorage;
@@ -48,10 +47,8 @@ public final class GBooster
     public void onEnable() {
         generateConfig();
         registerListeners();
-        Objects.requireNonNull(getCommand("gbooster"))
-                .setExecutor(new GBoosterCmd());
-        Objects.requireNonNull(getCommand("gbooster"))
-                .setTabCompleter(new GBoosterCmd());
+        Objects.requireNonNull(getCommand("gbooster")).setExecutor(new GBoosterCmd());
+        Objects.requireNonNull(getCommand("gbooster")).setTabCompleter(new GBoosterCmd());
         setupStorage();
         boostersManager = new BoostersManager();
         boostersManager.loadBoosters();
@@ -61,14 +58,11 @@ public final class GBooster
         messages = new Messages();
         new BoosterExpansion().register();
         startSaveTask();
-        Bukkit.getLogger()
-                .info("GBooster v" + this.getPluginMeta().getVersion() + " enabled");
-        Bukkit.getLogger()
-                .info("Copyright (C) 2022 Leopold Meinel");
-        Bukkit.getLogger()
-                .info("This program comes with ABSOLUTELY NO WARRANTY!");
-        Bukkit.getLogger()
-                .info("This is free software, and you are welcome to redistribute it under certain conditions.");
+        Bukkit.getLogger().info("GBooster v" + this.getPluginMeta().getVersion() + " enabled");
+        Bukkit.getLogger().info("Copyright (C) 2022 Leopold Meinel");
+        Bukkit.getLogger().info("This program comes with ABSOLUTELY NO WARRANTY!");
+        Bukkit.getLogger().info(
+                "This is free software, and you are welcome to redistribute it under certain conditions.");
         Bukkit.getLogger()
                 .info("See https://www.gnu.org/licenses/gpl-3.0-standalone.html for more details.");
     }
@@ -77,41 +71,27 @@ public final class GBooster
     public void onDisable() {
         playerStorage.savePlayers();
         boostersStorage.saveBoosters();
-        Bukkit.getLogger()
-                .info("GBooster v" + this.getPluginMeta().getVersion() + " disabled");
+        Bukkit.getLogger().info("GBooster v" + this.getPluginMeta().getVersion() + " disabled");
     }
 
     private void registerListeners() {
-        if (getServer().getPluginManager()
-                .getPlugin("Jobs") != null) {
-            Bukkit.getLogger()
-                    .info("Found Jobs! - Registering listeners!");
-            getServer().getPluginManager()
-                    .registerEvents(new JobsExpGain(), this);
-            getServer().getPluginManager()
-                    .registerEvents(new JobsPayment(), this);
-            getServer().getPluginManager()
-                    .registerEvents(new JobsScheduleStart(), this);
-            getServer().getPluginManager()
-                    .registerEvents(new JobsScheduleStop(), this);
+        if (getServer().getPluginManager().getPlugin("Jobs") != null) {
+            Bukkit.getLogger().info("Found Jobs! - Registering listeners!");
+            getServer().getPluginManager().registerEvents(new JobsExpGain(), this);
+            getServer().getPluginManager().registerEvents(new JobsPayment(), this);
+            getServer().getPluginManager().registerEvents(new JobsScheduleStart(), this);
+            getServer().getPluginManager().registerEvents(new JobsScheduleStop(), this);
         } else {
-            Bukkit.getLogger()
-                    .info("Could not find Jobs - Ignoring.");
+            Bukkit.getLogger().info("Could not find Jobs - Ignoring.");
         }
-        if (getServer().getPluginManager()
-                .getPlugin("mcMMO") != null) {
-            Bukkit.getLogger()
-                    .info("Found McMMO! - Registering listener!");
-            getServer().getPluginManager()
-                    .registerEvents(new McMMOPlayerXpGain(), this);
+        if (getServer().getPluginManager().getPlugin("mcMMO") != null) {
+            Bukkit.getLogger().info("Found McMMO! - Registering listener!");
+            getServer().getPluginManager().registerEvents(new McMMOPlayerXpGain(), this);
         } else {
-            Bukkit.getLogger()
-                    .info("Could not find McMMO - Ignoring.");
+            Bukkit.getLogger().info("Could not find McMMO - Ignoring.");
         }
-        getServer().getPluginManager()
-                .registerEvents(new PlayerExpChange(), this);
-        getServer().getPluginManager()
-                .registerEvents(new PlayerJoin(), this);
+        getServer().getPluginManager().registerEvents(new PlayerExpChange(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
     }
 
     private void generateConfig() {
@@ -123,8 +103,7 @@ public final class GBooster
 
     private void setupStorage() {
         String storageSystem = getConfig().getString("storage-system");
-        if (Objects.requireNonNull(storageSystem)
-                .equalsIgnoreCase("mysql")) {
+        if (Objects.requireNonNull(storageSystem).equalsIgnoreCase("mysql")) {
             this.playerStorage = new PlayerStorageSql();
             this.boostersStorage = new BoosterStorageSql();
         } else {
