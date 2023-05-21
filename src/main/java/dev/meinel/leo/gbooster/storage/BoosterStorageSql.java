@@ -27,8 +27,10 @@ public class BoosterStorageSql extends BoostersStorage {
 
     @Override
     public void loadBoosters() {
-        try (PreparedStatement selectStatement = SqlManager.getConnection()
-                .prepareStatement("SELECT * FROM " + Sql.getPrefix() + "Boosters")) {
+        try (PreparedStatement selectStatement =
+                SqlManager.getConnection().prepareStatement("SELECT * FROM ?Boosters")) {
+            selectStatement.setString(1, Sql.getPrefix());
+            selectStatement.executeUpdate();
             try (ResultSet rs = selectStatement.executeQuery()) {
                 while (rs.next()) {
                     Booster booster = main.getBoostersManager().getBoosterById(rs.getString(1));
@@ -47,10 +49,11 @@ public class BoosterStorageSql extends BoostersStorage {
     public void saveBoosters() {
         clear();
         for (Map.Entry<Booster, Long> entry : activeBoosters.entries()) {
-            try (PreparedStatement insertStatement = SqlManager.getConnection().prepareStatement(
-                    "INSERT INTO " + Sql.getPrefix() + "Boosters (ID, Time) VALUES (?, ?)")) {
-                insertStatement.setString(1, entry.getKey().getId());
-                insertStatement.setLong(2, entry.getValue());
+            try (PreparedStatement insertStatement = SqlManager.getConnection()
+                    .prepareStatement("INSERT INTO ?Boosters (ID, Time) VALUES (?, ?)")) {
+                insertStatement.setString(1, Sql.getPrefix());
+                insertStatement.setString(2, entry.getKey().getId());
+                insertStatement.setLong(3, entry.getValue());
                 insertStatement.executeUpdate();
             } catch (SQLException ignored) {
                 Bukkit.getLogger().warning(SQLEXCEPTION);
@@ -60,8 +63,9 @@ public class BoosterStorageSql extends BoostersStorage {
 
     @Override
     protected void clear() {
-        try (PreparedStatement truncateStatement = SqlManager.getConnection()
-                .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix() + "Boosters")) {
+        try (PreparedStatement truncateStatement =
+                SqlManager.getConnection().prepareStatement("TRUNCATE TABLE ?Boosters")) {
+            truncateStatement.setString(1, Sql.getPrefix());
             truncateStatement.executeUpdate();
         } catch (SQLException ignored) {
             Bukkit.getLogger().warning(SQLEXCEPTION);

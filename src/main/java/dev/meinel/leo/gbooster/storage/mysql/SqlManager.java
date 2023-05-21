@@ -40,12 +40,13 @@ public class SqlManager {
         this.username = main.getConfig().getString("mysql.username");
         this.password = main.getConfig().getString("mysql.password");
         enableConnection();
-        try (PreparedStatement statementPlayersTable = SqlManager.getConnection()
-                .prepareStatement("CREATE TABLE IF NOT EXISTS " + Sql.getPrefix()
-                        + "PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
+        try (PreparedStatement statementPlayersTable = SqlManager.getConnection().prepareStatement(
+                "CREATE TABLE IF NOT EXISTS ?PlayersBoosters (`UUID` TEXT, `Name` TEXT, `Booster` TEXT, `Value` INT)");
                 PreparedStatement statementBoostersTable =
-                        SqlManager.getConnection().prepareStatement("CREATE TABLE IF NOT EXISTS "
-                                + Sql.getPrefix() + "Boosters (`ID` TEXT, `Time` BIGINT)")) {
+                        SqlManager.getConnection().prepareStatement(
+                                "CREATE TABLE IF NOT EXISTS ?Boosters (`ID` TEXT, `Time` BIGINT)")) {
+            statementPlayersTable.setString(1, Sql.getPrefix());
+            statementBoostersTable.setString(1, Sql.getPrefix());
             statementPlayersTable.executeUpdate();
             statementBoostersTable.executeUpdate();
         } catch (SQLException ignored) {

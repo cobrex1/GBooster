@@ -32,8 +32,10 @@ public class PlayerStorageSql extends PlayerStorage {
 
     @Override
     public void loadPlayers() {
-        try (PreparedStatement selectStatement = SqlManager.getConnection()
-                .prepareStatement("SELECT * FROM " + Sql.getPrefix() + "PlayersBoosters")) {
+        try (PreparedStatement selectStatement =
+                SqlManager.getConnection().prepareStatement("SELECT * FROM ?PlayersBoosters")) {
+            selectStatement.setString(1, Sql.getPrefix());
+            selectStatement.executeUpdate();
             try (ResultSet rs = selectStatement.executeQuery()) {
                 while (rs.next()) {
                     manageStorage(rs);
@@ -63,12 +65,13 @@ public class PlayerStorageSql extends PlayerStorage {
             for (Map.Entry<String, Integer> boosterEntry : boosterPlayer.getBoostersStorage()
                     .entrySet()) {
                 try (PreparedStatement insertStatement =
-                        SqlManager.getConnection().prepareStatement("INSERT INTO " + Sql.getPrefix()
-                                + "PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
-                    insertStatement.setString(1, boosterPlayer.getUuid().toString());
-                    insertStatement.setString(2, boosterPlayer.getName());
-                    insertStatement.setString(3, boosterEntry.getKey());
-                    insertStatement.setInt(4, boosterEntry.getValue());
+                        SqlManager.getConnection().prepareStatement(
+                                "INSERT INTO ?PlayersBoosters (UUID, Name, Booster, Value) VALUES (?, ?, ?, ?)")) {
+                    insertStatement.setString(1, Sql.getPrefix());
+                    insertStatement.setString(2, boosterPlayer.getUuid().toString());
+                    insertStatement.setString(3, boosterPlayer.getName());
+                    insertStatement.setString(4, boosterEntry.getKey());
+                    insertStatement.setInt(5, boosterEntry.getValue());
                     insertStatement.executeUpdate();
                 } catch (SQLException ignored) {
                     Bukkit.getLogger().warning(SQLEXCEPTION);
@@ -79,8 +82,9 @@ public class PlayerStorageSql extends PlayerStorage {
 
     @Override
     protected void clear() {
-        try (PreparedStatement truncateStatement = SqlManager.getConnection()
-                .prepareStatement("TRUNCATE TABLE " + Sql.getPrefix() + "PlayersBoosters")) {
+        try (PreparedStatement truncateStatement =
+                SqlManager.getConnection().prepareStatement("TRUNCATE TABLE ?PlayersBoosters")) {
+            truncateStatement.setString(1, Sql.getPrefix());
             truncateStatement.executeUpdate();
         } catch (SQLException ignored) {
             Bukkit.getLogger().warning(SQLEXCEPTION);
