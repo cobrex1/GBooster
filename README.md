@@ -85,6 +85,7 @@ To get the plugin running on your server follow these simple steps.
 ### config.yml
 
 ```yaml
+---
 #---------------------------------------------------------------#
 #   __________________                       __                 #
 #  /  _____/\______   \ ____   ____  _______/  |_  ___________  #
@@ -146,11 +147,12 @@ boosters:
 ### messages.yml
 
 ```yaml
-cmd: "&fUsage: &b/gbooster use &3<booster>"
-give-boosters: "&fYou gave %amount% %booster% to %player%"
-# Comment line (#) below and uncomment the one below that to get a message!
-receive-boosters: [ ]
-#receive-boosters: "&aYou got &c%amount%x &b%booster%"
+give-boosters: "&fYou gave &e%amount% &f%booster% to &b%player%"
+take-boosters: "&fYou took &e%amount% &f%booster% from &b%player%"
+#receive-boosters: "&fYou got &e%amount%x &f%booster%"
+receive-boosters: []
+#lose-boosters: "&fYou lost &e%amount%x &f%booster%"
+lose-boosters: []
 active-booster: "&aYou just activated a booster"
 active-booster-broadcast: "&b%player%&a just activated a booster"
 no-active-booster: "&cThere is no active booster!"
@@ -162,7 +164,8 @@ invalid-booster: "&cID doesn't exist!"
 invalid-amount: "&cInvalid amount!"
 countdown-active: "&cYou can only use the same type of booster once!"
 limit: "&cThe global limit has been reached!"
-no-booster: "&cYou don't have a booster of this type!"
+no-booster: "&cNo booster of this type available!"
+list-booster: "&f%booster% &e%amount%"
 ```
 
 ### Placeholders
