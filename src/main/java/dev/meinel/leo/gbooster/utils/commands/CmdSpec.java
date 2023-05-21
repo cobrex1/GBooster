@@ -30,7 +30,7 @@ public class CmdSpec {
     public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args,
             @NotNull String perm, Booster booster, BoosterPlayer boosterPlayer) {
         return switch (args[0].toLowerCase()) {
-            case "give", "remove" -> !Cmd.isPermitted(sender, perm)
+            case "give", "take" -> !Cmd.isPermitted(sender, perm)
                     || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])
                     || isInvalidBoosterPlayer(sender, boosterPlayer);
             case "use" -> !Cmd.isPermitted(sender, perm) || isInvalidBooster(sender, booster)

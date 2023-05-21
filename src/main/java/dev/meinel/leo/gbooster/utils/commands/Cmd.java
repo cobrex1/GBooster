@@ -24,7 +24,6 @@ public class Cmd {
     public static boolean isArgsLengthEqualTo(@NotNull CommandSender sender, @NotNull String[] args,
             int length) {
         if (args.length == length) {
-            Chat.sendMessage(sender, "cmd");
             return true;
         }
         return false;
@@ -33,7 +32,6 @@ public class Cmd {
     public static boolean isArgsLengthGreaterThan(@NotNull CommandSender sender,
             @NotNull String[] args, int length) {
         if (args.length > length) {
-            Chat.sendMessage(sender, "cmd");
             return true;
         }
         return false;

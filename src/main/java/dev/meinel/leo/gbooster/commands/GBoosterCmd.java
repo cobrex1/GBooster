@@ -53,7 +53,6 @@ public class GBoosterCmd implements TabExecutor {
             case "time" -> doTime(sender, args);
             case "use" -> doUse(sender, args);
             default -> {
-                Chat.sendMessage(sender, "cmd");
                 return false;
             }
         }
@@ -65,7 +64,7 @@ public class GBoosterCmd implements TabExecutor {
             return;
         }
         BoosterPlayer boosterPlayer =
-                main.getPlayerStorage().getBoosterPlayerByName(sender.toString());
+                main.getPlayerStorage().getBoosterPlayerByName(sender.getName());
         if (Cmd.isArgsLengthEqualTo(sender, args, 2)) {
             boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
         }
@@ -189,12 +188,11 @@ public class GBoosterCmd implements TabExecutor {
                         .getKeys(false));
         if (args.length == 2 && args[0].equalsIgnoreCase("use")
                 && sender.hasPermission(GBOOSTER_USE)) {
-            tabComplete.addAll(keys);
-            return tabComplete;
+            return keys;
         }
-        if (args.length == 3
-                && (args[0].equalsIgnoreCase("give") && sender.hasPermission(GBOOSTER_GIVE))
-                || (args[0].equalsIgnoreCase("take") && sender.hasPermission(GBOOSTER_TAKE))) {
+        if (args.length == 3 && ((args[0].equalsIgnoreCase("give")
+                && sender.hasPermission(GBOOSTER_GIVE))
+                || (args[0].equalsIgnoreCase("take") && sender.hasPermission(GBOOSTER_TAKE)))) {
             return keys;
         }
         return null;

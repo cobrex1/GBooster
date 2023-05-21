@@ -67,8 +67,11 @@ public class BoosterPlayer {
         if (!this.hasBooster(boosterId)) {
             return false;
         }
-        int previousAmount = boostersStorage.get(boosterId);
-        boostersStorage.put(boosterId, previousAmount - amount);
+        int result = boostersStorage.get(boosterId) - amount;
+        if (result < 0) {
+            result = 0;
+        }
+        boostersStorage.put(boosterId, result);
         return true;
     }
 
