@@ -9,7 +9,7 @@ softdepend: [ Jobs, McMMO ]
 commands:
   gbooster:
     description: "Main command"
-    usage: "/gbooster give <player> <boosterid> <amount> | /gbooster use <boosterid> | /gbooster time"
+    usage: "/gbooster give <player> <boosterid> <amount>\n/gbooster take <player> <boosterid> <amount>\n/gbooster use <boosterid>\n/gbooster time\n/gbooster take"
 permissions:
   gbooster.list:
     description: "List boosters"
