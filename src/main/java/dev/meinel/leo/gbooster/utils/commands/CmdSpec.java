@@ -30,11 +30,11 @@ public class CmdSpec {
     public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args,
             @NotNull String perm, Booster booster, BoosterPlayer boosterPlayer) {
         return switch (args[0].toLowerCase()) {
-            case "give" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster)
-                    || isInvalidNumber(sender, args[3])
+            case "give", "remove" -> Cmd.isNotPermitted(sender, perm)
+                    || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])
                     || isInvalidBoosterPlayer(sender, boosterPlayer);
             case "use" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster)
-                    || exceedsLimit(sender, booster) || hasNoBooster(sender, boosterPlayer, booster)
+                    || exceedsLimit(sender, booster)
                     || isOnCountdown(sender, boosterPlayer, booster);
             default -> true;
         };
@@ -82,15 +82,6 @@ public class CmdSpec {
     private static boolean exceedsLimit(@NotNull CommandSender sender, @NotNull Booster booster) {
         if (!main.getActiveBoostersManager().canUseBooster(booster)) {
             Chat.sendMessage(sender, "limit");
-            return true;
-        }
-        return false;
-    }
-
-    private static boolean hasNoBooster(@NotNull CommandSender sender,
-            @NotNull BoosterPlayer boosterPlayer, @NotNull Booster booster) {
-        if (!boosterPlayer.hasBooster(booster)) {
-            Chat.sendMessage(sender, "no-booster");
             return true;
         }
         return false;

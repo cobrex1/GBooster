@@ -63,9 +63,13 @@ public class BoosterPlayer {
         boostersStorage.put(boosterId, amount + previousAmount);
     }
 
-    public void takeBooster(@NotNull Booster booster) {
-        Integer amount = boostersStorage.get(booster.getId());
-        boostersStorage.put(booster.getId(), amount - 1);
+    public boolean takeBooster(@NotNull String boosterId, int amount) {
+        if (!this.hasBooster(boosterId)) {
+            return false;
+        }
+        int previousAmount = boostersStorage.get(boosterId);
+        boostersStorage.put(boosterId, previousAmount - amount);
+        return true;
     }
 
     public boolean canUseBooster(@NotNull Booster booster) {
@@ -78,8 +82,8 @@ public class BoosterPlayer {
         return true;
     }
 
-    public boolean hasBooster(@NotNull Booster booster) {
-        Integer amount = boostersStorage.get(booster.getId());
+    public boolean hasBooster(@NotNull String boosterId) {
+        Integer amount = boostersStorage.get(boosterId);
         return amount != null && amount != 0;
     }
 

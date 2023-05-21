@@ -34,6 +34,7 @@ import java.util.Objects;
 public class GBoosterCmd implements TabExecutor {
 
     private static final String GBOOSTER_GIVE = "gbooster.give";
+    private static final String GBOOSTER_TAKE = "gbooster.take";
     private static final String GBOOSTER_USE = "gbooster.use";
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
@@ -46,6 +47,7 @@ public class GBoosterCmd implements TabExecutor {
         }
         switch (args[0].toLowerCase()) {
             case "give" -> doGive(sender, args);
+            case "take" -> doTake(sender, args);
             case "use" -> doUse(sender, args);
             case "time" -> doTime(sender, args);
             default -> {
@@ -77,6 +79,30 @@ public class GBoosterCmd implements TabExecutor {
                 booster.getId(), "%player%", boosterPlayer.getName()), "give-boosters");
     }
 
+    private void doTake(@NotNull CommandSender sender, @NotNull String[] args) {
+        if (Cmd.isArgsLengthNotEqualTo(sender, args, 4)) {
+            return;
+        }
+        Booster booster = main.getBoostersManager().getBoosterById(args[2]);
+        BoosterPlayer boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
+        if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_TAKE, booster, boosterPlayer)) {
+            return;
+        }
+        int amount = Integer.parseInt(args[3]);
+        Player onlineBoosterPlayer = Bukkit.getPlayer(boosterPlayer.getUuid());
+        if (!boosterPlayer.takeBooster(booster.getId(), amount)) {
+            Chat.sendMessage(sender, "no-booster");
+            return;
+        }
+        if (onlineBoosterPlayer != null) {
+            Chat.sendMessage(onlineBoosterPlayer,
+                    Map.of("%amount%", String.valueOf(amount), "%booster%", booster.getId()),
+                    "lose-boosters");
+        }
+        Chat.sendMessage(sender, Map.of("%amount%", String.valueOf(amount), "%booster%",
+                booster.getId(), "%player%", boosterPlayer.getName()), "take-boosters");
+    }
+
     private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
         if (Cmd.isArgsLengthNotEqualTo(sender, args, 2) || Cmd.isInvalidSender(sender)) {
             return;
@@ -88,7 +114,10 @@ public class GBoosterCmd implements TabExecutor {
         if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_USE, booster, boosterPlayer)) {
             return;
         }
-        boosterPlayer.takeBooster(booster);
+        if (!boosterPlayer.takeBooster(booster.getId(), 1)) {
+            Chat.sendMessage(sender, "no-booster");
+            return;
+        }
         BoosterActivateEvent boosterActivateEvent = new BoosterActivateEvent(booster, senderPlayer);
         Bukkit.getPluginManager().callEvent(boosterActivateEvent);
         if (boosterActivateEvent.isCancelled()) {
@@ -123,6 +152,9 @@ public class GBoosterCmd implements TabExecutor {
             if (sender.hasPermission(GBOOSTER_GIVE)) {
                 tabComplete.add("give");
             }
+            if (sender.hasPermission(GBOOSTER_TAKE)) {
+                tabComplete.add("take");
+            }
             if (sender.hasPermission(GBOOSTER_USE)) {
                 tabComplete.add("use");
             }
@@ -139,8 +171,9 @@ public class GBoosterCmd implements TabExecutor {
             tabComplete.addAll(keys);
             return tabComplete;
         }
-        if (args.length == 3 && args[0].equalsIgnoreCase("give")
-                && sender.hasPermission(GBOOSTER_GIVE)) {
+        if (args.length == 3
+                && (args[0].equalsIgnoreCase("give") && sender.hasPermission(GBOOSTER_GIVE))
+                || (args[0].equalsIgnoreCase("take") && sender.hasPermission(GBOOSTER_TAKE))) {
             return keys;
         }
         return null;
