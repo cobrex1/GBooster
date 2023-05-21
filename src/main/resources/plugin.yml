@@ -11,12 +11,18 @@ commands:
     description: "Main command"
     usage: "/gbooster give <player> <boosterid> <amount> | /gbooster use <boosterid> | /gbooster time"
 permissions:
+  gbooster.list:
+    description: "List boosters"
+    default: op
   gbooster.give:
-    description: "Permission to give boosters"
+    description: "Give boosters"
+    default: op
+  gbooster.take:
+    description: "Take boosters"
+    default: op
+  gbooster.time:
+    description: "Show time of booster that ends next"
     default: op
   gbooster.use:
     description: "Use boosters"
-    default: op
-  gbooster.time:
-    description: "Shows time of booster that ends next"
     default: op
