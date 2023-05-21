@@ -40,6 +40,11 @@ public class CmdSpec {
         };
     }
 
+    public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String perm,
+            BoosterPlayer boosterPlayer) {
+        return !Cmd.isPermitted(sender, perm) || isInvalidBoosterPlayer(sender, boosterPlayer);
+    }
+
     public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args,
             @NotNull String perm, int length) {
         return !Cmd.isPermitted(sender, perm) || !Cmd.isArgsLengthEqualTo(sender, args, length);

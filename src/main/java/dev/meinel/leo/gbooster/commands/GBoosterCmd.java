@@ -32,9 +32,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class GBoosterCmd implements TabExecutor {
-
+    private static final String GBOOSTER_LIST = "gbooster.list";
     private static final String GBOOSTER_GIVE = "gbooster.give";
     private static final String GBOOSTER_TAKE = "gbooster.take";
+    private static final String GBOOSTER_TIME = "gbooster.time";
     private static final String GBOOSTER_USE = "gbooster.use";
     private final GBooster main = JavaPlugin.getPlugin(GBooster.class);
 
@@ -60,7 +61,19 @@ public class GBoosterCmd implements TabExecutor {
     }
 
     private void doList(@NotNull CommandSender sender, @NotNull String[] args) {
-
+        if (Cmd.isArgsLengthGreaterThan(sender, args, 2)) {
+            return;
+        }
+        BoosterPlayer boosterPlayer =
+                main.getPlayerStorage().getBoosterPlayerByName(sender.toString());
+        if (Cmd.isArgsLengthEqualTo(sender, args, 2)) {
+            boosterPlayer = main.getPlayerStorage().getBoosterPlayerByName(args[1]);
+        }
+        if (CmdSpec.isInvalidCmd(sender, GBOOSTER_LIST, boosterPlayer)) {
+            return;
+        }
+        boosterPlayer.getBoostersStorage().forEach((k, v) -> Chat.sendMessage(sender,
+                Map.of("%booster%", k, "%amount%", String.valueOf(v)), "list-booster"));
     }
 
     private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
@@ -134,7 +147,7 @@ public class GBoosterCmd implements TabExecutor {
     }
 
     private void doTime(@NotNull CommandSender sender, @NotNull String[] args) {
-        if (CmdSpec.isInvalidCmd(sender, args, "gbooster.time", 1)) {
+        if (CmdSpec.isInvalidCmd(sender, args, GBOOSTER_TIME, 1)) {
             return;
         }
         if (main.getActiveBoostersManager().getActiveBoosters().size() == 0) {
@@ -154,17 +167,20 @@ public class GBoosterCmd implements TabExecutor {
         @Nullable
         List<String> tabComplete = new ArrayList<>();
         if (args.length == 1) {
+            if (sender.hasPermission(GBOOSTER_LIST)) {
+                tabComplete.add("list");
+            }
             if (sender.hasPermission(GBOOSTER_GIVE)) {
                 tabComplete.add("give");
             }
             if (sender.hasPermission(GBOOSTER_TAKE)) {
                 tabComplete.add("take");
             }
+            if (sender.hasPermission(GBOOSTER_TIME)) {
+                tabComplete.add("time");
+            }
             if (sender.hasPermission(GBOOSTER_USE)) {
                 tabComplete.add("use");
-            }
-            if (sender.hasPermission("gbooster.time")) {
-                tabComplete.add("time");
             }
             return tabComplete;
         }
