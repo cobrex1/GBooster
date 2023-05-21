@@ -46,10 +46,11 @@ public class GBoosterCmd implements TabExecutor {
             return false;
         }
         switch (args[0].toLowerCase()) {
+            case "list" -> doList(sender, args);
             case "give" -> doGive(sender, args);
             case "take" -> doTake(sender, args);
-            case "use" -> doUse(sender, args);
             case "time" -> doTime(sender, args);
+            case "use" -> doUse(sender, args);
             default -> {
                 Chat.sendMessage(sender, "cmd");
                 return false;
@@ -58,8 +59,12 @@ public class GBoosterCmd implements TabExecutor {
         return true;
     }
 
+    private void doList(@NotNull CommandSender sender, @NotNull String[] args) {
+
+    }
+
     private void doGive(@NotNull CommandSender sender, @NotNull String[] args) {
-        if (Cmd.isArgsLengthNotEqualTo(sender, args, 4)) {
+        if (!Cmd.isArgsLengthEqualTo(sender, args, 4)) {
             return;
         }
         Booster booster = main.getBoostersManager().getBoosterById(args[2]);
@@ -80,7 +85,7 @@ public class GBoosterCmd implements TabExecutor {
     }
 
     private void doTake(@NotNull CommandSender sender, @NotNull String[] args) {
-        if (Cmd.isArgsLengthNotEqualTo(sender, args, 4)) {
+        if (!Cmd.isArgsLengthEqualTo(sender, args, 4)) {
             return;
         }
         Booster booster = main.getBoostersManager().getBoosterById(args[2]);
@@ -104,7 +109,7 @@ public class GBoosterCmd implements TabExecutor {
     }
 
     private void doUse(@NotNull CommandSender sender, @NotNull String[] args) {
-        if (Cmd.isArgsLengthNotEqualTo(sender, args, 2) || Cmd.isInvalidSender(sender)) {
+        if (!Cmd.isArgsLengthEqualTo(sender, args, 2) || Cmd.isInvalidSender(sender)) {
             return;
         }
         Player senderPlayer = (Player) sender;

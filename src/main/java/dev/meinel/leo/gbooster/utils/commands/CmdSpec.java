@@ -30,10 +30,10 @@ public class CmdSpec {
     public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args,
             @NotNull String perm, Booster booster, BoosterPlayer boosterPlayer) {
         return switch (args[0].toLowerCase()) {
-            case "give", "remove" -> Cmd.isNotPermitted(sender, perm)
+            case "give", "remove" -> !Cmd.isPermitted(sender, perm)
                     || isInvalidBooster(sender, booster) || isInvalidNumber(sender, args[3])
                     || isInvalidBoosterPlayer(sender, boosterPlayer);
-            case "use" -> Cmd.isNotPermitted(sender, perm) || isInvalidBooster(sender, booster)
+            case "use" -> !Cmd.isPermitted(sender, perm) || isInvalidBooster(sender, booster)
                     || exceedsLimit(sender, booster)
                     || isOnCountdown(sender, boosterPlayer, booster);
             default -> true;
@@ -42,7 +42,7 @@ public class CmdSpec {
 
     public static boolean isInvalidCmd(@NotNull CommandSender sender, @NotNull String[] args,
             @NotNull String perm, int length) {
-        return Cmd.isNotPermitted(sender, perm) || Cmd.isArgsLengthNotEqualTo(sender, args, length);
+        return !Cmd.isPermitted(sender, perm) || !Cmd.isArgsLengthEqualTo(sender, args, length);
     }
 
     private static boolean isInvalidBoosterPlayer(@NotNull CommandSender sender,

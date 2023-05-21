@@ -21,15 +21,6 @@ public class Cmd {
         throw new IllegalStateException("Utility class");
     }
 
-    public static boolean isArgsLengthNotEqualTo(@NotNull CommandSender sender,
-            @NotNull String[] args, int length) {
-        if (args.length != length) {
-            Chat.sendMessage(sender, "cmd");
-            return true;
-        }
-        return false;
-    }
-
     public static boolean isArgsLengthEqualTo(@NotNull CommandSender sender, @NotNull String[] args,
             int length) {
         if (args.length == length) {
@@ -48,11 +39,11 @@ public class Cmd {
         return false;
     }
 
-    public static boolean isNotPermitted(@NotNull CommandSender sender, @NotNull String perm) {
-        if (!sender.hasPermission(perm)) {
-            Chat.sendMessage(sender, "no-perms");
+    public static boolean isPermitted(@NotNull CommandSender sender, @NotNull String perm) {
+        if (sender.hasPermission(perm)) {
             return true;
         }
+        Chat.sendMessage(sender, "no-perms");
         return false;
     }
 
