@@ -47,7 +47,7 @@ dependencies {
     implementation 'com.github.Zrips:Jobs:4.17.2'
     implementation 'com.gmail.nossr50.mcMMO:mcMMO:2.1.220'
     compileOnly 'me.clip:placeholderapi:2.11.3'
-    compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.7'
+    compileOnly 'com.sk89q.worldguard:worldguard-bukkit:7.0.8'
 }
 
 processResources {
